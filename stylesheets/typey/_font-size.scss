@@ -3,9 +3,10 @@
 //
 // @param string $size
 //   A size from the $font-size map.
-// @param number $context
+// @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the parent 
-//   font-size if differs from $base-font-size. Must be the same unit as used in the map.
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in the same unit as the $font-size map.
 //
 // @return number
 //   The selected font-size in $base-unit.
@@ -19,7 +20,13 @@
       @return ($map-size / $base-font-size) + $base-unit;
     }
     @if $base-unit == em {
-      @return ($map-size / $context) + $base-unit;
+      @if type-of($context) == 'string' {
+        $context-map-size: map-get($font-size, $context);
+        @return ($map-size / $context-map-size) + $base-unit;
+      }
+      @if type-of($context) == 'number' { 
+        @return ($map-size / $context) + $base-unit;
+      }
     }
   }
 }

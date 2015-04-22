@@ -34,7 +34,7 @@ $font-weight: (
   lighter:                 200
 ) !default;
 
-// Define defaults (ideally in either HTML or BODY elements).
+// Define defaults (in the HTML element).
 //
 // @param number $base-font-size
 //   (optional) Use to set to anything other than the base value.
@@ -42,7 +42,7 @@ $font-weight: (
 // @param number $base-line-height
 //   (optional) Use to set to anything other than the base value.
 //   Allowed units: px or pt
-@mixin default-type-sizing($base-font-size: $base-font-size, $base-line-height: $base-line-height) {
+@mixin define-type-sizing($base-font-size: $base-font-size, $base-line-height: $base-line-height) {
   @if $base-unit == rem or $base-unit == px or $base-unit == pt {
     font-size: $base-font-size;
     line-height: $base-line-height;

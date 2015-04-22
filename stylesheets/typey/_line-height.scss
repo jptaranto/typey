@@ -9,8 +9,9 @@
 // @param number $x
 //   Multiple of line height to be used or px/pt value to be converted.
 // @param number $context
-//   (optional) Only used if em is the $base-unit. The elements font-size if
-//   differs from $base-font-size. Must be the same unit as $base-line-height.
+//   (optional) Only used if em is the $base-unit. The value of the elements 
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in the same unit as the $font-size map.
 //
 // @return number
 //   The caculated height in $base-unit.
@@ -23,7 +24,13 @@
       @return ($x * $base-line-height) / $base-font-size + $base-unit;
     }
     @if $base-unit == em {
-      @return ($x * $base-line-height) / $context + $base-unit;
+      @if type-of($context) == 'string' {
+        $context-map-size: map-get($font-size, $context);
+        @return ($x * $base-line-height) / $context-map-size + $base-unit;
+      }
+      @if type-of($context) == 'number' { 
+        @return ($x * $base-line-height) / $context + $base-unit;
+      }
     }
   }
   @if type-of($x) == 'number' and not unitless($x) {
@@ -40,8 +47,9 @@
 // @param number $x
 //   Multiple of line height to be used or px/pt value to be converted.
 // @param number $context
-//   (optional) Only used if em is the $base-unit. The elements font-size if
-//   differs from $base-font-size. Must be the same unit as $base-line-height.
+//   (optional) Only used if em is the $base-unit. The value of the elements 
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in the same unit as the $font-size map.
 @mixin line-height($x, $context: $base-font-size) {
   @if $base-unit == rem {
     @if type-of($x) == 'number' and unitless($x) {

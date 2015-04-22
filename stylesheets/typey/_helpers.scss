@@ -17,9 +17,9 @@
 // @param number $number
 //   The number (with unit) to convert. Allowed units: px, pt
 // @param number $context
-//   (optional) Only used if em is the $base-unit. The element's font-size if
-//   differs from $base-font-size. This must be the same as the unit used for 
-//   $number.
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents 
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in the same unit as the $font-size map.
 //
 // @return number
 //   The number converted to the base unit.
@@ -36,7 +36,11 @@
         }
       }
       @if $base-unit == em {
-        @if $unit == unit($context) { 
+        @if type-of($context) == 'string' {
+          $context-map-size: map-get($font-size, $context);
+          @return ($number / $context-map-size) + $base-unit;
+        }
+        @if type-of($context) == 'number' { 
           @return ($number / $context) + $base-unit;
         }
       }
