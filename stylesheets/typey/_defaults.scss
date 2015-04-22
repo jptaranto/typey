@@ -1,0 +1,54 @@
+// The browser font size default. No need to change this.
+$browser-font-size:        16px;
+
+// The base font size will be used for most calculations involving font-size.
+// Allowed units: px or pt
+$base-font-size:           16px !default;
+
+// The base line height will be used for most calculations involving height.
+// Allowed units: Must be the same as $base-line-height
+$base-line-height:         21px !default;
+
+// Allowed units: px, pt, em or rem.
+$base-unit:                rem !default;
+
+// Default font sizes
+// Once you redefine the $font-size map it will overwrite all sizes here.
+// Allowed units: Must be the same as $base-line-height
+$font-size: (
+  xxxl:                    60px,
+  xxl:                     46px,
+  xl:                      32px,
+  l:                       24px,
+  m:                       16px,
+  s:                       14px,
+  xs:                      12px
+) !default;
+
+// Default font weights
+// This map and accompanying function help provide granular control over 
+// setting and retrieving static font weights.
+$font-weight: (
+  bold:                    700,
+  normal:                  400,
+  lighter:                 200
+) !default;
+
+// Define defaults (ideally in either HTML or BODY elements).
+//
+// @param number $base-font-size
+//   (optional) Use to set to anything other than the base value.
+//   Allowed units: px or pt
+// @param number $base-line-height
+//   (optional) Use to set to anything other than the base value.
+//   Allowed units: px or pt
+@mixin default-type-sizing($base-font-size: $base-font-size, $base-line-height: $base-line-height) {
+  @if $base-unit == rem or $base-unit == px or $base-unit == pt {
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+  }
+  @if $base-unit == rem or $base-unit == em {
+    font-size: $base-font-size / $browser-font-size * 100%;
+    line-height: $base-font-size / $base-line-height + $base-unit;
+  }  
+}

@@ -1,0 +1,45 @@
+// Remove the unit from a number.
+//
+// @param number $number
+//   The number (with unit) to convert. Allowed units: any
+//
+// @return number
+//   The number without the unit.
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+// Convert px or pt to the $base-unit.
+//
+// @param number $number
+//   The number (with unit) to convert. Allowed units: px, pt
+// @param number $context
+//   (optional) Only used if em is the $base-unit. The element's font-size if
+//   differs from $base-font-size. This must be the same as the unit used for 
+//   $number.
+//
+// @return number
+//   The number converted to the base unit.
+@function convert-unit($number, $context: $base-font-size) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    $unit: unit($number);
+    @if $unit == px or $unit == pt {
+      @if $base-unit == px or $base-unit == pt {
+        @return strip-unit($number) + $base-unit;
+      }
+      @if $base-unit == rem {
+        @if $unit == unit($base-font-size) { 
+          @return ($number / $base-font-size) + $base-unit;
+        }
+      }
+      @if $base-unit == em {
+        @if $unit == unit($context) { 
+          @return ($number / $context) + $base-unit;
+        }
+      }
+    }
+  }
+}
