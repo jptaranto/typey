@@ -4,12 +4,12 @@ Gem::Specification.new do |spec|
   spec.name         = 'typey'
 
   spec.summary      = %q{Do typography better.}
-  spec.description  = %q{}
+  spec.description  = %q{Tools to help you manage font sizing and css units.}
 
   spec.homepage     = 'http://github.com/jptaranto/typey'
   spec.rubyforge_project =
 
-  spec.version      = '1.0.0.alpha.1'
+  spec.version      = '1.0.0.alpha.2'
   spec.date         = '2015-04-22'
   spec.licenses     = ['GPL-2']
 

@@ -14,21 +14,18 @@ Do typography better.
 
 ### CSS units used in typey
 
-**px**
-By far the simplest unit you can use to size typography on the web. It translates very easily from mockups produced in a certain over-rated graphics suite. In typey, all base sizes are specified in `px` (or `pt`) and are automatically converted to your `$base-unit`.
+`px` - By far the simplest unit you can use to size typography on the web. It translates very easily from mockups produced in a certain over-rated graphics suite. In typey, all base sizes are specified in `px` (or `pt`) and are automatically converted to your `$base-unit`.
 
-**pt**
-Translates equally well from design mockups as `px` but should be kept for use solely within print stylesheets. For the simplest approach when writing print stylesheets set your $base-unit as `pt` and define all base sizes as `pt`.
+`pt` - Translates equally well from design mockups as `px` but should be kept for use solely within print stylesheets. For the simplest approach when writing print stylesheets set your $base-unit as `pt` and define all base sizes as `pt`.
 
-**rem**
-Sets `font-size` as relative to the `html` elements `font-size` and allows you to resize fonts dynamically with media queries. It has one irritating caveat: no IE8 support! Fear not, typey can help.
+`rem` - Sets `font-size` as relative to the `html` elements `font-size` and allows you to resize fonts dynamically with media queries. It has one irritating caveat: no IE8 support! Fear not, typey can help.
 
-**em**
-In the way the `rem` unit is relative to the `html` element, `em` is relative to the parent `font-size`. It is supported in all browsers and also allows you to dynamically resize fonts with media queries. It can just get severely confusing when you have various nested elements - each with an `em` `font-size`. Typey functions and mixins accept a second parameter to help with this problem.
+
+`em` - In the way the `rem` unit is relative to the `html` element, `em` is relative to the parent `font-size`. It is supported in all browsers and also allows you to dynamically resize fonts with media queries. It can just get severely confusing when you have various nested elements - each with an `em` `font-size`. Typey functions and mixins accept a second parameter to help with this problem.
 
 ### Getting started
 
-Just like in compass Vertical Rhythm (how does one spell rythym?) we define our base font size and line height first.
+Just like in compass Vertical Rhythm we define our base font size and line height first.
 
 ```sass
 $base-font-size:    16px;

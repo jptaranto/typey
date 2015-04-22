@@ -43,11 +43,16 @@ $font-weight: (
 //   (optional) Use to set to anything other than the base value.
 //   Allowed units: px or pt
 @mixin define-type-sizing($base-font-size: $base-font-size, $base-line-height: $base-line-height) {
-  @if $base-unit == rem or $base-unit == px or $base-unit == pt {
+  @if $base-unit == px or $base-unit == pt {
     font-size: $base-font-size;
     line-height: $base-line-height;
   }
-  @if $base-unit == rem or $base-unit == em {
+  @if $base-unit == rem {
+    font-size: $base-font-size / $browser-font-size * 100%;
+    line-height: $base-line-height;
+    line-height: $base-font-size / $base-line-height + $base-unit;
+  }
+  @if $base-unit == em {
     font-size: $base-font-size / $browser-font-size * 100%;
     line-height: $base-font-size / $base-line-height + $base-unit;
   }  
