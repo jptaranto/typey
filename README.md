@@ -6,25 +6,25 @@ Do typography better.
 ### Features
 
 * Use px (for screen) and pt (for print) and then output in px, pt, rem or em.
-* Define font sizes inside a sass map as t-shirt sizes (m, l, xl, xxl).
+* Define font sizes inside a sass map as t-shirt sizes (m, l, xl, xxl, etc).
 * Define line-height as multiples of the base line height OR as static values.
 * Automatic px fallbacks when using rem as the base unit.
 * Define font weights inside a sass map.
-* Ready to go web safe font stacks that are easy to extend.
+* Ready to go web safe font stacks that are easy to extend. Credit: John Albin Wilkins.
 
 ### CSS units used in typey
 
-`px`
+**px**
 By far the simplest unit you can use to size typography on the web. It translates very easily from mockups produced in a certain over-rated graphics suite. In typey, all base sizes are specified in `px` (or `pt`) and are automatically converted to your `$base-unit`.
 
-`pt`
+**pt**
 Translates equally well from design mockups as `px` but should be kept for use solely within print stylesheets. For the simplest approach when writing print stylesheets set your $base-unit as `pt` and define all base sizes as `pt`.
 
-`rem`
-Sets `font-size` as relative to `$base-font-size` and allows you to resize fonts dynamically with media queries by altering the default font size of the `html` element. It has one irritating caveat: no IE8 support! Fear not, typey can help.
+**rem**
+Sets `font-size` as relative to the `html` elements `font-size` and allows you to resize fonts dynamically with media queries. It has one irritating caveat: no IE8 support! Fear not, typey can help.
 
-`em`
-In the way the `rem` unit is relative to `$base-font-size`, `em` is relative to the parent `font-size`. It is supported in all browsers and also allows you to dynamically resize fonts with media queries. It can just get severely confusing when you have various nested elements - each with an `em` `font-size`. Typey functions and mixins accept a second argument to help with this problem.
+**em**
+In the way the `rem` unit is relative to the `html` element, `em` is relative to the parent `font-size`. It is supported in all browsers and also allows you to dynamically resize fonts with media queries. It can just get severely confusing when you have various nested elements - each with an `em` `font-size`. Typey functions and mixins accept a second parameter to help with this problem.
 
 ### Getting started
 
@@ -98,16 +98,7 @@ h4 {
 }
 ```
 
-When using `em` as your `$base-unit`, use each functions second parameter so you can set the `em` value relative to the parent or element `font-size`. This second argument accepts t-shirt sizes to keep things simple.
-
-```sass
-h4 span {
-  font-size: font-size(s, l);
-  line-height: line-height(2, s);
-}
-```
-
-The second parameter can either accept a t-shirt size or a static value for granular control.
+When using `em` as your `$base-unit`, use each functions second parameter so you can set the `em` value relative to the parent or element `font-size`. The second parameter can either accept a t-shirt size or a static value for granular control.
 
 ```sass
 h4 span {
@@ -118,7 +109,7 @@ h4 span {
 
 ### Extras
 
-Grab one of the web-safe font stacks included and extend it with your own fonts. Font stacks are courtesy of John Albin and his Zen theme.
+Grab one of the web-safe font stacks included and extend it with your own fonts.
 
 ```sass
 $your-font-stack: extend-font-stack("Open sans", $sans-serif-stack);

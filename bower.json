@@ -1,0 +1,19 @@
+{
+  "name"        : "typey",
+  "version"     : "1.0.0-alpha.1",
+  "homepage"    : "http://github.com/jptaranto/typey",
+  "author"      : ["Jack Taranto"],
+  "description" : "Do typography better.",
+  "main"        : [
+    "_typey.scss"
+  ],
+  "keywords"    : [
+    "typography"
+  ],
+  "license"     : "GPLv2",
+  "ignore"      : [
+    "typey.gemspec",
+    "sache.json",
+    "lib",
+  ]
+}
