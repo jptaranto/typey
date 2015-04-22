@@ -1,6 +1,6 @@
 {
   "name"        : "typey",
-  "version"     : "1.0.0.alpha.2",
+  "version"     : "1.0.0.alpha.3",
   "homepage"    : "http://github.com/jptaranto/typey",
   "author"      : ["Jack Taranto"],
   "description" : "Do typography better.",

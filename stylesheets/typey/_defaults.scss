@@ -50,10 +50,10 @@ $font-weight: (
   @if $base-unit == rem {
     font-size: $base-font-size / $browser-font-size * 100%;
     line-height: $base-line-height;
-    line-height: $base-font-size / $base-line-height + $base-unit;
+    line-height: $base-line-height / $base-font-size + $base-unit;
   }
   @if $base-unit == em {
     font-size: $base-font-size / $browser-font-size * 100%;
-    line-height: $base-font-size / $base-line-height + $base-unit;
+    line-height: $base-line-height / $base-font-size + $base-unit;
   }  
 }
