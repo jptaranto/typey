@@ -1,0 +1,143 @@
+// Generate a value to be used as margin from either: 
+//   a) a multiple of $base-line-height
+//   b) a static px or pt value
+//
+// Example usage with multiple:
+//   margin: margin(2);
+// Example usage with static value:
+//   margin: margin(18px);
+//
+// @param number $x
+//   Multiple of line height to be used or px/pt value to be converted.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents 
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in the same unit as the $font-size map.
+//
+// @return number
+//   The caculated height in $base-unit.
+@function margin($x, $context: $base-font-size) {
+  @return line-height($x, $context);
+}
+
+// Define margin (with fallback).
+// This is only necessary to use if you want to provide fallbacks when you are
+// using rem as $base-unit.
+//
+// @param number|list $x
+//   Multiple of line height to be used or px/pt value to be converted.
+//   Uses the same parameters as the CSS margin property: 
+//   i.e. top right bottom left, 1 0 2 0.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents 
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in the same unit as the $font-size map.
+@mixin margin($list, $context: $base-font-size) {
+  $px-list: ();
+  $converted-list: ();
+  @each $x in $list {
+    @if $base-unit == rem {
+      @if type-of($x) == 'number' and unitless($x) {
+        $margin: $x * $base-line-height;
+        $px-list: join($px-list, $margin, $separator: space);
+      }
+      @if type-of($x) == 'number' and not unitless($x) {  
+        $px-list: join($px-list, $x, $separator: space);
+      }    
+    }
+    $margin: line-height($x, $context);
+    $converted-list: join($converted-list, $margin, $separator: space);
+  }
+  @if $base-unit == rem {
+    margin: $px-list;
+  }
+  margin: $converted-list;
+}
+
+// Define margin-top (with fallback). 
+// This is only necessary to use if you want to provide fallbacks when you are
+// using rem as $base-unit.
+//
+// @param number $x
+//   Multiple of line height to be used or px/pt value to be converted.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents 
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in the same unit as the $font-size map.
+@mixin margin-top($x, $context: $base-font-size) {
+  @if $base-unit == rem {
+    @if type-of($x) == 'number' and unitless($x) {
+      margin-top: $x * $base-line-height;
+    }
+    @if type-of($x) == 'number' and not unitless($x) {  
+      margin-top: $x;
+    }
+  }
+  margin-top: line-height($x, $context);
+}
+
+// Define margin-bottom (with fallback). 
+// This is only necessary to use if you want to provide fallbacks when you are
+// using rem as $base-unit.
+//
+// @param number $x
+//   Multiple of line height to be used or px/pt value to be converted.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents 
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in the same unit as the $font-size map.
+@mixin margin-bottom($x, $context: $base-font-size) {
+  @if $base-unit == rem {
+    @if type-of($x) == 'number' and unitless($x) {
+      margin-bottom: $x * $base-line-height;
+    }
+    @if type-of($x) == 'number' and not unitless($x) {  
+      margin-bottom: $x;
+    }
+  }
+  margin-bottom: line-height($x, $context);
+}
+
+// Define margin-left (with fallback). 
+// This is only necessary to use if you want to provide fallbacks when you are
+// using rem as $base-unit.
+//
+// @param number $x
+//   Multiple of line height to be used or px/pt value to be converted.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents 
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in the same unit as the $font-size map.
+@mixin margin-left($x, $context: $base-font-size) {
+  @if $base-unit == rem {
+    @if type-of($x) == 'number' and unitless($x) {
+      margin-left: $x * $base-line-height;
+    }
+    @if type-of($x) == 'number' and not unitless($x) {  
+      margin-left: $x;
+    }
+  }
+  margin-left: line-height($x, $context);
+}
+
+// Define margin-right (with fallback). 
+// This is only necessary to use if you want to provide fallbacks when you are
+// using rem as $base-unit.
+//
+// @param number $x
+//   Multiple of line height to be used or px/pt value to be converted.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents 
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in the same unit as the $font-size map.
+@mixin margin-right($x, $context: $base-font-size) {
+  @if $base-unit == rem {
+    @if type-of($x) == 'number' and unitless($x) {
+      margin-right: $x * $base-line-height;
+    }
+    @if type-of($x) == 'number' and not unitless($x) {  
+      margin-right: $x;
+    }
+  }
+  margin-right: line-height($x, $context);
+}

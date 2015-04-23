@@ -1,5 +1,6 @@
-// Generate a value to be used as line-height (or margin, padding, etc) from 
-// either: a) a multiple of $base-line-height or b) a static px or pt value.
+// Generate a value to be used as line-height from either: 
+//   a) a multiple of $base-line-height
+//   b) a static px or pt value
 //
 // Example usage with multiple:
 //   line-height: line-height(2);
@@ -8,8 +9,8 @@
 //
 // @param number $x
 //   Multiple of line height to be used or px/pt value to be converted.
-// @param number $context
-//   (optional) Only used if em is the $base-unit. The value of the elements 
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents 
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
 //   value in the same unit as the $font-size map.
 //
@@ -46,8 +47,8 @@
 //
 // @param number $x
 //   Multiple of line height to be used or px/pt value to be converted.
-// @param number $context
-//   (optional) Only used if em is the $base-unit. The value of the elements 
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents 
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
 //   value in the same unit as the $font-size map.
 @mixin line-height($x, $context: $base-font-size) {

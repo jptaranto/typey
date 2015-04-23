@@ -16,7 +16,7 @@
 //
 // @param number $number
 //   The number (with unit) to convert. Allowed units: px, pt
-// @param number $context
+// @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the elements/parents 
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
 //   value in the same unit as the $font-size map.
