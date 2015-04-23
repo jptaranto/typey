@@ -9,22 +9,8 @@ $base-font-size:           16px !default;
 // Allowed units: Must be the same as $base-line-height
 $base-line-height:         21px !default;
 
-// Warnings for $base-font-size and $base-line-height.
-@if unit($base-font-size) != px and unit($base-font-size) != pt {
-  @warn "$base-font-size must be one of the following unit types: px, pt";
-}
-@if unit($base-line-height) != unit($base-font-size) {
-  @warn "$base-line-height must use the same unit as $base-font-size.";
-}
-
 // Allowed units: px, pt, em or rem.
 $base-unit:                rem !default;
-
-// Warnings for $base-unit.
-@if $base-unit != px and $base-unit != pt and $base-unit != rem and $base-unit != em {
-  @warn "$base-unit must be one of the following unit types: px, pt, rem, em";
-}
-
 
 // Default font sizes
 // Once you redefine the $font-size map it will overwrite all sizes here.
@@ -48,6 +34,26 @@ $font-weight: (
   lighter:                 200
 ) !default;
 
+// Warnings for $base-unit.
+@if $base-unit != px and $base-unit != pt and $base-unit != rem and $base-unit != em {
+  @warn "$base-unit must be one of the following unit types: px, pt, rem, em";
+}
+
+// Warnings for $base-font-size and $base-line-height.
+@if unit($base-font-size) != px and unit($base-font-size) != pt {
+  @warn "$base-font-size must be one of the following unit types: px, pt";
+}
+@if unit($base-line-height) != unit($base-font-size) {
+  @warn "$base-line-height must use the same unit as $base-font-size.";
+}
+
+// Warnings for $font-size
+@each $key, $size in $font-size {
+  @if unit($size) != unit($base-font-size) {
+    @warn "Size '#{$key}' in $font-size map does not match the $base-font-size unit.";
+  }
+}
+
 // Define defaults (in the HTML element).
 //
 // @param number $base-font-size
@@ -64,10 +70,10 @@ $font-weight: (
   @if $base-unit == rem {
     font-size: $base-font-size / $browser-font-size * 100%;
     line-height: $base-line-height;
-    line-height: $base-line-height / $base-font-size + $base-unit;
+    line-height: output-unit($base-line-height / $base-font-size);
   }
   @if $base-unit == em {
     font-size: $base-font-size / $browser-font-size * 100%;
-    line-height: $base-line-height / $base-font-size + $base-unit;
+    line-height: output-unit($base-line-height / $base-font-size);
   }  
 }

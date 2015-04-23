@@ -57,13 +57,23 @@
           @return output-unit(($number / $base-font-size));
         }
       }
-      @if $base-unit == em {
+      @if $base-unit == em {        
         @if type-of($context) == 'string' {
-          $context-map-size: map-get($font-size, $context);
-          @return output-unit(($number / $context-map-size));
+          @if map-has-key($font-size, $context) {
+            $context-map-size: map-get($font-size, $context);
+            @return output-unit(($number / $context-map-size));
+          }
+          @else {
+            @warn "'#{$context}' not found in $font-size map.";
+          }
         }
-        @if type-of($context) == 'number' { 
-          @return output-unit(($number / $context));
+        @if type-of($context) == 'number' {
+          @if unit($context) == unit($base-font-size) {
+            @return output-unit(($number / $context));
+          }
+          @else {
+            @warn "The unit used for $context does not match the $base-font-size unit.";
+          }
         }
       }
     }
