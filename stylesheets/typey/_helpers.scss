@@ -1,3 +1,25 @@
+// Output a number in the $base-unit.
+//
+// @param number $number
+//   The number (without unit) to output.
+//
+// @return number
+//   The number with the base unit
+@function output-unit($number) {
+  @if $base-unit == px {
+    @return $number * 1px;
+  }
+  @if $base-unit == pt {
+    @return $number * 1pt;
+  }
+  @if $base-unit == rem {
+    @return $number * 1rem;
+  }
+  @if $base-unit == em {
+    @return $number * 1em;
+  }
+}
+
 // Remove the unit from a number.
 //
 // @param number $number
@@ -28,20 +50,20 @@
     $unit: unit($number);
     @if $unit == px or $unit == pt {
       @if $base-unit == px or $base-unit == pt {
-        @return strip-unit($number) + $base-unit;
+        @return output-unit(strip-unit($number));
       }
       @if $base-unit == rem {
         @if $unit == unit($base-font-size) { 
-          @return ($number / $base-font-size) + $base-unit;
+          @return output-unit(($number / $base-font-size));
         }
       }
       @if $base-unit == em {
         @if type-of($context) == 'string' {
           $context-map-size: map-get($font-size, $context);
-          @return ($number / $context-map-size) + $base-unit;
+          @return output-unit(($number / $context-map-size));
         }
         @if type-of($context) == 'number' { 
-          @return ($number / $context) + $base-unit;
+          @return output-unit(($number / $context));
         }
       }
     }

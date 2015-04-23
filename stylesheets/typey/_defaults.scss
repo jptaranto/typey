@@ -9,8 +9,22 @@ $base-font-size:           16px !default;
 // Allowed units: Must be the same as $base-line-height
 $base-line-height:         21px !default;
 
+// Warnings for $base-font-size and $base-line-height.
+@if unit($base-font-size) != px and unit($base-font-size) != pt {
+  @warn "$base-font-size must be one of the following unit types: px, pt";
+}
+@if unit($base-line-height) != unit($base-font-size) {
+  @warn "$base-line-height must use the same unit as $base-font-size.";
+}
+
 // Allowed units: px, pt, em or rem.
 $base-unit:                rem !default;
+
+// Warnings for $base-unit.
+@if $base-unit != px and $base-unit != pt and $base-unit != rem and $base-unit != em {
+  @warn "$base-unit must be one of the following unit types: px, pt, rem, em";
+}
+
 
 // Default font sizes
 // Once you redefine the $font-size map it will overwrite all sizes here.

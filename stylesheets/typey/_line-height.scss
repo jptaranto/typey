@@ -19,18 +19,18 @@
 @function line-height($x, $context: $base-font-size) {
   @if type-of($x) == 'number' and unitless($x) {
     @if $base-unit == px or $base-unit == pt {
-      @return strip-unit($x * $base-line-height) + $base-unit;
+      @return output-unit(strip-unit($x * $base-line-height));
     }
     @if $base-unit == rem {
-      @return ($x * $base-line-height) / $base-font-size + $base-unit;
+      @return output-unit(($x * $base-line-height) / $base-font-size);
     }
     @if $base-unit == em {
       @if type-of($context) == 'string' {
         $context-map-size: map-get($font-size, $context);
-        @return ($x * $base-line-height) / $context-map-size + $base-unit;
+        @return output-unit(($x * $base-line-height) / $context-map-size);
       }
       @if type-of($context) == 'number' { 
-        @return ($x * $base-line-height) / $context + $base-unit;
+        @return output-unit(($x * $base-line-height) / $context);
       }
     }
   }

@@ -14,18 +14,18 @@
   @if type-of($size) == 'string' {
     $map-size: map-get($font-size, $size);
     @if $base-unit == px or $base-unit == pt {
-      @return strip-unit($map-size) + $base-unit;
+      @return output-unit(strip-unit($map-size));
     }
     @if $base-unit == rem {
-      @return ($map-size / $base-font-size) + $base-unit;
+      @return output-unit(($map-size / $base-font-size));
     }
     @if $base-unit == em {
       @if type-of($context) == 'string' {
         $context-map-size: map-get($font-size, $context);
-        @return ($map-size / $context-map-size) + $base-unit;
+        @return output-unit(($map-size / $context-map-size));
       }
       @if type-of($context) == 'number' { 
-        @return ($map-size / $context) + $base-unit;
+        @return output-unit(($map-size / $context));
       }
     }
   }
