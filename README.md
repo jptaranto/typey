@@ -220,24 +220,24 @@ strong {
 font-size($size, $context: $base-font-size)
 ```
 
-*@param number|string $size*
+*@param number|string __$size__*  
 A size from the $font-size map or px/pt value to be converted
 
-*@param number|string $context*
+*@param number|string __$context__*  
 (optional) Only used if em is the $base-unit. The value of the parent font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
 
-*@return number*
+*@return number*  
 The selected font-size in $base-unit.
 
 ```sass
 line-height($x, $context: $base-font-size)
 ```
 
-*@param number $x*
+*@param number __$x__*  
 Multiple of line height to be used or px/pt value to be converted.
 
-*@param number|string $context*
+*@param number|string __$context__*  
 (optional) Only used if em is the $base-unit. The value of the elements/parentsfont-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
 
-*@return number*
+*@return number*  
 The calculated height in $base-unit.
