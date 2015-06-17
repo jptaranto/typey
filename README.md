@@ -1,16 +1,15 @@
 # typey
 Do typography better.
 
-*This repo contains alpha code that is likely to change at any point. Use at your own risk ;)*
-
 ### Features
 
-* Use px (for screen) and pt (for print) and then output in px, pt, rem or em.
+* Use px to define font sizes and have them output in rem or em.
 * Define font sizes inside a sass map as t-shirt sizes (m, l, xl, xxl, etc).
 * Define line-height as multiples of the base line height OR as static values.
 * Automatic px fallbacks when using rem as the base unit.
+* Easily convert px values to rem or em.
 * Define font weights inside a sass map.
-* Ready to go web safe font stacks that are easy to extend. Credit: John Albin Wilkins.
+* Ready to go web safe font stacks that are easy to extend.
 
 ### Requirements
 
@@ -32,11 +31,11 @@ Bower
 Vanilla Sass
 
 * Terminal: 'git clone git@github.com:jptaranto/typey.git
-* SCSS: `@import '../link_to_component_dir/typey/stylesheets/typey'` 
+* SCSS: `@import '../link_to_component_dir/typey/stylesheets/typey'`
 
 ### CSS units used in typey
 
-`px` 
+`px`
 
 By far the simplest unit you can use to size typography on the web. It translates very easily from mockups produced in a certain over-rated graphics suite. In typey, all base sizes are specified in `px` (or `pt`) and are automatically converted to your `$base-unit`.
 
@@ -58,7 +57,7 @@ Just like in compass Vertical Rhythm we define our base font size and line heigh
 
 ```sass
 $base-font-size:    16px;
-$base-line-height:  21px;
+$base-line-height:  24px;
 ```
 
 We also need to define the base unit that the functions and mixins will output. you can use `px`, `pt` (for print stylesheets), `rem` or `em`.
@@ -124,12 +123,20 @@ h4 {
 }
 ```
 
+Or for short hand you can use the `type-layout()` mixin.
+
+```sass
+h4 {
+  @include type-layout(xl, 2);
+}
+```
+
 When using `em` as your `$base-unit`, each function accepts a second parameter so your `em` value will be relative to it's parent or element `font-size`. The second parameter can either accept a t-shirt size or a static value for granular control.
 
 ```sass
 h4 {
   font-size: font-size(xl);
-  
+
   span {
     font-size: font-size(s, xl);
     line-height: line-height(2, 14px);
@@ -161,8 +168,8 @@ We also have a pair of mixins which (you guessed it!) automatically add fallback
 
 ```sass
 div {
-  @include margin(1 2);
-  @include padding(1 2);
+  @include margin(2 1);
+  @include padding(2 1);
 }
 ```
 
@@ -171,7 +178,7 @@ If you are using `em`, both the `margin()` and `padding()` functions/mixins acce
 ```sass
 div {
   font-size: font-size(s)
-  
+
   span {
     @include margin(1 2, s);
     @include padding(1 2, s);
@@ -197,13 +204,38 @@ $font-weight: (
 );
 ```
 
-You can then use typey's built in font-weight function to call these values in an easy and readable way.
+You can then use typey's built in `weight()` function to call these values in an easy and readable way.
 
 ```sass
 strong {
-  font-weight: font-weight(bold)
+  font-weight: weight(bold)
 }
 ```
 
+## Reference
 
-*More to come soon ;)*
+### Functions
+
+```sass
+font-size($size, $context: $base-font-size)```
+
+*@param number|string $size*
+A size from the $font-size map or px/pt value to be converted
+
+*@param number|string $context*
+(optional) Only used if em is the $base-unit. The value of the parent font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+
+*@return number*
+The selected font-size in $base-unit.
+
+```sass
+line-height($x, $context: $base-font-size)```
+
+*@param number $x*
+Multiple of line height to be used or px/pt value to be converted.
+
+*@param number|string $context*
+(optional) Only used if em is the $base-unit. The value of the elements/parentsfont-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+
+*@return number*
+The calculated height in $base-unit.

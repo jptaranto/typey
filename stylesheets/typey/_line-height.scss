@@ -1,4 +1,4 @@
-// Generate a value to be used as line-height from either: 
+// Generate a value to be used as line-height from either:
 //   a) a multiple of $base-line-height
 //   b) a static px or pt value
 //
@@ -10,56 +10,37 @@
 // @param number $x
 //   Multiple of line height to be used or px/pt value to be converted.
 // @param number|string $context
-//   (optional) Only used if em is the $base-unit. The value of the elements/parents 
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
 //   value in the same unit as the $font-size map.
 //
 // @return number
-//   The caculated height in $base-unit.
+//   The calculated height in $base-unit.
 @function line-height($x, $context: $base-font-size) {
   @if type-of($x) == 'number' and unitless($x) {
-    @if $base-unit == px or $base-unit == pt {
-      @return output-unit(strip-unit($x * $base-line-height));
-    }
-    @if $base-unit == rem {
-      @return output-unit(($x * $base-line-height) / $base-font-size);
-    }
-    @if $base-unit == em {
-      @if map-has-key($font-size, $context) {
-        $context-map-size: map-get($font-size, $context);
-        @return output-unit(($x * $base-line-height) / $context-map-size);
-      }
-      @else {
-        @warn "'#{$context}' not found in $font-size map.";
-      }
-      @if type-of($context) == 'number' {
-        @if unit($context) == unit($base-font-size) {
-        @return output-unit(($x * $base-line-height) / $context);
-        }
-        @else {
-          @warn "The unit used for $context does not match the $base-font-size unit.";
-        }
-      }
-    }
+    @return output-from-multiplier($x, $context);
   }
   @if type-of($x) == 'number' and not unitless($x) {
     @if unit($x) == unit($base-font-size) {
       @return convert-unit($x, $context);
     }
     @else {
-      @warn "line-height() accepts only numbers or values with the same unit as $base-font-size.";
+      @error "line-height() only accepts values with the same unit as $base-font-size.";
     }
+  }
+  @else {
+    @error "line-height() only accepts unitless numbers or values in px or pt.";
   }
 }
 
-// Define line-height (with fallback). 
+// Define line-height (with fallback).
 // This is only necessary to use if you want to provide fallbacks when you are
 // using rem as $base-unit.
 //
 // @param number $x
 //   Multiple of line height to be used or px/pt value to be converted.
 // @param number|string $context
-//   (optional) Only used if em is the $base-unit. The value of the elements/parents 
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
 //   value in the same unit as the $font-size map.
 @mixin line-height($x, $context: $base-font-size) {
@@ -67,7 +48,7 @@
     @if type-of($x) == 'number' and unitless($x) {
       line-height: $x * $base-line-height;
     }
-    @if type-of($x) == 'number' and not unitless($x) {  
+    @if type-of($x) == 'number' and not unitless($x) {
       line-height: $x;
     }
   }

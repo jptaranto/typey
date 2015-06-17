@@ -1,0 +1,47 @@
+// Define a type layout (font-size and line-height).
+//
+// @param number|string $size
+//   A size from the $font-size map or a px/pt value.
+// @param number $x
+//   Multiple of line height to be used or px/pt value to be converted.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in the same unit as the $font-size map.
+@mixin type-layout($size, $x, $context: $size) {
+  @if $base-unit == rem {
+    @if type-of($size) == 'string' {
+      $map-size: map-get($font-size, $size);
+      font-size: $map-size;
+    }
+    @if type-of($size) == 'number' and not unitless($size) {
+      $unit: unit($size);
+      @if $unit == px or $unit == pt {
+        font-size: $size;
+      }
+      @else {
+        @warn "font-size() only accepts values in px or pt.";
+      }
+    }
+    @if type-of($x) == 'number' and unitless($x) {
+      line-height: $x * $base-line-height;
+    }
+    @if type-of($x) == 'number' and not unitless($x) {
+      line-height: $x;
+    }
+  }
+  @if $base-unit == rem or $base-unit == px or $base-unit == pt {
+    font-size: font-size($size);
+    line-height: line-height($x);
+  }
+  @if $base-unit == em {
+    @if $size == $context {
+      font-size: font-size($size, $base-font-size);
+      line-height: line-height($x, $size);
+    }
+    @else {
+      font-size: font-size($size, $context);
+      line-height: line-height($x, $size);
+    }
+  }
+}

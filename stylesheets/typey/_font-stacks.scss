@@ -1,11 +1,11 @@
 // Three standard do-all stacks.
-$serif-stack:          TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+$serif-stack:         TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
 $sans-serif-stack:    "Helvetica Neue", Helvetica, Arial, sans-serif;
 $monospaced-stack:    "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 
 // Specific font stacks.
 $arial-stack:         Arial, "Helvetica Neue", Helvetica, sans-serif;
-$helvetica-stack:    "Helvetica Neue", Helvetica, Arial, sans-serif;
+$helvetica-stack:     "Helvetica Neue", Helvetica, Arial, sans-serif;
 $baskerville-stack:   Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
 $monaco-stack:        Monaco, Consolas, "Lucida Console", monospace;
 $trebuchet-ms-stack:  "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
@@ -16,7 +16,7 @@ $trebuchet-ms-stack:  "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "L
 //   $new-font-stack: extend-font-stack("Open sans", $sans-serif-stack);
 //
 // @param string $font
-//   The name of the font. Use inverted commas if there are spaces in the font 
+//   The name of the font. Use inverted commas if there are spaces in the font
 //   name. i.e "Open sans"
 // @param list $font-stack
 //   The font stack variable to extend.

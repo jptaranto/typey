@@ -1,6 +1,9 @@
 # Exclude stuff specific to this project.
 node_modules
 test
+*.gem
+README.html
+*.codekit
 
 # Exclude IDE management files.
   # Eclipse
