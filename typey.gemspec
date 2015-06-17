@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.homepage     = 'http://github.com/jptaranto/typey'
   spec.rubyforge_project =
 
-  spec.version      = '1.0.0.alpha.5'
-  spec.date         = '2015-04-22'
+  spec.version      = '1.0.0.beta.1'
+  spec.date         = '2015-06-17'
   spec.licenses     = ['GPL-2']
 
   spec.authors      = ['Jack Taranto']

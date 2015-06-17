@@ -1,6 +1,9 @@
 # typey
 Do typography better.
 
+**Typey is in beta! Use it to your hearts content on _all_ your projects!**
+
+
 ### Features
 
 * Use px to define font sizes and have them output in rem or em.
@@ -217,7 +220,7 @@ strong {
 ### Variables
 
 ```sass
-$browser-font-size:        16px;
+$browser-font-size:        16px !default;
 ```
 
 The browser font size default. No need to change this.
