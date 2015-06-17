@@ -214,30 +214,217 @@ strong {
 
 ## Reference
 
+### Mixins
+
+```sass
+define-type-sizing($base-font-size: $base-font-size, $base-line-height: $base-line-height)
+```
+
+Outputs the base font-size property and the base line-height property. Font-size is outputted as a % of the base browser font size. A fallback for rem is provided for the line-height property.
+
+*@param number $base-font-size*
+(optional) Use to set to anything other than the base value. Allowed units: px or pt
+*@param number $base-line-height(optional)*
+Use to set to anything other than the base value. Allowed units: px or pt
+
+
+```sass
+type-layout($size, $x, $context: $size)
+```
+
+Outputs both line-height and font-size properties, providing fallbacks when rem is the base unit.
+
+*@param number|string $size*
+A size from the $font-size map or a px/pt value.
+
+*@param number $x*
+Multiple of line height to be used or px/pt value to be converted.
+
+*@param number|string $context*
+(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+
+
+```sass
+font-size($size, $context: $base-font-size)
+```
+
+Outputs font-size property, providing fallbacks when rem is the base unit.
+
+*@param number|string $size*  
+A size from the $font-size map or px/pt value to be converted
+
+*@param number|string $context*  
+(optional) Only used if em is the $base-unit. The value of the parent font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+
+
+```sass
+line-height($x, $context: $base-font-size)
+```
+
+Outputs line-height property, providing fallbacks when rem is the base unit.
+
+*@param number $x*  
+Multiple of line height to be used or px/pt value to be converted.
+
+*@param number|string $context*  
+(optional) Only used if em is the $base-unit. The value of the elements/parentsfont-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+
+
+```sass
+margin($x, $context: $base-font-size)
+```
+
+Outputs margin property, providing fallbacks when rem is the base unit.
+
+*@param number|list $x*
+Multiple of line height to be used or px/pt value to be converted.  
+Uses the same parameters as the CSS margin property:  
+i.e. top right bottom left, 1 0 2 0.
+
+*@param number|string $context*
+(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+
+
+```sass
+padding($x, $context: $base-font-size)
+```
+
+Outputs padding property, providing fallbacks when rem is the base unit.
+
+*@param number|list $x*
+Multiple of line height to be used or px/pt value to be converted.  
+Uses the same parameters as the CSS margin property:  
+i.e. top right bottom left, 1 0 2 0.
+
+*@param number|string $context*
+(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+
+
+```sass
+margin-top($x, $context: $base-font-size)
+margin-right($x, $context: $base-font-size)
+margin-bottom($x, $context: $base-font-size)
+margin-left($x, $context: $base-font-size)
+```
+
+Outputs corresponding margin property, providing fallbacks when rem is the base unit.
+
+*@param number|list $x*
+Multiple of line height to be used or px/pt value to be converted.  
+
+*@param number|string $context*
+(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+
+
+```sass
+padding-top($x, $context: $base-font-size)
+padding-right($x, $context: $base-font-size)
+padding-bottom($x, $context: $base-font-size)
+padding-left($x, $context: $base-font-size)
+```
+
+Outputs corresponding padding property, providing fallbacks when rem is the base unit.
+
+*@param number|list $x*
+Multiple of line height to be used or px/pt value to be converted.  
+
+*@param number|string $context*
+(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+
 ### Functions
 
 ```sass
 font-size($size, $context: $base-font-size)
 ```
 
-*@param number|string __$size__*  
+*@param number|string $size*  
 A size from the $font-size map or px/pt value to be converted
 
-*@param number|string __$context__*  
+*@param number|string $context*  
 (optional) Only used if em is the $base-unit. The value of the parent font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
 
 *@return number*  
 The selected font-size in $base-unit.
 
+
 ```sass
 line-height($x, $context: $base-font-size)
 ```
 
-*@param number __$x__*  
+*@param number $x*  
 Multiple of line height to be used or px/pt value to be converted.
 
-*@param number|string __$context__*  
+*@param number|string $context*  
 (optional) Only used if em is the $base-unit. The value of the elements/parentsfont-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
 
 *@return number*  
 The calculated height in $base-unit.
+
+
+```sass
+margin($x, $context: $base-font-size)
+```
+
+*@param number $x*
+Multiple of line height to be used or px/pt value to be converted.
+
+*@param number|string $context*
+(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+
+*@return number*
+The calculated height in $base-unit.
+
+
+```sass
+padding($x, $context: $base-font-size)
+```
+
+*@param number $x*
+Multiple of line height to be used or px/pt value to be converted.
+
+*@param number|string $context*
+(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+
+*@return number*
+The calculated height in $base-unit.
+
+
+```sass
+weight($weight)
+```
+
+*@param string $weight*
+A weight from the $font-weight map.
+
+*@return string*
+The selected font-weight.
+
+
+```sass
+extend-font-stack($font, $font-stack)
+```
+
+*Example usage:*
+$new-font-stack: extend-font-stack("Open sans", $sans-serif-stack);
+
+*@param string $font*
+The name of the font. Use inverted commas if there are spaces in the font name. i.e "Open sans"
+
+*@param list $font-stack*
+The font stack variable to extend.
+
+### Included font stacks
+
+```sass
+// Three standard do-all stacks.
+$serif-stack:         TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+$sans-serif-stack:    "Helvetica Neue", Helvetica, Arial, sans-serif;
+$monospaced-stack:    "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+
+// Specific font stacks.
+$arial-stack:         Arial, "Helvetica Neue", Helvetica, sans-serif;
+$helvetica-stack:     "Helvetica Neue", Helvetica, Arial, sans-serif;
+$baskerville-stack:   Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+$monaco-stack:        Monaco, Consolas, "Lucida Console", monospace;
+$trebuchet-ms-stack:  "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+```
