@@ -49,7 +49,9 @@
     $converted-list: join($converted-list, $margin, $separator: space);
   }
   @if $base-unit == rem {
-    margin: $px-list;
+    @if $rem-fallback == true {
+      margin: $px-list;
+    }
   }
   margin: $converted-list;
 }
@@ -66,11 +68,13 @@
 //   value in the same unit as the $font-size map.
 @mixin margin-top($x, $context: $base-font-size) {
   @if $base-unit == rem {
-    @if type-of($x) == 'number' and unitless($x) {
-      margin-top: $x * $base-line-height;
-    }
-    @if type-of($x) == 'number' and not unitless($x) {
-      margin-top: $x;
+    @if $rem-fallback == true {
+      @if type-of($x) == 'number' and unitless($x) {
+        margin-top: $x * $base-line-height;
+      }
+      @if type-of($x) == 'number' and not unitless($x) {
+        margin-top: $x;
+      }
     }
   }
   margin-top: line-height($x, $context);
@@ -88,11 +92,13 @@
 //   value in the same unit as the $font-size map.
 @mixin margin-bottom($x, $context: $base-font-size) {
   @if $base-unit == rem {
-    @if type-of($x) == 'number' and unitless($x) {
-      margin-bottom: $x * $base-line-height;
-    }
-    @if type-of($x) == 'number' and not unitless($x) {
-      margin-bottom: $x;
+    @if $rem-fallback == true {
+      @if type-of($x) == 'number' and unitless($x) {
+        margin-bottom: $x * $base-line-height;
+      }
+      @if type-of($x) == 'number' and not unitless($x) {
+        margin-bottom: $x;
+      }
     }
   }
   margin-bottom: line-height($x, $context);
@@ -110,11 +116,13 @@
 //   value in the same unit as the $font-size map.
 @mixin margin-left($x, $context: $base-font-size) {
   @if $base-unit == rem {
-    @if type-of($x) == 'number' and unitless($x) {
-      margin-left: $x * $base-line-height;
-    }
-    @if type-of($x) == 'number' and not unitless($x) {
-      margin-left: $x;
+    @if $rem-fallback == true {
+      @if type-of($x) == 'number' and unitless($x) {
+        margin-left: $x * $base-line-height;
+      }
+      @if type-of($x) == 'number' and not unitless($x) {
+        margin-left: $x;
+      }
     }
   }
   margin-left: line-height($x, $context);
@@ -132,11 +140,13 @@
 //   value in the same unit as the $font-size map.
 @mixin margin-right($x, $context: $base-font-size) {
   @if $base-unit == rem {
-    @if type-of($x) == 'number' and unitless($x) {
-      margin-right: $x * $base-line-height;
-    }
-    @if type-of($x) == 'number' and not unitless($x) {
-      margin-right: $x;
+    @if $rem-fallback == true {
+      @if type-of($x) == 'number' and unitless($x) {
+        margin-right: $x * $base-line-height;
+      }
+      @if type-of($x) == 'number' and not unitless($x) {
+        margin-right: $x;
+      }
     }
   }
   margin-right: line-height($x, $context);

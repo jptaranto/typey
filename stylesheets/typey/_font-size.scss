@@ -37,16 +37,18 @@
 //   value in the same unit as the $font-size map.
 @mixin font-size($size, $context: $base-font-size) {
   @if $base-unit == rem {
-    @if type-of($size) == 'string' {
-      $map-size: map-get($font-size, $size);
-      font-size: $map-size;
-    }
-    @if type-of($size) == 'number' and not unitless($size) {
-      @if unit($size) == unit($base-font-size) {
-        font-size: $size;
+    @if $rem-fallback == true {
+      @if type-of($size) == 'string' {
+        $map-size: map-get($font-size, $size);
+        font-size: $map-size;
       }
-      @else {
-        @error "font-size() only accepts values with the same unit as $base-font-size.";
+      @if type-of($size) == 'number' and not unitless($size) {
+        @if unit($size) == unit($base-font-size) {
+          font-size: $size;
+        }
+        @else {
+          @error "font-size() only accepts values with the same unit as $base-font-size.";
+        }
       }
     }
   }

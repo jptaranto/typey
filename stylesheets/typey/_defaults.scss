@@ -12,6 +12,9 @@ $base-line-height:         21px !default;
 // Allowed units: px, pt, em or rem.
 $base-unit:                rem !default;
 
+// By default we will provide fallbacks when rem is the base unit.
+$rem-fallback:             true !default;
+
 // Default font sizes
 // Once you redefine the $font-size map it will overwrite all sizes here.
 // Allowed units: Must be the same as $base-line-height
@@ -65,7 +68,9 @@ $font-weight: (
 @mixin define-type-sizing($base-font-size: $base-font-size, $base-line-height: $base-line-height) {
   @if $base-unit == rem {
     font-size: $base-font-size / $browser-font-size * 100%;
-    line-height: $base-line-height;
+    @if $rem-fallback == true {
+      line-height: $base-line-height;
+    }
     line-height: output-unit($base-line-height / $base-font-size);
   }
   @if $base-unit == px or $base-unit == pt {
