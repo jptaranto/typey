@@ -217,7 +217,8 @@ strong {
 ### Functions
 
 ```sass
-font-size($size, $context: $base-font-size)```
+font-size($size, $context: $base-font-size)
+```
 
 *@param number|string $size*
 A size from the $font-size map or px/pt value to be converted
@@ -229,7 +230,8 @@ A size from the $font-size map or px/pt value to be converted
 The selected font-size in $base-unit.
 
 ```sass
-line-height($x, $context: $base-font-size)```
+line-height($x, $context: $base-font-size)
+```
 
 *@param number $x*
 Multiple of line height to be used or px/pt value to be converted.
