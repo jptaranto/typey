@@ -6,7 +6,7 @@
 // @return string
 //   The selected font-weight.
 @function weight($weight) {
-  @if type-of($weight) == 'string' {
+  @if type-of($weight) == "string" {
     @if map-has-key($font-weight, $weight) {
       @return map-get($font-weight, $weight);
     }

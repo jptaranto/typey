@@ -52,7 +52,7 @@ button {
   // add it manually.
   font-size: 15pt;
 
-  @include padding(0.5);
+  @include padding(.5);
 }
 
 strong,

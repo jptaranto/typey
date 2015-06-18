@@ -23,7 +23,6 @@ $font-size: (
 
 html {
   font-family: $sans-serif-stack;
-
   // Within the HTML element we can use media queries and a custom
   // define-type-sizing delaration to change the base font size for different
   // screen sizes.
@@ -60,7 +59,7 @@ button {
   // add it manually.
   @include font-size(29px);
 
-  @include padding(0.5);
+  @include padding(.5);
 }
 
 strong,

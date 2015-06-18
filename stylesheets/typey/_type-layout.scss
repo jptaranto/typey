@@ -11,11 +11,11 @@
 @mixin type-layout($size, $x, $context: $size) {
   @if $base-unit == rem {
     @if $rem-fallback == true {
-      @if type-of($size) == 'string' {
+      @if type-of($size) == "string" {
         $map-size: map-get($font-size, $size);
         font-size: $map-size;
       }
-      @if type-of($size) == 'number' and not unitless($size) {
+      @if type-of($size) == "number" and not unitless($size) {
         $unit: unit($size);
         @if $unit == px or $unit == pt {
           font-size: $size;
@@ -24,10 +24,10 @@
           @warn "font-size() only accepts values in px or pt.";
         }
       }
-      @if type-of($x) == 'number' and unitless($x) {
+      @if type-of($x) == "number" and unitless($x) {
         line-height: $x * $base-line-height;
       }
-      @if type-of($x) == 'number' and not unitless($x) {
+      @if type-of($x) == "number" and not unitless($x) {
         line-height: $x;
       }
     }

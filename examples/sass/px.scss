@@ -24,18 +24,10 @@ $font-size: (
 html {
   font-family: $sans-serif-stack;
 
-  // Within the HTML element we can use media queries and a custom
-  // define-type-sizing delaration to change the base font size for different
-  // screen sizes.
-  @include define-type-sizing(12px, 18px);
-
-  @media screen and (min-width: 600px) {
-    @include define-type-sizing(14px, 20px);
-  }
-
-  @media screen and (min-width: 800px) {
-    @include define-type-sizing;
-  }
+  // Unlike em and rem, px values aren't relative so we cannot dynamically
+  // resize all fonts on the page by changing the html elements font size. So
+  // we will just include the base sizing normally here.
+  @include define-type-sizing;
 }
 
 h1 {
@@ -61,7 +53,7 @@ button {
   // add it manually.
   font-size: 29px;
 
-  @include padding(0.5);
+  @include padding(.5);
 }
 
 strong,

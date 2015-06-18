@@ -81,7 +81,7 @@ button {
   @include font-size(29px);
 
   // We will also need to add a $context param here to get the correct sizing.
-  @include padding(0.5, 29px);
+  @include padding(.5, 29px);
 }
 
 strong,

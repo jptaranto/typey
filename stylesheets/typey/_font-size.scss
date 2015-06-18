@@ -11,10 +11,10 @@
 // @return number
 //   The selected font-size in $base-unit.
 @function font-size($size, $context: $base-font-size) {
-  @if type-of($size) == 'string' {
+  @if type-of($size) == "string" {
     @return output-from-font-size-map($size, $context);
   }
-  @if type-of($size) == 'number' and not unitless($size) {
+  @if type-of($size) == "number" and not unitless($size) {
     @if unit($size) == unit($base-font-size) {
       @return convert-unit($size, $context);
     }
@@ -38,11 +38,11 @@
 @mixin font-size($size, $context: $base-font-size) {
   @if $base-unit == rem {
     @if $rem-fallback == true {
-      @if type-of($size) == 'string' {
+      @if type-of($size) == "string" {
         $map-size: map-get($font-size, $size);
         font-size: $map-size;
       }
-      @if type-of($size) == 'number' and not unitless($size) {
+      @if type-of($size) == "number" and not unitless($size) {
         @if unit($size) == unit($base-font-size) {
           font-size: $size;
         }
