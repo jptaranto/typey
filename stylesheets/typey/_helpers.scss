@@ -12,9 +12,6 @@
   @if $base-unit == px {
     @return $number * 1px;
   }
-  @if $base-unit == pt {
-    @return $number * 1pt;
-  }
   @if $base-unit == em {
     @return $number * 1em;
   }
@@ -34,30 +31,25 @@
   @return $number;
 }
 
-// Convert px or pt to the $base-unit.
+// Convert px to the $base-unit.
 //
 // @param number $number
-//   The number (with unit) to convert. Allowed units: px, pt
+//   The number (with unit) to convert. Allowed units: px
 // @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the elements/parents
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
-//   value in the same unit as the $font-size map.
+//   value in px.
 //
 // @return number
 //   The number converted to the base unit.
 @function convert-unit($number, $context: $base-font-size) {
   @if type-of($number) == "number" and not unitless($number) {
     $unit: unit($number);
-    @if $unit == px or $unit == pt {
+    @if $unit == px {
       @if $base-unit == rem {
-        @if $unit == unit($base-font-size) {
-          @return output-unit(($number / $base-font-size));
-        }
-        @else {
-          @error "convert-unit() only accepts values with the same unit as $base-font-size.";
-        }
+        @return output-unit(($number / $base-font-size));
       }
-      @if $base-unit == px or $base-unit == pt {
+      @if $base-unit == px {
         @return output-unit(strip-unit($number));
       }
       @if $base-unit == em {
@@ -67,21 +59,21 @@
             @return output-unit(($number / $context-map-size));
           }
           @else {
-            @error "'#{$context}' not found in $font-size map.";
+            @error "'#{$context}' not found in $font-size map";
           }
         }
-        @if type-of($context) == "number" {
-          @if unit($context) == unit($base-font-size) {
+        @if type-of($context) == "number" and not unitless($number) {
+          @if unit($context) == px {
             @return output-unit(($number / $context));
           }
           @else {
-            @error "The unit used for $context does not match the $base-font-size unit.";
+            @error "The unit used for $context must be px";
           }
         }
       }
     }
     @else {
-      @error "convert-unit() only accepts values in px or pt.";
+      @error "convert-unit() only accepts values in px";
     }
   }
 }
@@ -93,7 +85,7 @@
 // @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the elements/parents
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
-//   value in the same unit as the $font-size map.
+//   value in px.
 //
 // @return number
 //   The value of the line-height multiple converted to the base unit.
@@ -101,16 +93,16 @@
   @if $base-unit == rem {
     @return output-unit(($x * $base-line-height) / $base-font-size);
   }
-  @if $base-unit == px or $base-unit == pt {
+  @if $base-unit == px {
     @return output-unit(strip-unit($x * $base-line-height));
   }
   @if $base-unit == em {
     @if type-of($context) == "number" {
-      @if unit($context) == unit($base-font-size) {
+      @if unit($context) == px {
         @return output-unit(($x * $base-line-height) / $context);
       }
       @else {
-        @error "The unit used for $context does not match the $base-font-size unit.";
+        @error "The unit used for $context must be px";
       }
     }
     @if type-of($context) == "string" {
@@ -119,11 +111,11 @@
         @return output-unit(($x * $base-line-height) / $context-map-size);
       }
       @else {
-        @error "'#{$context}' not found in $font-size map.";
+        @error "'#{$context}' not found in $font-size map";
       }
     }
     @else {
-      @error "$context must be a px/pt value or a key from the $font-size map.";
+      @error "$context must be a px value or a key from the $font-size map";
     }
   }
 }
@@ -137,7 +129,7 @@
 // @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the parent
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
-//   value in the same unit as the $font-size map.
+//   value in px.
 //
 // @return number
 //   The selected font-size in $base-unit.
@@ -157,23 +149,23 @@
           @return output-unit(($map-size / $context-map-size));
         }
         @else {
-          @error "'#{$context}' not found in $font-size map.";
+          @error "'#{$context}' not found in $font-size map";
         }
       }
       @if type-of($context) == "number" {
-        @if unit($context) == unit($base-font-size) {
+        @if unit($context) == px {
           @return output-unit(($map-size / $context));
         }
         @else {
-          @error "The unit used for $context does not match the $base-font-size unit.";
+          @error "The unit used for $context must be px";
         }
       }
       @else {
-        @error "$context must be a px/pt value or a key from the $font-size map.";
+        @error "$context must be a px value or a key from the $font-size map";
       }
     }
   }
   @else {
-    @error "'#{$size}' not found in $font-size map.";
+    @error "'#{$size}' not found in $font-size map";
   }
 }

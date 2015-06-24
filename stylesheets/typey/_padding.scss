@@ -8,11 +8,11 @@
 //   padding: padding(18px);
 //
 // @param number $x
-//   Multiple of line height to be used or px/pt value to be converted.
+//   Multiple of line height to be used or px value to be converted.
 // @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the elements/parents
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
-//   value in the same unit as the $font-size map.
+//   value in px.
 //
 // @return number
 //   The calculated height in $base-unit.
@@ -25,13 +25,13 @@
 // using rem as $base-unit.
 //
 // @param number|list $x
-//   Multiple of line height to be used or px/pt value to be converted.
+//   Multiple of line height to be used or px value to be converted.
 //   Uses the same parameters as the CSS padding property:
 //   i.e. top right bottom left, 1 0 2 0.
 // @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the elements/parents
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
-//   value in the same unit as the $font-size map.
+//   value in px.
 @mixin padding($list, $context: $base-font-size) {
   $px-list: ();
   $converted-list: ();
@@ -61,11 +61,11 @@
 // using rem as $base-unit.
 //
 // @param number $x
-//   Multiple of line height to be used or px/pt value to be converted.
+//   Multiple of line height to be used or px value to be converted.
 // @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the elements/parents
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
-//   value in the same unit as the $font-size map.
+//   value in px.
 @mixin padding-top($x, $context: $base-font-size) {
   @if $base-unit == rem {
     @if $rem-fallback == true {
@@ -85,11 +85,11 @@
 // using rem as $base-unit.
 //
 // @param number $x
-//   Multiple of line height to be used or px/pt value to be converted.
+//   Multiple of line height to be used or px value to be converted.
 // @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the elements/parents
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
-//   value in the same unit as the $font-size map.
+//   value in px.
 @mixin padding-bottom($x, $context: $base-font-size) {
   @if $base-unit == rem {
     @if $rem-fallback == true {
@@ -109,11 +109,11 @@
 // using rem as $base-unit.
 //
 // @param number $x
-//   Multiple of line height to be used or px/pt value to be converted.
+//   Multiple of line height to be used or px value to be converted.
 // @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the elements/parents
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
-//   value in the same unit as the $font-size map.
+//   value in px.
 @mixin padding-left($x, $context: $base-font-size) {
   @if $base-unit == rem {
     @if $rem-fallback == true {
@@ -133,11 +133,11 @@
 // using rem as $base-unit.
 //
 // @param number $x
-//   Multiple of line height to be used or px/pt value to be converted.
+//   Multiple of line height to be used or px value to be converted.
 // @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the elements/parents
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
-//   value in the same unit as the $font-size map.
+//   value in px.
 @mixin padding-right($x, $context: $base-font-size) {
   @if $base-unit == rem {
     @if $rem-fallback == true {

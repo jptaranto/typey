@@ -3,7 +3,7 @@ Do typography better.
 
 ### Features
 
-Supports outputting in rem, px, pt and em.
+Supports outputting in rem, px, and em.
 
 ```sass
 $base-unit: rem;
@@ -38,12 +38,6 @@ Easily convert px values to rem or em.
 ```sass
 button {
   @include font-size(29px);
-}
-```
-
-```css
-button {
-  font-size: 1.8125rem;
 }
 ```
 
@@ -100,14 +94,14 @@ Vanilla Sass
 
 ### Getting started
 
-Just like in compass Vertical Rhythm we define our base font size and line height first. In typey, all sizes are defined in `px` or `pt` only.
+Just like in compass Vertical Rhythm we define our base font size and line height first. In typey, all sizes are defined in `px` only.
 
 ```sass
 $base-font-size:    16px;
 $base-line-height:  24px;
 ```
 
-We also need to define the base unit that the functions and mixins will output. you can use `px`, `pt` (for print stylesheets), `rem` or `em`.
+We also need to define the base unit that the functions and mixins will output. you can use `rem`, `em` or `px`.
 
 ```sass
 $base-unit: rem;
@@ -121,7 +115,7 @@ html {
 }
 ```
 
-Define the `$font-size` map using `px` (or `pt`) - which are easy to read and keep track of (not to mention convert from a design mockup) and t-shirt sizes (which are even easier to keep track of).
+Define the `$font-size` map with t-shirt sizes (which are easier to keep track of then individual values).
 
 ```sass
 $font-size: (
@@ -166,7 +160,7 @@ h4 {
 }
 ```
 
-When using `em` as your `$base-unit`, each mixin accepts a `$context` parameter so your `em` value will be relative to it's parent or element `font-size`. The `$context` parameter can either accept a t-shirt size or a static value for granular control. See the reference section below for more information.
+When using `em` as your `$base-unit`, each mixin accepts a `$context` parameter so your `em` value will be relative to it's parent or element `font-size`. The `$context` parameter can either accept a t-shirt size or a static value in px. See the reference section below for more information.
 
 ```sass
 h4 {
@@ -180,7 +174,7 @@ h4 {
 
 ### Margin and padding examples
 
-The same mixins that we have for `line-height` also exist for `margin` and `padding`, and works exactly the same way.
+The same mixins that we have for `line-height` also exist for `margin` and `padding`, and work exactly the same way.
 
 ```sass
 div {
@@ -207,7 +201,7 @@ div {
 }
 ```
 
-If you are using `em`, both the `margin()` and `padding()` functions/mixins accept a ``$context` parameter.
+If you are using `em`, both the `margin()` and `padding()` functions/mixins accept a `$context` parameter.
 
 ```sass
 div {
@@ -259,7 +253,7 @@ $base-font-size:           16px !default;
 ```
 
 The base font size will be used for most calculations involving font-size.
-Allowed units: px or pt
+Allowed units: px
 
 
 ```sass
@@ -267,14 +261,14 @@ $base-line-height:         21px !default;
 ```
 
 The base line height will be used for most calculations involving height.
-Allowed units: Must be the same as $base-line-height
+Allowed units: px
 
 
 ```sass
 $base-unit:                rem !default;
 ```
 
-Allowed units: px, pt, em or rem.
+Allowed units: rem, em or px.
 
 
 ```sass
@@ -298,7 +292,7 @@ $font-size: (
 
 Default font sizes
 Once you redefine the $font-size map it will overwrite all sizes here.
-Allowed units: Must be the same as $base-line-height
+Allowed units: px
 
 
 ```sass
@@ -321,10 +315,10 @@ define-type-sizing($base-font-size: $base-font-size, $base-line-height: $base-li
 Outputs the base font-size property and the base line-height property. Font-size is outputted as a % of the base browser font size. A fallback for rem is provided for the line-height property.
 
 *@param number $base-font-size*  
-(optional) Use to set to anything other than the base value. Allowed units: px or pt
+(optional) Use to set to anything other than the base value. Allowed units: px
 
 *@param number $base-line-height(optional)*  
-Use to set to anything other than the base value. Allowed units: px or pt
+Use to set to anything other than the base value. Allowed units: px
 
 
 ```sass
@@ -334,13 +328,13 @@ type-layout($size, $x, $context: $size)
 Outputs both line-height and font-size properties, providing fallbacks when rem is the base unit.
 
 *@param number|string $size*  
-A size from the $font-size map or a px/pt value.
+A size from the $font-size map or a px value.
 
 *@param number $x*  
-Multiple of line height to be used or px/pt value to be converted.
+Multiple of line height to be used or px value to be converted.
 
 *@param number|string $context*  
-(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in px.
 
 
 ```sass
@@ -350,10 +344,10 @@ font-size($size, $context: $base-font-size)
 Outputs font-size property, providing fallbacks when rem is the base unit.
 
 *@param number|string $size*  
-A size from the $font-size map or px/pt value to be converted
+A size from the $font-size map or px value to be converted
 
 *@param number|string $context*  
-(optional) Only used if em is the $base-unit. The value of the parent font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+(optional) Only used if em is the $base-unit. The value of the parent font-size if it differs from $base-font-size. Specified as a t-shirt size or value in px.
 
 
 ```sass
@@ -363,10 +357,10 @@ line-height($x, $context: $base-font-size)
 Outputs line-height property, providing fallbacks when rem is the base unit.
 
 *@param number $x*
-Multiple of line height to be used or px/pt value to be converted.
+Multiple of line height to be used or px value to be converted.
 
 *@param number|string $context*
-(optional) Only used if em is the $base-unit. The value of the elements/parentsfont-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+(optional) Only used if em is the $base-unit. The value of the elements/parentsfont-size if it differs from $base-font-size. Specified as a t-shirt size or value in px.
 
 
 ```sass
@@ -376,12 +370,12 @@ margin($x, $context: $base-font-size)
 Outputs margin property, providing fallbacks when rem is the base unit.
 
 *@param number|list $x*  
-Multiple of line height to be used or px/pt value to be converted.  
+Multiple of line height to be used or px value to be converted.  
 Uses the same parameters as the CSS margin property:  
 i.e. top right bottom left, 1 0 2 0.
 
 *@param number|string $context*  
-(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in px.
 
 
 ```sass
@@ -391,12 +385,12 @@ padding($x, $context: $base-font-size)
 Outputs padding property, providing fallbacks when rem is the base unit.
 
 *@param number|list $x*  
-Multiple of line height to be used or px/pt value to be converted.  
+Multiple of line height to be used or px value to be converted.  
 Uses the same parameters as the CSS margin property:  
 i.e. top right bottom left, 1 0 2 0.
 
 *@param number|string $context*  
-(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in px.
 
 
 ```sass
@@ -409,10 +403,10 @@ margin-left($x, $context: $base-font-size)
 Outputs corresponding margin property, providing fallbacks when rem is the base unit.
 
 *@param number|list $x*  
-Multiple of line height to be used or px/pt value to be converted.  
+Multiple of line height to be used or px value to be converted.  
 
 *@param number|string $context*  
-(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in px.
 
 
 ```sass
@@ -425,10 +419,10 @@ padding-left($x, $context: $base-font-size)
 Outputs corresponding padding property, providing fallbacks when rem is the base unit.
 
 *@param number|list $x*  
-Multiple of line height to be used or px/pt value to be converted.  
+Multiple of line height to be used or px value to be converted.  
 
 *@param number|string $context*  
-(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in px.
 
 ### Functions
 
@@ -437,10 +431,10 @@ font-size($size, $context: $base-font-size)
 ```
 
 *@param number|string $size*  
-A size from the $font-size map or px/pt value to be converted
+A size from the $font-size map or px value to be converted
 
 *@param number|string $context*  
-(optional) Only used if em is the $base-unit. The value of the parent font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+(optional) Only used if em is the $base-unit. The value of the parent font-size if it differs from $base-font-size. Specified as a t-shirt size or value in px.
 
 *@return number*  
 The selected font-size in $base-unit.
@@ -451,10 +445,10 @@ line-height($x, $context: $base-font-size)
 ```
 
 *@param number $x*  
-Multiple of line height to be used or px/pt value to be converted.
+Multiple of line height to be used or px value to be converted.
 
 *@param number|string $context*  
-(optional) Only used if em is the $base-unit. The value of the elements/parentsfont-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+(optional) Only used if em is the $base-unit. The value of the elements/parentsfont-size if it differs from $base-font-size. Specified as a t-shirt size or value in px.
 
 *@return number*  
 The calculated height in $base-unit.
@@ -465,10 +459,10 @@ margin($x, $context: $base-font-size)
 ```
 
 *@param number $x*  
-Multiple of line height to be used or px/pt value to be converted.
+Multiple of line height to be used or px value to be converted.
 
 *@param number|string $context*  
-(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in px.
 
 *@return number*  
 The calculated height in $base-unit.
@@ -479,10 +473,10 @@ padding($x, $context: $base-font-size)
 ```
 
 *@param number $x*  
-Multiple of line height to be used or px/pt value to be converted.
+Multiple of line height to be used or px value to be converted.
 
 *@param number|string $context*  
-(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in the same unit as the $font-size map.
+(optional) Only used if em is the $base-unit. The value of the elements/parents font-size if it differs from $base-font-size. Specified as a t-shirt size or value in px.
 
 *@return number*  
 The calculated height in $base-unit.

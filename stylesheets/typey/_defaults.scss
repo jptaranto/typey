@@ -2,14 +2,14 @@
 $browser-font-size:        16px !default;
 
 // The base font size will be used for most calculations involving font-size.
-// Allowed units: px or pt
+// Allowed units: px
 $base-font-size:           16px !default;
 
 // The base line height will be used for most calculations involving height.
-// Allowed units: Must be the same as $base-line-height
+// Allowed units: px
 $base-line-height:         21px !default;
 
-// Allowed units: px, pt, em or rem.
+// Allowed units: px, em or rem.
 $base-unit:                rem !default;
 
 // By default we will provide fallbacks when rem is the base unit.
@@ -17,7 +17,7 @@ $rem-fallback:             true !default;
 
 // Default font sizes
 // Once you redefine the $font-size map it will overwrite all sizes here.
-// Allowed units: Must be the same as $base-line-height
+// Allowed units: px
 $font-size: (
   xxxl:                    60px,
   xxl:                     46px,
@@ -38,22 +38,22 @@ $font-weight: (
 ) !default;
 
 // Warnings for $base-unit.
-@if $base-unit != px and $base-unit != pt and $base-unit != rem and $base-unit != em {
-  @error "$base-unit must be one of the following unit types: px, pt, rem, em";
+@if $base-unit != px and $base-unit != rem and $base-unit != em {
+  @error "$base-unit must be one of the following unit types: px, rem, em";
 }
 
 // Warnings for $base-font-size and $base-line-height.
-@if unit($base-font-size) != px and unit($base-font-size) != pt {
-  @error "$base-font-size must be one of the following unit types: px, pt";
+@if unit($base-font-size) != px {
+  @error "$base-font-size must be in px";
 }
-@if unit($base-line-height) != unit($base-font-size) {
-  @error "$base-line-height must use the same unit as $base-font-size.";
+@if unit($base-line-height) != px {
+  @error "$base-line-height must be in px";
 }
 
 // Warnings for $font-size
 @each $key, $size in $font-size {
-  @if unit($size) != unit($base-font-size) {
-    @error "Size '#{$key}' in $font-size map does not match the $base-font-size unit.";
+  @if unit($size) != px {
+    @error "Size '#{$key}' in $font-size map is not specified in px";
   }
 }
 
@@ -73,7 +73,7 @@ $font-weight: (
     }
     line-height: output-unit($base-line-height / $base-font-size);
   }
-  @if $base-unit == px or $base-unit == pt {
+  @if $base-unit == px {
     font-size: $base-font-size;
     line-height: $base-line-height;
   }

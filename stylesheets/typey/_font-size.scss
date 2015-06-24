@@ -1,12 +1,12 @@
 // Takes a sizing from the $font-size map (m, xl, xxl, etc) and convert it to
-// the base unit. Alternatively convert a px/pt font-size into the base unit.
+// the base unit. Alternatively convert a px font-size into the base unit.
 //
 // @param number|string $size
-//   A size from the $font-size map or px/pt value to be converted
+//   A size from the $font-size map or px value to be converted
 // @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the parent
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
-//   value in the same unit as the $font-size map.
+//   value in px.
 //
 // @return number
 //   The selected font-size in $base-unit.
@@ -15,26 +15,26 @@
     @return output-from-font-size-map($size, $context);
   }
   @if type-of($size) == "number" and not unitless($size) {
-    @if unit($size) == unit($base-font-size) {
+    @if unit($size) == px {
       @return convert-unit($size, $context);
     }
     @else {
-      @error "font-size() only accepts values with the same unit as $base-font-size.";
+      @error "font-size() only accepts keys from the $font-size map or values in px";
     }
   }
   @else {
-    @error "font-size() only accepts keys from the font map or values in px or pt.";
+    @error "font-size() only accepts keys from the $font-size map or values in px";
   }
 }
 
 // Define font-size (with fallback)
 //
 // @param number|string $size
-//   A size from the $font-size map or px/pt value to be converted
+//   A size from the $font-size map or px value to be converted
 // @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the elements/parents
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
-//   value in the same unit as the $font-size map.
+//   value in px.
 @mixin font-size($size, $context: $base-font-size) {
   @if $base-unit == rem {
     @if $rem-fallback == true {
@@ -43,11 +43,11 @@
         font-size: $map-size;
       }
       @if type-of($size) == "number" and not unitless($size) {
-        @if unit($size) == unit($base-font-size) {
+        @if unit($size) == px {
           font-size: $size;
         }
         @else {
-          @error "font-size() only accepts values with the same unit as $base-font-size.";
+          @error "font-size() only accepts keys from the $font-size map or values in px";
         }
       }
     }
