@@ -8,6 +8,9 @@ $base-unit: px;
 $base-font-size: 16px;
 $base-line-height: 24px;
 
+// The automatic print sizing won't work as we don't have relative units.
+$auto-print-sizing: false;
+
 // Build your font-size map.
 $font-size: (
   s:  8px,
@@ -25,7 +28,7 @@ html {
   font-family: $sans-serif-stack;
 
   // Unlike em and rem, px values aren't relative so we cannot dynamically
-  // resize all fonts on the page by changing the html elements font size. So
+  // resize all fonts on the page by changing the html elements font-size. So
   // we will just include the base sizing normally here.
   @include define-type-sizing;
 }

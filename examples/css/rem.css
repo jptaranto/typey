@@ -4,6 +4,11 @@ html {
   line-height: 18px;
   line-height: 1.5rem;
 }
+@media print {
+  html {
+    font-size: 12pt;
+  }
+}
 @media screen and (min-width: 600px) {
   html {
     font-size: 87.5%;
