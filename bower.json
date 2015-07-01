@@ -1,9 +1,9 @@
 {
   "name"        : "typey",
-  "version"     : "1.0.0.beta.2",
+  "version"     : "1.0.0.beta.3",
   "homepage"    : "http://github.com/jptaranto/typey",
   "author"      : ["Jack Taranto"],
-  "description" : "Do typography better.",
+  "description" : "A complete framework for working with typography on the web.",
   "main"        : [
     "_typey.scss"
   ],
