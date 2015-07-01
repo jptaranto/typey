@@ -1,4 +1,5 @@
 // The browser font size default. No need to change this.
+// Allowed units: px
 $browser-font-size:        16px !default;
 
 // The base font size will be used for most calculations involving font-size.
@@ -9,11 +10,21 @@ $base-font-size:           16px !default;
 // Allowed units: px
 $base-line-height:         21px !default;
 
-// Allowed units: px, em or rem.
+// Allowed units: rem, em or px
 $base-unit:                rem !default;
 
 // By default we will provide fallbacks when rem is the base unit.
 $rem-fallback:             true !default;
+
+// By default, when rem or em are the base unit we will output a print suitable
+// media query with the define-type-sizing() mixin. This will take care of all
+// print media type sizing effortlessly.
+$auto-print-sizing:        true !default;
+
+// The pt font-size to be used with the print media query when
+// $auto-print-sizing is enabled.
+// Allowed units: pt
+$print-font-size:          12pt !default;
 
 // Default font sizes
 // Once you redefine the $font-size map it will overwrite all sizes here.
@@ -39,7 +50,7 @@ $font-weight: (
 
 // Warnings for $base-unit.
 @if $base-unit != px and $base-unit != rem and $base-unit != em {
-  @error "$base-unit must be one of the following unit types: px, rem, em";
+  @error "$base-unit must be one of the following unit types: rem, em or px";
 }
 
 // Warnings for $base-font-size and $base-line-height.
@@ -48,6 +59,11 @@ $font-weight: (
 }
 @if unit($base-line-height) != px {
   @error "$base-line-height must be in px";
+}
+
+// Warnings for $print-font-size.
+@if unit($print-font-size) != pt {
+  @error "$print-font-size must be in pt";
 }
 
 // Warnings for $font-size
@@ -61,10 +77,10 @@ $font-weight: (
 //
 // @param number $base-font-size
 //   (optional) Use to set to anything other than the base value.
-//   Allowed units: px or pt
+//   Allowed units: px
 // @param number $base-line-height
 //   (optional) Use to set to anything other than the base value.
-//   Allowed units: px or pt
+//   Allowed units: px
 @mixin define-type-sizing($base-font-size: $base-font-size, $base-line-height: $base-line-height) {
   @if $base-unit == rem {
     font-size: $base-font-size / $browser-font-size * 100%;
@@ -80,5 +96,15 @@ $font-weight: (
   @if $base-unit == em {
     font-size: $base-font-size / $browser-font-size * 100%;
     line-height: output-unit($base-line-height / $base-font-size);
+  }
+  @if $auto-print-sizing == true {
+    @if $base-unit == rem or $base-unit == em {
+      @media print {
+        font-size: $print-font-size;
+      }
+    }
+    @else {
+      @warn "As you are not using a relative base unit (rem or em) automatic print media sizing will not work. Set $auto-print-sizing to false to hide this warning"
+    }
   }
 }

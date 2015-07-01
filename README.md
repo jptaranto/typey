@@ -1,9 +1,10 @@
 # typey
-Do typography better.
+
+A complete framework for working with typography on the web.
 
 ### Features
 
-Supports outputting in rem, px, and em.
+Supports outputting in rem, em and px.
 
 ```sass
 $base-unit: rem;
@@ -38,6 +39,16 @@ Easily convert px values to rem or em.
 ```sass
 button {
   @include font-size(29px);
+}
+```
+
+Automatic print media font sizing when using rem or em.
+
+```css
+@media print {
+  html {
+    font-size: 12pt;
+  }
 }
 ```
 
@@ -124,6 +135,12 @@ $font-size: (
   m:    16px,
   s:    14px,
 );
+```
+
+To create print friendly stylesheets you must use a relative base unit (rem or em) - then all the work is taken care of for you. Optionally you can set the base print size like so:
+
+```sass
+$print-font-size: 12pt;
 ```
 
 ### Line height and font sizing examples
@@ -277,6 +294,19 @@ $rem-fallback:             true !default;
 
 By default we will provide fallbacks when rem is the base unit.
 
+```sass
+$auto-print-sizing:        true !default;
+```
+
+By default, when rem or em are the base unit we will output a print suitable media query with the define-type-sizing() mixin. This will take care of all print media type sizing effortlessly.
+
+```sass
+$print-font-size:          12pt !default;
+```
+
+The pt font-size to be used with the print media query when $auto-print-sizing is enabled.
+Allowed units: pt
+
 
 ```sass
 $font-size: (
@@ -303,7 +333,7 @@ $font-weight: (
 ) !default;
 ```
 
-Default font weights
+Default font weights   
 This map and accompanying function help provide granular control over setting and retrieving static font weights.
 
 ### Mixins
