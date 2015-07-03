@@ -1,13 +1,13 @@
 // Three standard do-all stacks.
 $serif-stack:         TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
 $sans-serif-stack:    "Helvetica Neue", Helvetica, Arial, sans-serif;
-$monospaced-stack:    "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+$monospaced-stack:    "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace, monospace;
 
 // Specific font stacks.
 $arial-stack:         Arial, "Helvetica Neue", Helvetica, sans-serif;
 $helvetica-stack:     "Helvetica Neue", Helvetica, Arial, sans-serif;
 $baskerville-stack:   Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
-$monaco-stack:        Monaco, Consolas, "Lucida Console", monospace;
+$monaco-stack:        Monaco, Consolas, "Lucida Console", monospace, monospace;
 $trebuchet-ms-stack:  "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
 
 // Extend a font by adding a web-safe stack to it.
