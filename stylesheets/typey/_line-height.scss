@@ -50,7 +50,7 @@
         line-height: $x * $base-line-height;
       }
       @if type-of($x) == "number" and not unitless($x) {
-        @if unit($size) == px {
+        @if unit($x) == px {
           line-height: $x;
         }
         @else {
