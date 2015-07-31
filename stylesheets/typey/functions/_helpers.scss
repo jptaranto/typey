@@ -1,0 +1,32 @@
+// Output a number in the $base-unit.
+//
+// @param number $number
+//   The number (without unit) to output.
+//
+// @return number
+//   The number with the base unit
+@function typey-output-in-base-unit($number) {
+  @if $base-unit == rem {
+    @return $number * 1rem;
+  }
+  @if $base-unit == px {
+    @return $number * 1px;
+  }
+  @if $base-unit == em {
+    @return $number * 1em;
+  }
+}
+
+// Remove the unit from a number.
+//
+// @param number $number
+//   The number (with unit) to convert. Allowed units: any
+//
+// @return number
+//   The number without the unit.
+@function typey-strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}

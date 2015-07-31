@@ -1,0 +1,75 @@
+// Take a px value and output converted value.
+//
+// @param number $number
+//   A px value to convert.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in px.
+//
+// @return number
+//   The number converted to the base unit.
+@function output-from-px($number, $context: $base-font-size) {
+  $allowed-types: "px";
+  $type: typey-validator($number, $allowed-types);
+  @if $type == "px" {
+    @if $base-unit == rem {
+      @return typey-output-in-base-unit(($number / $base-font-size));
+    }
+    @if $base-unit == px {
+      @return typey-output-in-base-unit(typey-strip-unit($number));
+    }
+    @if $base-unit == em {
+      @return calculate-em-px($number, $context);
+    }
+  }
+}
+
+// Take a line-height multipler and output converted value.
+//
+// @param number $number
+//   Multiple of line height to be used.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in px.
+//
+// @return number
+//   The value of the line-height multiple converted to the base unit.
+@function output-from-multiplier($x, $context: $base-font-size) {
+  @if $base-unit == rem {
+    @return typey-output-in-base-unit(($x * $base-line-height) / $base-font-size);
+  }
+  @if $base-unit == px {
+    @return typey-output-in-base-unit(typey-strip-unit($x * $base-line-height));
+  }
+  @if $base-unit == em {
+    @return calculate-em-multiplier($x, $context);
+  }
+}
+
+// Take a key from the $font-size map and output converted value.
+//
+// @param string $size
+//   A size from the $font-size map.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the parent
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in px.
+//
+// @return number
+//   The selected font-size in $base-unit.
+@function output-from-font-size-map($size, $context: $base-font-size) {
+  @if map-has-key($font-size, $size) {
+    $map-size: map-get($font-size, $size);
+    @if $base-unit == rem {
+      @return typey-output-in-base-unit(($map-size / $base-font-size));
+    }
+    @if $base-unit == px or $base-unit == pt {
+      @return typey-output-in-base-unit(typey-strip-unit($map-size));
+    }
+    @if $base-unit == em {
+      @return calculate-em-px($map-size, $context);
+    }
+  }
+}

@@ -9,17 +9,3 @@ $helvetica-stack:     "Helvetica Neue", Helvetica, Arial, sans-serif;
 $baskerville-stack:   Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
 $monaco-stack:        Monaco, Consolas, "Lucida Console", monospace, monospace;
 $trebuchet-ms-stack:  "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
-
-// Extend a font by adding a web-safe stack to it.
-//
-// Example usage:
-//   $new-font-stack: extend-font-stack("Open sans", $sans-serif-stack);
-//
-// @param string $font
-//   The name of the font. Use inverted commas if there are spaces in the font
-//   name. i.e "Open sans"
-// @param list $font-stack
-//   The font stack variable to extend.
-@function extend-font-stack($font, $font-stack) {
-  @return join($font, $font-stack, $separator: comma);
-}

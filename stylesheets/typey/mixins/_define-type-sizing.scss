@@ -1,0 +1,43 @@
+// Define defaults (use this in the HTML element).
+//
+// @param number $base-font-size
+//   (optional) Use to set to anything other than the base value.
+// @param number $base-line-height
+//   (optional) Use to set to anything other than the base value.
+//   Set to false if you do not want to change a ratio of line-height already set.
+@mixin define-type-sizing($size: $base-font-size, $height: $base-line-height) {
+  @if $base-unit == rem {
+    font-size: $size / $browser-font-size * 100%;
+    @if $height != false {
+      @if $rem-fallback == true {
+        line-height: $height;
+      }
+      line-height: typey-output-in-base-unit($height / $size);
+    }
+  }
+
+  @if $base-unit == px {
+    font-size: $size;
+    @if $height != false {
+      line-height: $height;
+    }
+  }
+
+  @if $base-unit == em {
+    font-size: $size / $browser-font-size * 100%;
+    @if $height != false {
+      line-height: typey-output-in-base-unit($height / $size);
+    }
+  }
+
+  @if $auto-print-sizing == true {
+    @if $base-unit == rem or $base-unit == em {
+      @media print {
+        font-size: $print-font-size;
+      }
+    }
+    @else {
+      @warn "As you are not using a relative base unit (rem or em) automatic print media sizing will not work. Set $auto-print-sizing to false to hide this warning"
+    }
+  }
+}

@@ -19,14 +19,16 @@
   }
 }
 
-// (Depreciated) Retrieve a font weight.
+// Extend a font by adding a web-safe stack to it.
 //
-// @param string $weight
-//   A weight from the $font-weight map.
+// Example usage:
+//   $new-font-stack: extend-font-stack("Open sans", $sans-serif-stack);
 //
-// @return string
-//   The selected font-weight.
-@function font-weight($weight) {
-  @warn "font-weight() is depreciated. Please use weight() instead.";
-  @return weight($weight);
+// @param string $font
+//   The name of the font. Use inverted commas if there are spaces in the font
+//   name. i.e "Open sans"
+// @param list $font-stack
+//   The font stack variable to extend.
+@function extend-font-stack($font, $font-stack) {
+  @return join($font, $font-stack, $separator: comma);
 }

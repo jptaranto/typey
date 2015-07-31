@@ -38,28 +38,54 @@ html {
 }
 
 h1 {
-  // To be as verbose as possible within our stylesheets we can specify
-  // font-size and line-height seperately.
-  @include font-size(xl);
-  @include line-height(3);
-
-  @include margin(0 0 1);
+  // Quickly layout type for various elements with the type-layout() mixin.
+  // Here we are using a size from the $font-size map and a multiplier of the
+  // $base-line-height;
+  @include type-layout(xl, 3);
 }
 
 h2 {
-  // Here we use the short cut type-layout mixin instead.
-  @include type-layout(l, 1.5);
+  // We can also use px values inside the type layout function if we want to
+  // specify a one-off font-size that isn't in the $font-size map or a line-height
+  // that isn't an easy multiple of $base-line-height.
+  @include type-layout(34px, 39px);
+  // Generally speaking, it's best not to use px values with typey's mixins as
+  // they will easily get lost in large projects. Use the sparingly.
+}
 
-  @include margin(0 0 1);
+h3 {
+  // If we want to be verbose in our stylesheets we can output font-size and
+  // line-height with their own mixins.
+  @include font-size(l);
+  @include line-height(2)
+}
+
+div {
+  // Lets define some margin and padding for this element using multiples of the
+  // $base-line-height. We can use the margin() and padding() mixins, which use
+  // css shorthand the same way the actual properties do normally.
+  @include margin(1 0);
+  @include padding(.5);
 }
 
 button {
-  // This element uses a fairly obscure font-size that is only used once in
-  // the project, so instead of specifying it in the font-size map we can just
-  // add it manually.
-  @include font-size(29px);
+  // There are also mixins for each individual margin and padding property.
+  @include margin-top(1);
+  @include margin-right(1);
+  @include margin-bottom(1);
+  @include margin-left(1);
+  @include padding-top(1);
+  @include padding-right(1);
+  @include padding-bottom(1);
+  @include padding-left(1);
+}
 
-  @include padding(.5);
+article {
+  // Add just like the font-size and line-height mixins you can specify values
+  // in px too.
+  @include padding(12px 10px 15px 5px);
+  // Or a mixture of multiples of $base-line-height and px.
+  @include margin(1 12px 2 30px);
 }
 
 strong,

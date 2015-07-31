@@ -72,39 +72,3 @@ $font-weight: (
     @error "Size '#{$key}' in $font-size map is not specified in px";
   }
 }
-
-// Define defaults (in the HTML element).
-//
-// @param number $base-font-size
-//   (optional) Use to set to anything other than the base value.
-//   Allowed units: px
-// @param number $base-line-height
-//   (optional) Use to set to anything other than the base value.
-//   Allowed units: px
-@mixin define-type-sizing($base-font-size: $base-font-size, $base-line-height: $base-line-height) {
-  @if $base-unit == rem {
-    font-size: $base-font-size / $browser-font-size * 100%;
-    @if $rem-fallback == true {
-      line-height: $base-line-height;
-    }
-    line-height: output-unit($base-line-height / $base-font-size);
-  }
-  @if $base-unit == px {
-    font-size: $base-font-size;
-    line-height: $base-line-height;
-  }
-  @if $base-unit == em {
-    font-size: $base-font-size / $browser-font-size * 100%;
-    line-height: output-unit($base-line-height / $base-font-size);
-  }
-  @if $auto-print-sizing == true {
-    @if $base-unit == rem or $base-unit == em {
-      @media print {
-        font-size: $print-font-size;
-      }
-    }
-    @else {
-      @warn "As you are not using a relative base unit (rem or em) automatic print media sizing will not work. Set $auto-print-sizing to false to hide this warning"
-    }
-  }
-}

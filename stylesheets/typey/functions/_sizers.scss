@@ -1,0 +1,61 @@
+// Takes a sizing from the $font-size map (m, xl, xxl, etc) and convert it to
+// the base unit. Alternatively convert a px font-size into the base unit.
+//
+// @param number|string $size
+//   A size from the $font-size map or px value to be converted
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the parent
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in px.
+//
+// @return number
+//   The selected font-size in $base-unit.
+@function font-size($size, $context: $base-font-size) {
+  $allowed-types: "font-size", "px";
+  $type: typey-validator($size, $allowed-types);
+  @if $type == "font-size" {
+    @return output-from-font-size-map($size, $context);
+  }
+  @if $type == "px" {
+    @return output-from-px($size, $context);
+  }
+}
+
+// Generate a value to be used as line-height from either:
+//   a) a multiple of $base-line-height
+//   b) a static px or pt value
+//
+// Example usage with multiple:
+//   line-height: line-height(2);
+// Example usage with static value:
+//   line-height: line-height(18px);
+//
+// @param number $x
+//   Multiple of line height to be used or px value to be converted.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in px.
+//
+// @return number
+//   The calculated height in $base-unit.
+@function line-height($x, $context: $base-font-size) {
+  $allowed-types: "multiplier", "px";
+  $type: typey-validator($x, $allowed-types);
+  @if $type == "multiplier" {
+    @return output-from-multiplier($x, $context);
+  }
+  @if $type == "px" {
+    @return output-from-px($x, $context);
+  }
+}
+
+// Wrapper function for line-height().
+@function margin($x, $context: $base-font-size) {
+  @return line-height($x, $context);
+}
+
+// Wrapper function for line-height().
+@function padding($x, $context: $base-font-size) {
+  @return line-height($x, $context);
+}

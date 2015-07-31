@@ -9,7 +9,7 @@
 linters:
   ElsePlacement:
     style: new_line
-  StringQuotes:
-    style: double_quotes
   DeclarationOrder:
     enabled: false
+  StringQuotes:
+    style: double_quotes
