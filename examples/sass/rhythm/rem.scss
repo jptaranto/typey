@@ -1,0 +1,95 @@
+// How to use Typey in a few lines of code...
+// When...
+
+// rem is your base unit.
+$base-unit: rem;
+
+// Set your base font-size and line-height.
+$base-font-size: 16px;
+$base-line-height: 24px;
+
+// Build your font-size map.
+$font-size: (
+  s:  8px,
+  m:  16px,
+  l:  32px,
+  xl: 64px,
+);
+
+// Import typey.
+// Depending on your installation method (see README.md) this line will be
+// slightly different.
+@import "../../../stylesheets/typey";
+
+html {
+  font-family: $sans-serif-stack;
+  // Within the HTML element we can use media queries and a custom
+  // define-type-sizing delaration to change the base font size for different
+  // screen sizes.
+  @include define-type-sizing(12px, 18px);
+
+  @media screen and (min-width: 600px) {
+    @include define-type-sizing(14px, 20px);
+  }
+
+  @media screen and (min-width: 800px) {
+    @include define-type-sizing;
+  }
+}
+
+h1 {
+  // Quickly layout type for various elements with the type-layout() mixin.
+  // Here we are using a size from the $font-size map and a multiplier of the
+  // $base-line-height;
+  @include type-layout(xl, 3);
+}
+
+h2 {
+  // We can also use px values inside the type layout function if we want to
+  // specify a one-off font-size that isn't in the $font-size map or a line-height
+  // that isn't an easy multiple of $base-line-height.
+  @include type-layout(34px, 39px);
+  // Generally speaking, it's best not to use px values with typey's mixins as
+  // they will easily get lost in large projects. Use the sparingly.
+}
+
+h3 {
+  // If we want to be verbose in our stylesheets we can output font-size and
+  // line-height with their own mixins.
+  @include font-size(l);
+  @include line-height(2)
+}
+
+div {
+  // Lets define some margin and padding for this element using multiples of the
+  // $base-line-height. We can use the margin() and padding() mixins, which use
+  // css shorthand the same way the actual properties do normally.
+  @include margin(1 0);
+  @include padding(.5);
+}
+
+button {
+  // There are also mixins for each individual margin and padding property.
+  @include margin-top(1);
+  @include margin-right(1);
+  @include margin-bottom(1);
+  @include margin-left(1);
+  @include padding-top(1);
+  @include padding-right(1);
+  @include padding-bottom(1);
+  @include padding-left(1);
+}
+
+article {
+  // Add just like the font-size and line-height mixins you can specify values
+  // in px too.
+  @include padding(12px 10px 15px 5px);
+  // Or a mixture of multiples of $base-line-height and px.
+  @include margin(1 12px 2 30px);
+}
+
+strong,
+b {
+  // Define a font weight.
+  font-weight: weight(bold);
+}

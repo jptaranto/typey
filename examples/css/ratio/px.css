@@ -1,0 +1,49 @@
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.25em;
+}
+
+h1 {
+  font-size: 64px;
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 1.5em;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 28px;
+}
+h3 span {
+  font-size: 16px;
+  line-height: 1.25em;
+}
+
+div {
+  margin: 24px 0px;
+  padding: 12px;
+}
+
+button {
+  margin-top: 24px;
+  margin-right: 24px;
+  margin-bottom: 24px;
+  margin-left: 24px;
+  padding-top: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+  padding-left: 24px;
+}
+
+article {
+  padding: 12px 10px 15px 5px;
+  margin: 24px 12px 48px 30px;
+}
+
+strong,
+b {
+  font-weight: 700;
+}

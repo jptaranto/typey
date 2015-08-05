@@ -22,7 +22,7 @@ $font-size: (
 // Import typey.
 // Depending on your installation method (see README.md) this line will be
 // slightly different.
-@import "../../stylesheets/typey";
+@import "../../../stylesheets/typey";
 
 html {
   font-family: $sans-serif-stack;
@@ -53,8 +53,10 @@ h2 {
 button {
   // This element uses a fairly obscure font-size that is only used once in
   // the project, so instead of specifying it in the font-size map we can just
-  // add it manually.
-  font-size: 29px;
+  // add it manually with the font-size mixin. Using the mixin rather than
+  // just a regular old property, allows us to easily change the base unit if
+  // we need to.
+  @include font-size(29px);
 
   @include padding(.5);
 }
