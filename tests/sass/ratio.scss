@@ -1,0 +1,95 @@
+// Set defaults so they are easy to compute (in your head).
+$base-font-size:           10px;
+$base-line-height:         20px;
+
+$line-height-method:       ratio;
+
+$base-line-height-ratio:   1.5;
+
+$font-size: (
+  s: 5px,
+  m: 10px,
+  l: 20px,
+  xl:30px
+);
+
+@import "../../stylesheets/typey";
+
+html {
+  @include define-type-sizing;
+}
+
+// Tests for rem
+$base-unit: rem;
+
+h1 {
+  @include type-layout(xl, 1.25);
+}
+
+h2 {
+  @include font-size(l);
+}
+
+h3 {
+  @include font-size(m);
+}
+
+div {
+  @include margin(2 0);
+}
+
+button {
+  @include padding(.5);
+}
+
+
+// Tests for em.
+$base-unit: em;
+
+h1 {
+  @include type-layout(xl, 1.25);
+
+  span {
+    @include font-size(m, xl);
+  }
+}
+
+h2 {
+  @include font-size(l);
+}
+
+h3 {
+  @include font-size(m);
+}
+
+div {
+  @include font-size(l);
+  @include margin(2 0, l);
+}
+
+button {
+  @include padding(.5);
+}
+
+// Tests for px.
+$base-unit: px;
+
+h1 {
+  @include type-layout(xl, 1.25);
+}
+
+h2 {
+  @include font-size(l);
+}
+
+h3 {
+  @include font-size(m);
+}
+
+div {
+  @include margin(2 0);
+}
+
+button {
+  @include padding(.5);
+}

@@ -1,0 +1,89 @@
+html {
+  font-size: 62.5%;
+  line-height: 20px;
+  line-height: 2rem;
+}
+@media print {
+  html {
+    font-size: 12pt;
+  }
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 40px;
+  font-size: 3rem;
+  line-height: 4rem;
+}
+
+h2 {
+  font-size: 20px;
+  line-height: 30px;
+  font-size: 2rem;
+  line-height: 3rem;
+}
+
+h3 {
+  font-size: 10px;
+  line-height: 20px;
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
+div {
+  margin: 40px 0px;
+  margin: 4rem 0rem;
+}
+
+button {
+  padding: 10px;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 3em;
+  line-height: 1.3333333333em;
+}
+h1 span {
+  font-size: 0.3333333333em;
+  line-height: 4em;
+}
+
+h2 {
+  font-size: 2em;
+  line-height: 1.5em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+div {
+  font-size: 2em;
+  margin: 2em 0em;
+}
+
+button {
+  padding: 1em;
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 40px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 10px;
+}
+
+div {
+  margin: 40px 0px;
+}
+
+button {
+  padding: 10px;
+}

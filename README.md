@@ -55,7 +55,7 @@ $base-line-height:  20px;
 
 Ok, so we have our base sizing, now we need to choose the approach that we are going
 to layout type with. We have two options available to us: rhythm and ratio. Rhythm
-allows us to specify line-heights a multiple of $base-line-height, where as ratio
+allows us to specify line-heights as a multiple of $base-line-height, where as ratio
 allows us to specify line-heights as a multiple of our elements font-size. Rhythm is
 the default, but for beginners working with web typography the simplest approach
 is to use ratio. Each example below will tell you which method it is for.
