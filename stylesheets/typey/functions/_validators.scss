@@ -49,6 +49,9 @@
       @error "All lists must use a space as their seperator";
     }
   }
+  @else {
+    @return type-of($x);
+  }
 }
 
 // Takes a value and validates it against a specified type.

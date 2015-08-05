@@ -23,7 +23,44 @@
 
 // Generate a value to be used as line-height from either:
 //   a) a multiple of $base-line-height
-//   b) a static px or pt value
+//   b) a static px value
+//   c) a ratio of the font-size
+//
+// Example usage with multiple:
+//   line-height: line-height(2);
+// Example usage with static value:
+//   line-height: line-height(18px);
+// Example usage with ratio:
+//   line-height: line-height(1.5);
+//
+// @param number $x
+//   Multiple of line height to be used, px value to be converted, or ratio of
+//   font-size.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the
+//   elements/parents font-size if it differs from $base-font-size.
+//   Specified as a t-shirt size or value in px.
+// @return number
+//   The calculated height in $base-unit.
+@function line-height($x, $context: $base-font-size) {
+  $allowed-types: "multiplier", "px";
+  $type: typey-validator($x, $allowed-types);
+  @if $type == "multiplier" {
+    @if ($line-height-method == "ratio") {
+      @return output-from-ratio($x);
+    }
+    @else {
+      @return output-from-multiplier($x, $context);
+    }
+  }
+  @if $type == "px" {
+    @return output-from-px($x, $context);
+  }
+}
+
+// Generate a value to be used as margin from either:
+//   a) a multiple of $base-line-height
+//   b) a static px value
 //
 // Example usage with multiple:
 //   line-height: line-height(2);
@@ -39,7 +76,7 @@
 //
 // @return number
 //   The calculated height in $base-unit.
-@function line-height($x, $context: $base-font-size) {
+@function margin($x, $context: $base-font-size) {
   $allowed-types: "multiplier", "px";
   $type: typey-validator($x, $allowed-types);
   @if $type == "multiplier" {
@@ -50,12 +87,31 @@
   }
 }
 
-// Wrapper function for line-height().
-@function margin($x, $context: $base-font-size) {
-  @return line-height($x, $context);
-}
-
-// Wrapper function for line-height().
+// Generate a value to be used as padding from either:
+//   a) a multiple of $base-line-height
+//   b) a static px value
+//
+// Example usage with multiple:
+//   line-height: line-height(2);
+// Example usage with static value:
+//   line-height: line-height(18px);
+//
+// @param number $x
+//   Multiple of line height to be used or px value to be converted.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the elements/parents
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in px.
+//
+// @return number
+//   The calculated height in $base-unit.
 @function padding($x, $context: $base-font-size) {
-  @return line-height($x, $context);
+  $allowed-types: "multiplier", "px";
+  $type: typey-validator($x, $allowed-types);
+  @if $type == "multiplier" {
+    @return output-from-multiplier($x, $context);
+  }
+  @if $type == "px" {
+    @return output-from-px($x, $context);
+  }
 }

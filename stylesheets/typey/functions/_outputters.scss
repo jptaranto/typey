@@ -10,18 +10,38 @@
 // @return number
 //   The number converted to the base unit.
 @function output-from-px($number, $context: $base-font-size) {
-  $allowed-types: "px";
-  $type: typey-validator($number, $allowed-types);
-  @if $type == "px" {
-    @if $base-unit == rem {
-      @return typey-output-in-base-unit(($number / $base-font-size));
-    }
-    @if $base-unit == px {
-      @return typey-output-in-base-unit(typey-strip-unit($number));
-    }
-    @if $base-unit == em {
-      @return calculate-em-px($number, $context);
-    }
+  @if $base-unit == rem {
+    @return typey-output-in-base-unit(($number / $base-font-size));
+  }
+  @if $base-unit == px {
+    @return typey-output-in-base-unit(typey-strip-unit($number));
+  }
+  @if $base-unit == em {
+    @return calculate-em-px($number, $context);
+  }
+}
+
+// Take a key from the $font-size map and output converted value.
+//
+// @param string $size
+//   A size from the $font-size map.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the parent
+//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
+//   value in px.
+//
+// @return number
+//   The selected font-size in $base-unit.
+@function output-from-font-size-map($size, $context: $base-font-size) {
+  $map-size: map-get($font-size, $size);
+  @if $base-unit == rem {
+    @return typey-output-in-base-unit(($map-size / $base-font-size));
+  }
+  @if $base-unit == px or $base-unit == pt {
+    @return typey-output-in-base-unit(typey-strip-unit($map-size));
+  }
+  @if $base-unit == em {
+    @return calculate-em-px($map-size, $context);
   }
 }
 
@@ -48,28 +68,16 @@
   }
 }
 
-// Take a key from the $font-size map and output converted value.
+// Take a line-height ratio and output as em.
 //
-// @param string $size
-//   A size from the $font-size map.
+// @param number $ratio
+//   Multiple of the $font-size to be used.
 // @param number|string $context
-//   (optional) Only used if em is the $base-unit. The value of the parent
-//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
-//   value in px.
+//  (optional) used to ensure function outputs the ratio regardless of whether
+//  it is the same as the $base-line-height-ratio.
 //
 // @return number
-//   The selected font-size in $base-unit.
-@function output-from-font-size-map($size, $context: $base-font-size) {
-  @if map-has-key($font-size, $size) {
-    $map-size: map-get($font-size, $size);
-    @if $base-unit == rem {
-      @return typey-output-in-base-unit(($map-size / $base-font-size));
-    }
-    @if $base-unit == px or $base-unit == pt {
-      @return typey-output-in-base-unit(typey-strip-unit($map-size));
-    }
-    @if $base-unit == em {
-      @return calculate-em-px($map-size, $context);
-    }
-  }
+//   The ratio in em.
+@function output-from-ratio($ratio: $base-line-height-ratio) {
+  @return $ratio * 1em;
 }

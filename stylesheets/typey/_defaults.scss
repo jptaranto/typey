@@ -2,16 +2,26 @@
 // Allowed units: px
 $browser-font-size:        16px !default;
 
+// Allowed units: rem, em or px
+$base-unit:                rem !default;
+
 // The base font size will be used for most calculations involving font-size.
 // Allowed units: px
 $base-font-size:           16px !default;
 
 // The base line height will be used for most calculations involving height.
 // Allowed units: px
-$base-line-height:         21px !default;
+$base-line-height:         20px !default;
 
-// Allowed units: rem, em or px
-$base-unit:                rem !default;
+// The method to calculate line-height. Allowed values: rhythm or ratio.
+// Rhytm uses a vertical rhythm approach where line-height is specified as
+// a multiple of the $base-line-height.
+// Ratio uses a ratio approach where line-height is specified as a ratio
+// of the elements font-size.
+$line-height-method:       rhythm !default;
+
+// The default ratio of line-height to font-size.
+$base-line-height-ratio:   1.25 !default;
 
 // By default we will provide fallbacks when rem is the base unit.
 $rem-fallback:             true !default;

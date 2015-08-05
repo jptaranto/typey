@@ -1,32 +1,38 @@
 // Define defaults (use this in the HTML element).
 //
-// @param number $base-font-size
-//   (optional) Use to set to anything other than the base value.
-// @param number $base-line-height
-//   (optional) Use to set to anything other than the base value.
+// @param number $size
+//   (optional) The font-size. Use to set to anything other than $base-font-size.
+// @param number $line-height
+//   (optional) The line-height. Use to set to anything other than $base-line-height.
+//   Set to a ratio when $line-height-as-ratio is true. Will default to $base-line-height-ratio.
 //   Set to false if you do not want to change a ratio of line-height already set.
-@mixin define-type-sizing($size: $base-font-size, $height: $base-line-height) {
-  @if $base-unit == rem {
+@mixin define-type-sizing($size: $base-font-size, $line-height: $base-line-height) {
+  @if $base-unit == rem or $base-unit == em {
     font-size: $size / $browser-font-size * 100%;
-    @if $height != false {
-      @if $rem-fallback == true {
-        line-height: $height;
-      }
-      line-height: typey-output-in-base-unit($height / $size);
-    }
   }
-
   @if $base-unit == px {
     font-size: $size;
-    @if $height != false {
-      line-height: $height;
-    }
   }
 
-  @if $base-unit == em {
-    font-size: $size / $browser-font-size * 100%;
-    @if $height != false {
-      line-height: typey-output-in-base-unit($height / $size);
+  @if $line-height != false {
+    @if $line-height-method == "ratio" {
+      @if $line-height == $base-line-height {
+        $line-height: $base-line-height-ratio;
+      }
+      line-height: $line-height * 1em;
+    }
+    @else {
+      @if $base-unit == rem {
+        @if $rem-fallback == true {
+          line-height: $line-height;
+        }
+      }
+      @if $base-unit == rem or $base-unit == em {
+        line-height: typey-output-in-base-unit($line-height / $size);
+      }
+      @if $base-unit == px {
+        line-height: $line-height;
+      }
     }
   }
 
