@@ -79,5 +79,5 @@
 // @return number
 //   The ratio in em.
 @function output-from-ratio($ratio: $base-line-height-ratio) {
-  @return $ratio * 1em;
+  @return $ratio;
 }
