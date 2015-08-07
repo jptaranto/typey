@@ -1,7 +1,7 @@
 html {
-  font-size: 106.25%;
+  font-size: 100%;
   line-height: 24px;
-  line-height: 1.4117647059rem;
+  line-height: 1.5rem;
 }
 @media print {
   html {
@@ -11,16 +11,16 @@ html {
 
 body {
   padding: 24px;
-  padding: 1.4117647059rem;
+  padding: 1.5rem;
   background: #d5bfa3;
   color: #261420;
 }
 
 .container {
   padding: 24px;
-  padding: 1.4117647059rem;
+  padding: 1.5rem;
   max-width: 1100px;
-  margin: 0 auto 1.4117647059rem;
+  margin: 0 auto 1.5rem;
   background: #F2E2CE;
 }
 
@@ -35,12 +35,12 @@ h2, h3 {
 .rem h1 {
   font-size: 36px;
   line-height: 48px;
-  font-size: 2.1176470588rem;
-  line-height: 2.8235294118rem;
+  font-size: 2.25rem;
+  line-height: 3rem;
   position: relative;
-  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 2.8235294118rem);
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 3rem);
   margin: 0px 0px 24px;
-  margin: 0rem 0rem 1.4117647059rem;
+  margin: 0rem 0rem 1.5rem;
 }
 .rem h1:after {
   content: "";
@@ -54,12 +54,12 @@ h2, h3 {
 .rem h2 {
   font-size: 24px;
   line-height: 48px;
-  font-size: 1.4117647059rem;
-  line-height: 2.8235294118rem;
+  font-size: 1.5rem;
+  line-height: 3rem;
   position: relative;
-  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 2.8235294118rem);
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 3rem);
   margin: 48px 0px 24px;
-  margin: 2.8235294118rem 0rem 1.4117647059rem;
+  margin: 3rem 0rem 1.5rem;
 }
 .rem h2:after {
   content: "";
@@ -73,12 +73,12 @@ h2, h3 {
 .rem h3 {
   font-size: 16px;
   line-height: 24px;
-  font-size: 0.9411764706rem;
-  line-height: 1.4117647059rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   position: relative;
-  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.4117647059rem);
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5rem);
   margin: 48px 0px 24px;
-  margin: 2.8235294118rem 0rem 1.4117647059rem;
+  margin: 3rem 0rem 1.5rem;
 }
 .rem h3:after {
   content: "";
@@ -91,9 +91,9 @@ h2, h3 {
 }
 .rem p {
   margin: 0px 0px 24px;
-  margin: 0rem 0rem 1.4117647059rem;
+  margin: 0rem 0rem 1.5rem;
   position: relative;
-  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.4117647059rem);
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5rem);
 }
 .rem p:after {
   content: "";
@@ -107,10 +107,10 @@ h2, h3 {
 .rem .intro {
   font-size: 18px;
   line-height: 24px;
-  font-size: 1.0588235294rem;
-  line-height: 1.4117647059rem;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
   position: relative;
-  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.4117647059rem);
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5rem);
 }
 .rem .intro:after {
   content: "";
@@ -123,7 +123,7 @@ h2, h3 {
 }
 
 .em h1 {
-  font-size: 2.1176470588em;
+  font-size: 2.25em;
   line-height: 1.3333333333em;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.3333333333em);
@@ -139,7 +139,7 @@ h2, h3 {
   background-color: #D9B29C;
 }
 .em h2 {
-  font-size: 1.4117647059em;
+  font-size: 1.5em;
   line-height: 2em;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 2em);
@@ -155,11 +155,11 @@ h2, h3 {
   background-color: #D9B29C;
 }
 .em h3 {
-  font-size: 0.9411764706em;
+  font-size: 1em;
   line-height: 1.5em;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
-  margin: 2.8235294118em 0em 1.4117647059em;
+  margin: 3em 0em 1.5em;
 }
 .em h3:after {
   content: "";
@@ -171,9 +171,9 @@ h2, h3 {
   background-color: #D9B29C;
 }
 .em p {
-  margin: 0em 0em 1.4117647059em;
+  margin: 0em 0em 1.5em;
   position: relative;
-  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.4117647059em);
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
 }
 .em p:after {
   content: "";
@@ -185,7 +185,7 @@ h2, h3 {
   background-color: #D9B29C;
 }
 .em .intro {
-  font-size: 1.0588235294em;
+  font-size: 1.125em;
   line-height: 1.3333333333em;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.3333333333em);
