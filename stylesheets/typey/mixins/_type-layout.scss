@@ -50,4 +50,6 @@
       line-height: line-height($line-height, $size);
     }
   }
+
+  @include typey-debug-grid($line-height, $context);
 }

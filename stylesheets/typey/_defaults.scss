@@ -58,6 +58,13 @@ $font-weight: (
   lighter:                 200
 ) !default;
 
+// Debug grid
+// Shows horizontal lines for each elements line height.
+$typey-debug:              false !default;
+
+// Debug grid coloring
+$typey-debug-color:        #4affff !default;
+
 // Warnings for $base-unit.
 @if $base-unit != px and $base-unit != rem and $base-unit != em {
   @error "$base-unit must be one of the following unit types: rem, em or px";

@@ -1,6 +1,4 @@
 // Define line-height (with fallback).
-// This is only necessary to use if you want to provide fallbacks when you are
-// using rem as $base-unit.
 //
 // @param number $x
 //   Multiple of line height to be used or px value to be converted.
@@ -22,4 +20,6 @@
     }
   }
   line-height: line-height($x, $context);
+
+  @include typey-debug-grid($x, $context);
 }

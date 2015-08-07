@@ -37,7 +37,7 @@
   @if $base-unit == rem {
     @return typey-output-in-base-unit(($map-size / $base-font-size));
   }
-  @if $base-unit == px or $base-unit == pt {
+  @if $base-unit == px {
     @return typey-output-in-base-unit(typey-strip-unit($map-size));
   }
   @if $base-unit == em {
