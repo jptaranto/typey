@@ -1,0 +1,265 @@
+html {
+  font-size: 100%;
+  line-height: 1.5;
+}
+@media print {
+  html {
+    font-size: 12pt;
+  }
+}
+
+body {
+  padding: 24px;
+  padding: 1.5rem;
+  background: #d5bfa3;
+  color: #261420;
+}
+
+.container {
+  padding: 24px;
+  padding: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto 1.5rem;
+  background: #F2E2CE;
+}
+
+h1 {
+  color: #A6263E;
+}
+
+h2, h3 {
+  color: #0d7f70;
+}
+
+.rem h1 {
+  font-size: 36px;
+  font-size: 2.25rem;
+  margin: 0px 0px 24px;
+  margin: 0rem 0rem 1.5rem;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+}
+.rem h1:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}
+.rem h2 {
+  font-size: 24px;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+  margin: 48px 0px 24px;
+  margin: 3rem 0rem 1.5rem;
+}
+.rem h2:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}
+.rem h3 {
+  font-size: 16px;
+  font-size: 1rem;
+  margin: 48px 0px 24px;
+  margin: 3rem 0rem 1.5rem;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+}
+.rem h3:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}
+.rem p {
+  margin: 0px 0px 24px;
+  margin: 0rem 0rem 1.5rem;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+}
+.rem p:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}
+.rem .intro {
+  font-size: 20px;
+  font-size: 1.25rem;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+}
+.rem .intro:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}
+
+.em h1 {
+  font-size: 2.25em;
+  margin: 0em 0em 0.6666666667em;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+}
+.em h1:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}
+.em h2 {
+  font-size: 1.5em;
+  line-height: 1.5;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+  margin: 2em 0em 1em;
+}
+.em h2:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}
+.em h3 {
+  font-size: 1em;
+  margin: 3em 0em 1.5em;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+}
+.em h3:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}
+.em p {
+  margin: 0em 0em 1.5em;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+}
+.em p:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}
+.em .intro {
+  font-size: 1.25em;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+}
+.em .intro:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}
+
+.px h1 {
+  font-size: 36px;
+  margin: 0px 0px 24px;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+}
+.px h1:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}
+.px h2 {
+  font-size: 24px;
+  line-height: 1.5;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+  margin: 48px 0px 24px;
+}
+.px h2:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}
+.px h3 {
+  font-size: 16px;
+  margin: 48px 0px 24px;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+}
+.px h3:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}
+.px p {
+  margin: 0px 0px 24px;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+}
+.px p:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}
+.px .intro {
+  font-size: 20px;
+  position: relative;
+  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
+}
+.px .intro:after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #D9B29C;
+}

@@ -1,0 +1,136 @@
+// Set defaults so they are easy to compute (in your head).
+$base-font-size:           16px;
+$base-line-height:         24px;
+
+$line-height-method:       ratio;
+$base-line-height-ratio:   1.5;
+
+$font-size: (
+  s: 12px,
+  m: 16px,
+  l: 24px,
+  xl:36px
+);
+
+$typey-debug: true;
+$typey-debug-color: #D9B29C;
+
+@import "../../stylesheets/typey";
+
+html {
+  @include define-type-sizing;
+}
+
+body {
+  @include padding(1);
+  background: #d5bfa3;
+  color: #261420;
+}
+
+.container {
+  @include padding(1);
+  max-width: 1100px;
+  margin: 0 auto margin(1);
+  background: #F2E2CE;
+}
+
+h1 {
+  color: #A6263E;
+}
+
+h2, h3 {
+  color: #0d7f70;
+}
+
+// Tests for rem
+$base-unit: rem;
+.rem {
+  h1 {
+    @include font-size(xl);
+    @include margin(0 0 1);
+    @include typey-debug-grid;
+  }
+
+  h2 {
+    @include type-layout(l, 1.5);
+    @include margin(2 0 1);
+  }
+
+  h3 {
+    @include font-size(m);
+    @include margin(2 0 1);
+    @include typey-debug-grid;
+  }
+
+  p {
+    @include margin(0 0 1);
+    @include typey-debug-grid;
+  }
+
+  .intro {
+    @include font-size(20px);
+    @include typey-debug-grid;
+  }
+}
+
+// Tests for em
+$base-unit: em;
+.em {
+  h1 {
+    @include font-size(xl);
+    @include margin(0 0 1, xl);
+    @include typey-debug-grid;
+  }
+
+  h2 {
+    @include type-layout(l, 1.5);
+    @include margin(2 0 1, l);
+  }
+
+  h3 {
+    @include font-size(m);
+    @include margin(2 0 1);
+    @include typey-debug-grid;
+  }
+
+  p {
+    @include margin(0 0 1);
+    @include typey-debug-grid;
+  }
+
+  .intro {
+    @include font-size(20px);
+    @include typey-debug-grid($context: 20px);
+  }
+}
+
+// Tests for em
+$base-unit: px;
+.px {
+  h1 {
+    @include font-size(xl);
+    @include margin(0 0 1);
+    @include typey-debug-grid;
+  }
+
+  h2 {
+    @include type-layout(l, 1.5);
+    @include margin(2 0 1);
+  }
+
+  h3 {
+    @include font-size(m);
+    @include margin(2 0 1);
+    @include typey-debug-grid;
+  }
+
+  p {
+    @include margin(0 0 1);
+    @include typey-debug-grid;
+  }
+
+  .intro {
+    @include font-size(20px);
+    @include typey-debug-grid;
+  }
+}
