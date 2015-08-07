@@ -21,7 +21,7 @@ Bower
 
 Vanilla Sass
 
-* Terminal: 'git clone git@github.com:jptaranto/typey.git
+* Terminal: `git clone git@github.com:jptaranto/typey.git`
 * SCSS: `@import '../link_to_component_dir/typey/stylesheets/typey'`
 
 ## Getting started
@@ -50,11 +50,11 @@ Just like in compass Vertical Rhythm we define our base font size and line heigh
 
 ```sass
 $base-font-size:    16px;
-$base-line-height:  20px;
+$base-line-height:  24px;
 ```
 
 Ok, so we have our base sizing, now we need to choose the approach that we are going
-to layout type with. We have two options available to us: rhythm and ratio. Rhythm
+to layout type with. We have two options available to us: `rhythm` and `ratio`. Rhythm
 allows us to specify line-heights as a multiple of $base-line-height, where as ratio
 allows us to specify line-heights as a multiple of our elements font-size. Rhythm is
 the default, but for beginners working with web typography the simplest approach
@@ -62,11 +62,7 @@ is to use ratio. Each example below will tell you which method it is for.
 
 ```sass
 $line-height-method: rhythm;
-```
-
-or
-
-```sass
+// or
 $line-height-method: ratio;
 ```
 
@@ -74,7 +70,7 @@ If you are using ratio, you should set your base ratio as so. Ignore this one
 if you are using rhythm.
 
 ```sass
-$base-line-height-ratio: 1.25
+$base-line-height-ratio: 1.5
 ```
 
 By default typey will create print friendly stylesheets by adding a print media
@@ -95,7 +91,7 @@ $font-size: (
   xl:   32px,
   l:    24px,
   m:    16px,
-  s:    14px,
+  s:    12px,
 );
 ```
 
@@ -203,7 +199,7 @@ li {
 ```
 
 All of typey's mixins accept a px value instead of a multiple/ratio or key from
-the font-size map.
+the $font-size map.
 
 ## Really quite tricky stuff (em as the $base-unit)
 
