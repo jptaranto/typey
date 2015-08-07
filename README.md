@@ -140,8 +140,7 @@ h1 {
 }
 ```
 
-All ratios are outputted as `em` instead of your base unit as they will always
-be relative to their element's font-size.
+All ratios are outputted as unitless values instead of your base unit.
 
 ## Add some margins or padding
 
@@ -266,10 +265,31 @@ strong {
 }
 ```
 
+## Debug grid
+
+You can turn the debug grid on or off with the global variable below (and also choose
+a custom color!).
+
+```sass
+$typey-debug: true;
+$typey-debug-color: red;
+```
+
+Now the grid will show whenever a type-layout() or line-height() mixin is used and will
+be sized to the element's line-height automatically. If you want to output it
+manually you can use the typey-debug-grid() mixin, which takes a few arguments -
+the line-height (as a ratio, multiplier or px value), and the context (only used
+for ems), and also a custom color.
+
+```sass
+h1 {
+  @include typey-debug-grid(2, $context: xl, $color: blue);
+}
+```
+
 ## More examples
 
-Grab a copy of the source code (make sure you get the same version you have installed) and look in the examples folder for a few more hints.
-
+Grab a copy of the source code (make sure you get the same version you have installed) and look in the examples folder to see typey in action.
 ## Reference
 
 The reference section has been removed for now in favour of the better detailed examples above. For explanation on all the individual functions and mixins inside typey you can just download the source code and ogle at the documentation contained within. Once the typey website launches it will include a complete reference section. Stay tuned.
