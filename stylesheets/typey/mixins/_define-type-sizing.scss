@@ -22,13 +22,9 @@
       line-height: $line-height;
     }
     @else {
-      @if $base-unit == rem {
-        @if $rem-fallback == true {
-          line-height: $line-height;
-        }
-      }
       @if $base-unit == rem or $base-unit == em {
-        line-height: typey-output-in-base-unit($line-height / $size);
+        // In the html element, rem means relative to browser default font size; em means relative to html's font size.
+        line-height: $line-height / $size * 1em;
       }
       @if $base-unit == px {
         line-height: $line-height;
