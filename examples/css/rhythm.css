@@ -1,7 +1,6 @@
 html {
   font-size: 100%;
-  line-height: 24px;
-  line-height: 1.5rem;
+  line-height: 1.5em;
 }
 @media print {
   html {

@@ -17,6 +17,27 @@
   }
 }
 
+// Output a number in a chosen unit.
+//
+// @param number $number
+//   The number (without unit) to output.
+// @param string $unit
+//   (optional) The unit to output, either em, px or rem.
+//
+// @return number
+//   The number with the base unit
+@function typey-output-in-unit($number, $unit: $base-unit) {
+  @if $unit == rem {
+    @return $number * 1rem;
+  }
+  @if $unit == px {
+    @return $number * 1px;
+  }
+  @if $unit == em {
+    @return $number * 1em;
+  }
+}
+
 // Remove the unit from a number.
 //
 // @param number $number

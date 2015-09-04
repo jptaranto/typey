@@ -12,10 +12,10 @@
   $type: typey-validator($context, $allowed-types);
   @if $type == "font-size" {
     $context-map-size: map-get($font-size, $context);
-    @return typey-output-in-base-unit(($x / $context-map-size));
+    @return typey-output-in-unit(($x / $context-map-size), em);
   }
   @if $type == "px" {
-    @return typey-output-in-base-unit(($x / $context));
+    @return typey-output-in-unit(($x / $context), em);
   }
 }
 
@@ -33,9 +33,9 @@
   $type: typey-validator($context, $allowed-types);
   @if $type == "font-size" {
     $context-map-size: map-get($font-size, $context);
-    @return typey-output-in-base-unit(($x * $base-line-height) / $context-map-size);
+    @return typey-output-in-unit(($x * $base-line-height) / $context-map-size, em);
   }
   @if $type == "px" {
-    @return typey-output-in-base-unit(($x * $base-line-height) / $context);
+    @return typey-output-in-unit(($x * $base-line-height) / $context, em);
   }
 }
