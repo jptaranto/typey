@@ -3,13 +3,13 @@
 Gem::Specification.new do |spec|
   spec.name         = 'typey'
 
-  spec.summary      = %q{A complete framework for working with typography on the web.}
+  spec.summary      = %q{A complete framework for working with typography in sass.}
 
   spec.homepage     = 'http://github.com/jptaranto/typey'
   spec.rubyforge_project =
 
-  spec.version      = '1.0.0.beta.7'
-  spec.date         = '2015-08-07'
+  spec.version      = '1.0.0.beta.8'
+  spec.date         = '2015-09-04'
   spec.licenses     = ['GPL-2']
 
   spec.authors      = ['Jack Taranto']
