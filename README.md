@@ -10,7 +10,7 @@ Sass 3.3.0
 
 With RubyGems & Compass:
 
-* Terminal: `gem install typey`
+* Terminal: `gem install typey --pre`
 * config.rb: `require 'typey'`
 * SCSS: `@import 'typey'`
 
