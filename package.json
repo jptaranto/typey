@@ -3,6 +3,9 @@
   "version": "1.0.0-beta.8",
   "description": "A complete framework for working with typography in sass.",
   "main": "stylesheets/_typey.scss",
+  "eyeglass": {
+    "exports": "eyeglass-exports.js"
+  },
   "directories": {
     "lib": "stylesheets",
     "example": "examples"
