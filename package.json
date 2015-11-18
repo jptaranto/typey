@@ -1,0 +1,27 @@
+{
+  "name": "typey",
+  "version": "1.0.0-beta.8",
+  "description": "A complete framework for working with typography in sass.",
+  "main": "stylesheets/_typey.scss",
+  "directories": {
+    "lib": "stylesheets",
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jptaranto/typey.git"
+  },
+  "keywords": [
+    "sass",
+    "typography"
+  ],
+  "author": "jptaranto <jacktaranto@gmail.com>",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/jptaranto/typey/issues"
+  },
+  "homepage": "https://github.com/jptaranto/typey#readme"
+}
