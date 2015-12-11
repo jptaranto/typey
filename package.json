@@ -4,7 +4,8 @@
   "description": "A complete framework for working with typography in sass.",
   "main": "stylesheets/_typey.scss",
   "eyeglass": {
-    "exports": "eyeglass-exports.js"
+    "exports": "eyeglass-exports.js",
+    "needs": "^0.7.1"
   },
   "directories": {
     "lib": "stylesheets",
@@ -18,6 +19,7 @@
     "url": "git+https://github.com/jptaranto/typey.git"
   },
   "keywords": [
+    "eyeglass-module",
     "sass",
     "typography"
   ],
