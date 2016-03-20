@@ -5,7 +5,7 @@
   "main": "stylesheets/_typey.scss",
   "eyeglass": {
     "exports": "eyeglass-exports.js",
-    "needs": "^0.7.1"
+    "needs": "*"
   },
   "directories": {
     "lib": "stylesheets",
