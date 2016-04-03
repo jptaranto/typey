@@ -4,11 +4,17 @@ A complete framework for working with typography on the web.
 
 ## Requirements
 
-Sass 3.3.0
+libsass 3.3.0 / ruby-sass 3.3.0
 
 ## Installation
 
-With RubyGems & Compass:
+With npm
+
+* Terminal: `npm install typey --save-dev`
+* Gulp/node-sass: Add typey directory to includePaths
+* SCSS: `@import 'typey'`
+
+RubyGems & Compass
 
 * Terminal: `gem install typey --pre`
 * config.rb: `require 'typey'`
@@ -16,13 +22,8 @@ With RubyGems & Compass:
 
 Bower
 
-* Terminal: `bower install typey`
-* SCSS: `@import '../link_to_component_dir/typey'`
-
-Vanilla Sass
-
-* Terminal: `git clone git@github.com:jptaranto/typey.git`
-* SCSS: `@import '../link_to_component_dir/typey/stylesheets/typey'`
+* Terminal: `bower install typey --save`
+* SCSS: `@import 'bower_components/typey/typey'`
 
 ## Getting started
 
@@ -286,6 +287,7 @@ h1 {
 ## More examples
 
 Grab a copy of the source code (make sure you get the same version you have installed) and look in the examples folder to see typey in action.
+
 ## Reference
 
 The reference section has been removed for now in favour of the better detailed examples above. For explanation on all the individual functions and mixins inside typey you can just download the source code and ogle at the documentation contained within. Once the typey website launches it will include a complete reference section. Stay tuned.
