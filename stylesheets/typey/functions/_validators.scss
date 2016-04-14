@@ -24,6 +24,9 @@
     }
   }
   @if type-of($x) == "string" {
+    @if $x == "auto" {
+      @return "auto";
+    }
     @if map-has-key($font-size, $x) {
       @return "font-size";
     }
@@ -34,13 +37,15 @@
   @if type-of($x) == "list" {
     @if list-separator($x) == space {
       @each $value in $x {
-        @if type-of($value) == "number" {
-          @if not unitless($value) and unit($value) != px {
-            @error "All units must be expressed in px";
+        @if type-of($value) == "number" or $value == "auto" {
+          @if type-of($value) == "number" {
+            @if not unitless($value) and unit($value) != px {
+              @error "All units must be expressed in px";
+            }
           }
         }
         @else {
-          @error "Values specified inside lists must be a number";
+          @error "Values specified inside lists must be a number or 'auto'";
         }
       }
       @return "list";

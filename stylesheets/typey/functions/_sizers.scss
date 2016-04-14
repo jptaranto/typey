@@ -77,13 +77,16 @@
 // @return number
 //   The calculated height in $base-unit.
 @function margin($x, $context: $base-font-size) {
-  $allowed-types: "multiplier", "px";
+  $allowed-types: "multiplier", "px", "auto";
   $type: typey-validator($x, $allowed-types);
   @if $type == "multiplier" {
     @return output-from-multiplier($x, $context);
   }
   @if $type == "px" {
     @return output-from-px($x, $context);
+  }
+  @if $type == "auto" {
+    @return auto;
   }
 }
 
@@ -106,12 +109,15 @@
 // @return number
 //   The calculated height in $base-unit.
 @function padding($x, $context: $base-font-size) {
-  $allowed-types: "multiplier", "px";
+  $allowed-types: "multiplier", "px", "auto";
   $type: typey-validator($x, $allowed-types);
   @if $type == "multiplier" {
     @return output-from-multiplier($x, $context);
   }
   @if $type == "px" {
     @return output-from-px($x, $context);
+  }
+  @if $type == "auto" {
+    @return auto;
   }
 }

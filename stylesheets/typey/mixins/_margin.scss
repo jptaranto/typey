@@ -14,19 +14,22 @@
   $allowed-types: "multiplier", "px", "list";
   $type: typey-validator($list, $allowed-types);
 
-  $px-list: ();
+  $px-fallback-list: ();
   $converted-list: ();
 
   @each $x in $list {
     @if $base-unit == rem {
-      $allowed-types: "multiplier", "px";
+      $allowed-types: "multiplier", "px", "auto";
       $type: typey-validator($x, $allowed-types);
       @if $type == "multiplier" {
         $margin: $x * $base-line-height;
-        $px-list: join($px-list, $margin, $separator: space);
+        $px-fallback-list: join($px-fallback-list, $margin, $separator: space);
       }
       @if $type == "px" {
-        $px-list: join($px-list, $x, $separator: space);
+        $px-fallback-list: join($px-fallback-list, $x, $separator: space);
+      }
+      @if $type == "auto" {
+        $px-fallback-list: join($px-fallback-list, $x, $separator: space);
       }
     }
     $margin: margin($x, $context);
@@ -35,7 +38,7 @@
 
   @if $base-unit == rem {
     @if $rem-fallback == true {
-      margin: $px-list;
+      margin: $px-fallback-list;
     }
   }
   margin: $converted-list;
