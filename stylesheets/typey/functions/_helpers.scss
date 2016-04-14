@@ -6,6 +6,9 @@
 // @return number
 //   The number with the base unit
 @function typey-output-in-base-unit($number) {
+  @if $number == 0 {
+    @return 0;
+  }
   @if $base-unit == rem {
     @return $number * 1rem;
   }
@@ -27,6 +30,9 @@
 // @return number
 //   The number with the base unit
 @function typey-output-in-unit($number, $unit: $base-unit) {
+  @if $number == 0 {
+    @return 0;
+  }
   @if $unit == rem {
     @return $number * 1rem;
   }
