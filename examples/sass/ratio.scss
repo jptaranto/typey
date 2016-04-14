@@ -29,8 +29,8 @@ body {
 
 .container {
   @include padding(1);
+  @include margin(0 auto 1);
   max-width: 1100px;
-  margin: 0 auto margin(1);
   background: #F2E2CE;
 }
 

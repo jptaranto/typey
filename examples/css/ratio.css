@@ -18,8 +18,9 @@ body {
 .container {
   padding: 24px;
   padding: 1.5rem;
-  max-width: 1100px;
+  margin: 0px auto 24px;
   margin: 0 auto 1.5rem;
+  max-width: 1100px;
   background: #F2E2CE;
 }
 
@@ -35,7 +36,7 @@ h2, h3 {
   font-size: 36px;
   font-size: 2.25rem;
   margin: 0px 0px 24px;
-  margin: 0rem 0rem 1.5rem;
+  margin: 0 0 1.5rem;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
 }
@@ -55,7 +56,7 @@ h2, h3 {
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
   margin: 48px 0px 24px;
-  margin: 3rem 0rem 1.5rem;
+  margin: 3rem 0 1.5rem;
 }
 .rem h2:after {
   content: "";
@@ -70,7 +71,7 @@ h2, h3 {
   font-size: 16px;
   font-size: 1rem;
   margin: 48px 0px 24px;
-  margin: 3rem 0rem 1.5rem;
+  margin: 3rem 0 1.5rem;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
 }
@@ -85,7 +86,7 @@ h2, h3 {
 }
 .rem p {
   margin: 0px 0px 24px;
-  margin: 0rem 0rem 1.5rem;
+  margin: 0 0 1.5rem;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
 }
@@ -116,7 +117,7 @@ h2, h3 {
 
 .em h1 {
   font-size: 2.25em;
-  margin: 0em 0em 0.6666666667em;
+  margin: 0 0 0.6666666667em;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
 }
@@ -134,7 +135,7 @@ h2, h3 {
   line-height: 1.5;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
-  margin: 2em 0em 1em;
+  margin: 2em 0 1em;
 }
 .em h2:after {
   content: "";
@@ -147,7 +148,7 @@ h2, h3 {
 }
 .em h3 {
   font-size: 1em;
-  margin: 3em 0em 1.5em;
+  margin: 3em 0 1.5em;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
 }
@@ -161,7 +162,7 @@ h2, h3 {
   background-color: #D9B29C;
 }
 .em p {
-  margin: 0em 0em 1.5em;
+  margin: 0 0 1.5em;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
 }
@@ -191,7 +192,7 @@ h2, h3 {
 
 .px h1 {
   font-size: 36px;
-  margin: 0px 0px 24px;
+  margin: 0 0 24px;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
 }
@@ -209,7 +210,7 @@ h2, h3 {
   line-height: 1.5;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
-  margin: 48px 0px 24px;
+  margin: 48px 0 24px;
 }
 .px h2:after {
   content: "";
@@ -222,7 +223,7 @@ h2, h3 {
 }
 .px h3 {
   font-size: 16px;
-  margin: 48px 0px 24px;
+  margin: 48px 0 24px;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
 }
@@ -236,7 +237,7 @@ h2, h3 {
   background-color: #D9B29C;
 }
 .px p {
-  margin: 0px 0px 24px;
+  margin: 0 0 24px;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
 }
