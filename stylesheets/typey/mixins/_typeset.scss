@@ -1,0 +1,78 @@
+// Typeset your type.
+//
+// @param string $typestyle
+//   A type style from the $typestyles map.
+// @param number|string $context
+//   (optional) Only used if em is the $base-unit. The value of the
+//   elements/parents font-size if it differs from $base-font-size.
+//   Specified as a t-shirt size or value in px.
+@mixin typeset($typestyle, $context: $base-font-size) {
+  $typestyle: map-get($typestyles, $typestyle);
+
+  $font-size: false;
+  $line-height: false;
+  $weight: false;
+  $case: false;
+
+  // Assign values to variables when $typestyle is a keyed map.
+  @if type-of($typestyle) == "map" {
+    @if map-has-key($typestyle, font-size) {
+      $font-size: map-get($typestyle, font-size);
+    }
+    @if map-has-key($typestyle, line-height) {
+      $line-height: map-get($typestyle, line-height);
+    }
+    @if map-has-key($typestyle, weight) {
+      $weight: map-get($typestyle, weight);
+    }
+    @if map-has-key($typestyle, case) {
+      $case: map-get($typestyle, case);
+    }
+  }
+
+  // Assign values to variables when $typestyle is shorthand.
+  @if type-of($typestyle) == "list" {
+    @each $value in $typestyle {
+      // The first value is always font-size.
+      @if index($typestyle, $value) == 1 {
+        $font-size: $value;
+      }
+      // This is a line-height value.
+      @if type-of($value) == "number" and not(index($typestyle, $value) == 1) {
+        $line-height: $value;
+      }
+      // This is a font-weight value.
+      @if map-has-key($font-weight, $value) {
+        $weight: $value;
+      }
+      // This is a case value.
+      @if type-of($value) == "string" and not(map-has-key($font-weight, $value)) {
+        $case: $value;
+      }
+    }
+  }
+
+  // Output properties.
+  @if $font-size {
+    @include font-size($font-size, $context);
+  }
+  @if $line-height {
+    @include typey-debug-grid($line-height, $font-size);
+    @include line-height($line-height, $font-size);
+  }
+  @else {
+    // Using default line-height so set debug grid accordingly.
+    @if $line-height-method == "rhythm" {
+      @include typey-debug-grid($base-line-height, $font-size);
+    }
+    @if $line-height-method == "ratio" {
+      @include typey-debug-grid($base-line-height-ratio, $font-size);
+    }
+  }
+  @if $weight {
+    font-weight: weight($weight);
+  }
+  @if $case {
+    text-transform: $case;
+  }
+}

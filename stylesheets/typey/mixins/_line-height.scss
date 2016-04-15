@@ -20,6 +20,4 @@
     }
   }
   line-height: line-height($x, $context);
-
-  @include typey-debug-grid($x, $context);
 }

@@ -80,18 +80,29 @@ $font-weight: (
 // @setting string case
 //   A value for CSS text-transform. Only specify this if you want a consistant
 //   case used accross the board with this typeface.
-$typefaces: (
-  serif: (
-    font-stack: $serif-stack,
-  ),
-  sans-serif: (
-    font-stack: $sans-serif-stack,
-    tracking: -.5px,
-    weight: bold,
-    case: uppercase
-  ),
-  mono: $monospaced-stack lowercase 1px normal
-) !default;
+$typefaces: () !default;
+
+// Declare typestyles
+// These can use any key you like, and allow you to set an easily reusable type
+// style. They can be as simple as a font-size and line-height, or can go on
+// to encompass a full range of css type properties.
+//
+// Each key in the $typestyles map can either be a keyed map of settings
+// using any combination of the keys below, or it can be a shorthand list
+// of each property value. When using shorthand for $typestyles, the first value
+// must always be font-size. After that it doesn't matter what order each value
+// is arranged in, but best practice is to do it in the order:
+// [font-size] [line-height] [weight] [case]
+//
+// @setting number|string font-size
+//   A size from the $font-size map or px value to be converted
+// @setting number $x line-height
+//   Multiple of line height, ratio or px value to be converted.
+// @setting string weight
+//   A key from the $font-weight map.
+// @setting string case
+//   A value for CSS text-transform.
+$typestyles: () !default;
 
 // Debug grid
 // Shows horizontal lines for each elements line height.
@@ -129,6 +140,31 @@ $typey-debug-color:        #4affff !default;
 $typey-text-transform-properties: none capitalize uppercase lowercase initial inherit;
 @each $property in $typey-text-transform-properties {
   @if map-has-key($font-weight, $property) {
-    @warn "#{$property} used in $font-weight map is a potential value of the text-transform property and will conflict when using typey shorthand";
+    @warn "'#{$property}' used in $font-weight map is a potential value of the text-transform property and will conflict when using typey shorthand";
+  }
+}
+
+// Warnings for $typefaces.
+@each $key, $typeface in $typefaces {
+  @if type-of($typeface) != "map" and type-of($typeface) != "list" {
+    @error "Typeface '#{$key}' in $typefaces map must be a keyed map or a shorthand list in the format: [font-stack] [tracking] [weight] [case]";
+  }
+}
+
+// Warnings for $typestyles.
+@each $key, $typestyle in $typestyles {
+  @if type-of($typestyle) != "map" and type-of($typestyle) != "list" {
+    @error "Typestyle '#{$key}' in $typestyles map must be a keyed map or a shorthand list in the format: [font-size] [line-height] [weight] [case]";
+  }
+  @if type-of($typestyle) == "list" {
+    @each $value in $typestyle {
+      @if index($typestyle, $value) == 1 {
+        $allowed-types: "font-size", "px";
+        $type: typey-check-value($value);
+        @if index($allowed-types, $type) == null {
+          @error 'Incorrect shorthand format used in '#{$key}' in $typestyles map: [font-size] must appear first';
+        }
+      }
+    }
   }
 }
