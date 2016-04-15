@@ -11,6 +11,32 @@ $font-size: (
   xl:36px
 );
 
+@import "../../stylesheets/typey/font-stacks";
+
+$typefaces: (
+  serif: $serif-stack,
+  sans-serif: (
+    font-stack: $sans-serif-stack,
+    tracking: -.5px,
+    weight: bold,
+    case: uppercase
+  )
+);
+
+$typestyles: (
+  heading-1: (
+    font-size: xl,
+    line-height: 2
+  ),
+  heading-2: l 2,
+  heading-3: (
+    font-size: m,
+    line-height: 1,
+    case: lowercase
+  ),
+  intro: 18px 1
+);
+
 $typey-debug: true;
 $typey-debug-color: #D9B29C;
 
@@ -18,6 +44,7 @@ $typey-debug-color: #D9B29C;
 
 html {
   @include define-type-sizing;
+  @include typeface(serif);
 }
 
 body {
@@ -33,6 +60,10 @@ body {
   background: #F2E2CE;
 }
 
+h1, h2, h3 {
+  @include typeface(sans-serif);
+}
+
 h1 {
   color: #A6263E;
 }
@@ -45,17 +76,17 @@ h2, h3 {
 $base-unit: rem;
 .rem {
   h1 {
-    @include type-layout(xl, 2);
+    @include typeset(heading-1);
     @include margin(0 0 1);
   }
 
   h2 {
-    @include type-layout(l, 2);
+    @include typeset(heading-2);
     @include margin(2 0 1);
   }
 
   h3 {
-    @include type-layout(m, 1);
+    @include typeset(heading-3);;
     @include margin(2 0 1);
   }
 
@@ -65,7 +96,7 @@ $base-unit: rem;
   }
 
   .intro {
-    @include type-layout(18px, 1);
+    @include typeset(intro);
   }
 }
 
@@ -73,17 +104,17 @@ $base-unit: rem;
 $base-unit: em;
 .em {
   h1 {
-    @include type-layout(xl, 2);
+    @include typeset(heading-1);
     @include margin(0 0 1, xl);
   }
 
   h2 {
-    @include type-layout(l, 2);
+    @include typeset(heading-2);
     @include margin(2 0 1, l);
   }
 
   h3 {
-    @include type-layout(m, 1);
+    @include typeset(heading-3);;
     @include margin(2 0 1);
   }
 
@@ -93,7 +124,7 @@ $base-unit: em;
   }
 
   .intro {
-    @include type-layout(18px, 1);
+    @include typeset(intro);
     @include margin(0 0 1, 18px);
   }
 }
@@ -102,17 +133,17 @@ $base-unit: em;
 $base-unit: px;
 .px {
   h1 {
-    @include type-layout(xl, 2);
+    @include typeset(heading-1);
     @include margin(0 0 1);
   }
 
   h2 {
-    @include type-layout(l, 2);
+    @include typeset(heading-2);
     @include margin(2 0 1);
   }
 
   h3 {
-    @include type-layout(m, 1);
+    @include typeset(heading-3);;
     @include margin(2 0 1);
   }
 
@@ -122,6 +153,6 @@ $base-unit: px;
   }
 
   .intro {
-    @include type-layout(18px, 1);
+    @include typeset(intro);
   }
 }

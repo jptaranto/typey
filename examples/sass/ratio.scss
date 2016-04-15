@@ -1,3 +1,5 @@
+
+
 // Set defaults so they are easy to compute (in your head).
 $base-font-size:           16px;
 $base-line-height:         24px;
@@ -15,10 +17,36 @@ $font-size: (
 $typey-debug: true;
 $typey-debug-color: #D9B29C;
 
+@import "../../stylesheets/typey/font-stacks";
+
+$typefaces: (
+  serif: $serif-stack,
+  sans-serif: (
+    font-stack: $sans-serif-stack,
+    tracking: -.5px,
+    weight: bold,
+    case: uppercase
+  )
+);
+
+$typestyles: (
+  heading-1: (
+    font-size: xl,
+    line-height: 1.25
+  ),
+  heading-2: l 1.25,
+  heading-3: (
+    font-size: m,
+    case: lowercase
+  ),
+  intro: 18px 1.5
+);
+
 @import "../../stylesheets/typey";
 
 html {
   @include define-type-sizing;
+  @include typeface(serif);
 }
 
 body {
@@ -34,6 +62,10 @@ body {
   background: #F2E2CE;
 }
 
+h1, h2, h3 {
+  @include typeface(sans-serif);
+}
+
 h1 {
   color: #A6263E;
 }
@@ -46,20 +78,18 @@ h2, h3 {
 $base-unit: rem;
 .rem {
   h1 {
-    @include font-size(xl);
+    @include typeset(heading-1);
     @include margin(0 0 1);
-    @include typey-debug-grid;
   }
 
   h2 {
-    @include type-layout(l, 1.5);
+    @include typeset(heading-2);
     @include margin(2 0 1);
   }
 
   h3 {
-    @include font-size(m);
+    @include typeset(heading-3);
     @include margin(2 0 1);
-    @include typey-debug-grid;
   }
 
   p {
@@ -68,8 +98,7 @@ $base-unit: rem;
   }
 
   .intro {
-    @include font-size(20px);
-    @include typey-debug-grid;
+    @include typeset(intro);
   }
 }
 
@@ -77,20 +106,18 @@ $base-unit: rem;
 $base-unit: em;
 .em {
   h1 {
-    @include font-size(xl);
+    @include typeset(heading-1);
     @include margin(0 0 1, xl);
-    @include typey-debug-grid;
   }
 
   h2 {
-    @include type-layout(l, 1.5);
+    @include typeset(heading-2);
     @include margin(2 0 1, l);
   }
 
   h3 {
-    @include font-size(m);
+    @include typeset(heading-3);
     @include margin(2 0 1);
-    @include typey-debug-grid;
   }
 
   p {
@@ -99,8 +126,7 @@ $base-unit: em;
   }
 
   .intro {
-    @include font-size(20px);
-    @include typey-debug-grid($context: 20px);
+    @include typeset(intro);
   }
 }
 
@@ -108,18 +134,18 @@ $base-unit: em;
 $base-unit: px;
 .px {
   h1 {
-    @include font-size(xl);
+    @include typeset(heading-1);
     @include margin(0 0 1);
     @include typey-debug-grid;
   }
 
   h2 {
-    @include type-layout(l, 1.5);
+    @include typeset(heading-2);
     @include margin(2 0 1);
   }
 
   h3 {
-    @include font-size(m);
+    @include typeset(heading-3);
     @include margin(2 0 1);
     @include typey-debug-grid;
   }
@@ -130,7 +156,6 @@ $base-unit: px;
   }
 
   .intro {
-    @include font-size(20px);
-    @include typey-debug-grid;
+    @include typeset(intro);
   }
 }
