@@ -1,0 +1,75 @@
+// Embed a typeface.
+//
+// @param string $typeface
+//   A font family from the $typefaces map.
+@mixin typeface($typeface) {
+  $typeface: map-get($typefaces, $typeface);
+
+  $font-stack: false;
+  $tracking: false;
+  $weight: false;
+  $case: false;
+
+  // Assign values to variables when $typeface is a keyed map.
+  @if type-of($typeface) == "map" {
+    @if map-has-key($typeface, font-stack) {
+      $font-stack: map-get($typeface, font-stack);
+    }
+    @if map-has-key($typeface, tracking) {
+      $tracking: map-get($typeface, tracking);
+    }
+    @if map-has-key($typeface, weight) {
+      $weight: map-get($typeface, weight);
+    }
+    @if map-has-key($typeface, case) {
+      $case: map-get($typeface, case);
+    }
+  }
+
+  // Assign values to variables when $typeface is shorthand.
+  @if type-of($typeface) == "list" {
+    @if (list-separator($typeface) == "comma") {
+      // This shorthand is just a list of fonts.
+      $font-stack: $typeface;
+    }
+    @else {
+      @each $value in $typeface {
+        // This is a font-stack.
+        @if type-of($value) == "list" {
+          $font-stack: $value;
+        }
+        // This is a tracking value.
+        @if type-of($value) == "number" {
+          $tracking: $value;
+        }
+        // This is a font-weight value.
+        @if map-has-key($font-weight, $value) {
+          $weight: $value;
+        }
+        // This is a case value.
+        @if type-of($value) == "string" and not(map-has-key($font-weight, $value)) {
+          $case: $value;
+        }
+      }
+    }
+  }
+
+  // Output properties.
+  @if $font-stack {
+    font-family: $font-stack;
+  }
+  @if $tracking {
+    @if ($tracking == 0) {
+      letter-spacing: 0;
+    }
+    @else {
+      letter-spacing: calculate-em-px($tracking, $base-font-size);
+    }
+  }
+  @if $weight {
+    font-weight: weight($weight);
+  }
+  @if $case {
+    text-transform: $case;
+  }
+}
