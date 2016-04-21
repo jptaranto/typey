@@ -20,10 +20,10 @@ $typey-debug-color: #D9B29C;
 @import "../../stylesheets/typey/font-stacks";
 
 $typefaces: (
-  serif: $serif-stack,
+  serif: $serif-stack .1px,
   sans-serif: (
-    font-stack: $sans-serif-stack,
-    tracking: -.5px,
+    font-family: $sans-serif-stack,
+    letter-spacing: -.5px,
     weight: bold,
     case: uppercase
   )
@@ -38,8 +38,7 @@ $typestyles: (
   heading-3: (
     font-size: m,
     case: lowercase
-  ),
-  intro: 18px 1.5
+  )
 );
 
 @import "../../stylesheets/typey";
@@ -64,6 +63,13 @@ body {
 
 h1, h2, h3 {
   @include typeface(sans-serif);
+  // Reset margins
+  margin: 0;
+}
+
+p {
+  // Reset margins
+  margin: 0;
 }
 
 h1 {
@@ -79,7 +85,7 @@ $base-unit: rem;
 .rem {
   h1 {
     @include typeset(heading-1);
-    @include margin(0 0 1);
+    @include margin-bottom(1);
   }
 
   h2 {
@@ -93,12 +99,12 @@ $base-unit: rem;
   }
 
   p {
-    @include margin(0 0 1);
+    @include margin-bottom(1);
     @include typey-debug-grid;
   }
 
   .intro {
-    @include typeset(intro);
+    @include type-layout(18px, 1.5);
   }
 }
 
@@ -121,12 +127,13 @@ $base-unit: em;
   }
 
   p {
-    @include margin(0 0 1);
+    @include margin-bottom(1);
     @include typey-debug-grid;
   }
 
   .intro {
-    @include typeset(intro);
+    @include type-layout(18px, 1.5);
+    @include margin-bottom(1, 18px);
   }
 }
 
@@ -135,8 +142,7 @@ $base-unit: px;
 .px {
   h1 {
     @include typeset(heading-1);
-    @include margin(0 0 1);
-    @include typey-debug-grid;
+    @include margin-bottom(1);
   }
 
   h2 {
@@ -147,15 +153,14 @@ $base-unit: px;
   h3 {
     @include typeset(heading-3);
     @include margin(2 0 1);
-    @include typey-debug-grid;
   }
 
   p {
-    @include margin(0 0 1);
+    @include margin-bottom(1);
     @include typey-debug-grid;
   }
 
   .intro {
-    @include typeset(intro);
+    @include type-layout(18px, 1.5);
   }
 }

@@ -1,7 +1,8 @@
 html {
   font-size: 100%;
   line-height: 1.5;
-  font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+  font-family: "Calisto MT", "Book Antiqua", serif;
+  letter-spacing: 0.00625em;
 }
 @media print {
   html {
@@ -26,10 +27,15 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   letter-spacing: -0.03125em;
   font-weight: 700;
   text-transform: uppercase;
+  margin: 0;
+}
+
+p {
+  margin: 0;
 }
 
 h1 {
@@ -46,8 +52,8 @@ h2, h3 {
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.25em);
   line-height: 1.25;
-  margin: 0px 0px 24px;
-  margin: 0 0 1.5rem;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 .rem h1:after {
   content: "";
@@ -64,7 +70,6 @@ h2, h3 {
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.25em);
   line-height: 1.25;
-  text-transform: l;
   margin: 48px 0px 24px;
   margin: 3rem 0 1.5rem;
 }
@@ -96,8 +101,8 @@ h2, h3 {
   background-color: #D9B29C;
 }
 .rem p {
-  margin: 0px 0px 24px;
-  margin: 0 0 1.5rem;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
 }
@@ -113,9 +118,9 @@ h2, h3 {
 .rem .intro {
   font-size: 18px;
   font-size: 1.125rem;
+  line-height: 1.5;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
-  line-height: 1.5;
 }
 .rem .intro:after {
   content: "";
@@ -148,7 +153,6 @@ h2, h3 {
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.25em);
   line-height: 1.25;
-  text-transform: l;
   margin: 2em 0 1em;
 }
 .em h2:after {
@@ -177,7 +181,7 @@ h2, h3 {
   background-color: #D9B29C;
 }
 .em p {
-  margin: 0 0 1.5em;
+  margin-bottom: 1.5em;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
 }
@@ -192,9 +196,10 @@ h2, h3 {
 }
 .em .intro {
   font-size: 1.125em;
+  line-height: 1.5;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
-  line-height: 1.5;
+  margin-bottom: 1.3333333333em;
 }
 .em .intro:after {
   content: "";
@@ -211,18 +216,7 @@ h2, h3 {
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.25em);
   line-height: 1.25;
-  margin: 0 0 24px;
-  position: relative;
-  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
-}
-.px h1:after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  height: 1px;
-  width: 100%;
-  background-color: #D9B29C;
+  margin-bottom: 24px;
 }
 .px h1:after {
   content: "";
@@ -238,7 +232,6 @@ h2, h3 {
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.25em);
   line-height: 1.25;
-  text-transform: l;
   margin: 48px 0 24px;
 }
 .px h2:after {
@@ -256,17 +249,6 @@ h2, h3 {
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
   text-transform: lowercase;
   margin: 48px 0 24px;
-  position: relative;
-  background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
-}
-.px h3:after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  height: 1px;
-  width: 100%;
-  background-color: #D9B29C;
 }
 .px h3:after {
   content: "";
@@ -278,7 +260,7 @@ h2, h3 {
   background-color: #D9B29C;
 }
 .px p {
-  margin: 0 0 24px;
+  margin-bottom: 24px;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
 }
@@ -293,9 +275,9 @@ h2, h3 {
 }
 .px .intro {
   font-size: 18px;
+  line-height: 1.5;
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.5em);
-  line-height: 1.5;
 }
 .px .intro:after {
   content: "";
