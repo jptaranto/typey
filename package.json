@@ -1,6 +1,6 @@
 {
   "name": "typey",
-  "version": "1.0.0-beta.9",
+  "version": "1.0.0",
   "description": "A complete framework for working with typography in sass.",
   "main": "stylesheets/_typey.scss",
   "eyeglass": {
