@@ -11,11 +11,11 @@
       @return map-get($font-weight, $weight);
     }
     @else {
-      @error "'#{$weight}' not found in $font-weight map.";
+      @error "'#{$weight}' not found in $font-weight map";
     }
   }
   @else {
-    @error "Weight specified for weight() is not a string.";
+    @error "Weight specified for weight() is not a string";
   }
 }
 

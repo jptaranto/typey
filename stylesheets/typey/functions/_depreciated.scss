@@ -10,7 +10,7 @@
 // @return string
 //   The selected font-weight.
 @function output-unit($number) {
-  @warn "output-unit() is depreciated. Please use typey-output-in-base-unit() instead.";
+  @warn "output-unit() is depreciated. Please use typey-output-in-base-unit() instead";
   @return typey-output-in-base-unit($number);
 }
 
@@ -22,7 +22,7 @@
 // @return number
 //   The number without the unit.
 @function strip-unit($number) {
-  @warn "strip-unit() is depreciated. Please use typey-strip-unit() instead.";
+  @warn "strip-unit() is depreciated. Please use typey-strip-unit() instead";
   @return typey-strip-unit($number);
 }
 
@@ -38,7 +38,7 @@
 // @return number
 //   The number converted to the base unit.
 @function convert-unit($number, $context: $base-font-size) {
-  @warn "convert-unit() is depreciated. Please use output-from-px() instead.";
+  @warn "convert-unit() is depreciated. Please use output-from-px() instead";
   @return output-from-px($number, $context);
 }
 
@@ -50,6 +50,6 @@
 // @return string
 //   The selected font-weight.
 @function font-weight($weight) {
-  @warn "font-weight() is depreciated. Please use weight() instead.";
+  @warn "font-weight() is depreciated. Please use weight() instead";
   @return weight($weight);
 }
