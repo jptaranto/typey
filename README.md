@@ -38,7 +38,7 @@ makes for leaner and cleaner code.
 
 ### Decide how you want typey to output
 
-Now you'll need to choose the unit typey outputs your values in. You have three
+First you'll need to choose the unit typey outputs your values in. You have three
 choices: `rem`, `em`, or `px`. Each has it's own pros and cons. We don't quite
 have enough space here to go over them so do your research before you jump in.
 Generally speaking, it is actually quite easy to change this value in typey later on.
@@ -47,7 +47,7 @@ Generally speaking, it is actually quite easy to change this value in typey late
 $base-unit: rem;
 ```
 
-Just like in compass Vertical Rhythm we define our base font size and line height.
+Now we define our base font size and line height.
 
 ```sass
 $base-font-size:    16px;
@@ -58,8 +58,8 @@ Ok, so we have our base sizing, now we need to choose the approach that we are g
 to layout type with. We have two options available to us: `rhythm` and `ratio`. Rhythm
 allows us to specify line-heights as a multiple of $base-line-height, where as ratio
 allows us to specify line-heights as a multiple of our elements font-size. Rhythm is
-the default, but for beginners working with web typography the simplest approach
-is to use ratio. Each example below will tell you which method it is for.
+the default, but for many people working with web typography the simplest approach
+is to use ratio.
 
 ```sass
 $line-height-method: rhythm;
@@ -85,7 +85,10 @@ $print-font-size: 12pt;
 
 Ok on to the fun stuff. Defining font sizes! You should define as many of your
 font-sizes as possible inside the `$font-size` map with t-shirt sizes (which are
-easier to keep track of than individual values).
+easier to keep track of than individual values). You can have as many as you like
+and they can be any size you like. Use values taken from a design or roll your
+own using a modular scale. T-shirt sizes are best practice here  but you can use
+any naming scheme you like.
 
 ```sass
 $font-size: (
@@ -97,7 +100,7 @@ $font-size: (
 ```
 
 Now we are all set, we need to define our defaults for the `html` element. We can
-do this as easily as below:
+do this easily:
 
 ```sass
 html {
@@ -105,46 +108,160 @@ html {
 }
 ```
 
-## The quickest way to lay out type. Ever.
+## Define typefaces. New in typey 1.0
 
-### Rhythm method
+Defining typefaces helps us keep track of a few common properties a typeface is
+likely to need, ensuring they are all used together where ever the font is used
+in our stylesheets.
 
-In the example below, we are taking a heading, giving it an extra-large font-size and
-setting it's line-height to be 2x the $base-line-height.
+First you need to define the font families you are going to use as variables.
 
 ```sass
-h1 {
-  @include type-layout(xl, 2);
+$helvetica: Helvetica, sans-serif;
+$garamond: Garamond, serif;
+$monaco: Monaco, monospace, monospace;
+```
+
+Now you can define the $typefaces map. It accepts keyed values and lets you set
+a font-family, letter-spacing, weight and case. It also uses shorthand and it
+does not matter what order you list properties in when using shorthand but best
+practice is [font-family] [letter-spacing] [weight] [case]. You may not want to
+set these all globally, so font-family is the only required value.
+
+```sass
+$typefaces: (
+  sans-serif: (
+    font-family: $helvetica,
+    letter-spacing: -.5px,
+  ),
+  serif: $garamond,
+  monospace: (
+    font-family: $monaco,
+    letter-spacing: .5px,
+    weight: bold,
+    case: uppercase,
+  )
+);
+```
+
+Keep in mind the value for weight, is actually a key in the font-size map. By
+default typey defines these with bold, normal and lighter, but if you need your
+own weights, define the `$font-weight` map yourself.
+
+Embedding a typeface is now really straightforward. You can sleep safe knowing
+that all important defaults for your font have been included where ever the
+typeface has been.
+
+```sass
+h1, h2, h3 {
+  @include typeface(helvetica);
 }
 ```
 
-### Ratio method
+## Advanced typesetting. New in typey 1.0
 
-As we have already set a base ratio, we don't really need to worry about setting
-the line-height as all elements will just inherit from the `html` element.
+You can now define all your font-sizes and line-heights (amongst other things) together
+in a lovely, easy to read (and re-call) map.
+
+```sass
+$typestyles: (
+  heading-1: (
+    font-size: xl,
+    line-height: 1.25,
+    weight: bold,
+    case: uppercase  
+  ),
+  heading-2: (
+    font-size: l,
+    line-height: 1.25,
+    weight: normal
+  )
+)
+```
+
+Or you can use the even easier to express shorthand.
+
+```sass
+$typestyles: (
+  heading-1: xl 1.25 bold uppercase,
+  heading-2: l 1.25 normal
+)
+```
+
+The shorthand is very forgiving. It only requires that the first value be a
+font-size. After that you can enter any combination of line-height, font-weight,
+and case (in any order and all properties are optional). You can also use a
+combination of shorthand and keyed maps if you like!
+
+The value for weight, is also a key from the `$font-weight` map.
+
+To take a defined typestyle and then apply that to an element, all you need do
+is:
 
 ```sass
 h1 {
-  @include font-size(xl);
+  @include typeset(heading-1);
 }
 ```
 
-But if we did want to override the base ratio, we can do it like so:
+In the beta versions of typey, the `type-layout` mixin was used to accomplish
+virtually the same thing. While you can still use this method fine the new
+`typeset` mixin provides a much cleaner solution and will be expanded to support
+things like responsive type in the future.
 
 ```sass
 h1 {
-  @include type-layout(xl, 1.75);
+  @include type-layout(xl, 1.5);
 }
+```
+
+### Using rhythm line-height
+
+Using rhythm as the $line-height-method, you must make sure to set all line-height
+values as multiples of $base-line-height. As so:
+
+```sass
+$typestyles: (
+  heading-1: (
+    font-size: xl,
+    line-height: 2
+  )
+)
+```
+
+### Using ratio line-height
+
+Using ratio as the $line-height-method, you must make sure to set all line-height
+values as a ratio of the font-size. As so:
+
+```sass
+$typestyles: (
+  heading-1: (
+    font-size: xl,
+    line-height: 1.25
+  )
+)
+```
+
+The advantage of ratio line-height is you can always skip out on adding a line-height
+and just inherit the base ratio.
+
+```sass
+$typestyles: (
+  heading-1: (
+    font-size: xl
+  )
+)
 ```
 
 All ratios are outputted as unitless values instead of your base unit.
 
 ## Add some margins or padding
 
-A key component of typography is the space between elements. Typey always uses
-a vertical rhythm approach for margins and padding regardless of whether you are
-using the ratio method. This way margins and padding will always be consistent
-in your stylesheets. You can specify these using the various margin and padding mixins.
+Typey always uses a vertical rhythm approach for margins and padding regardless
+of whether you are using the ratio method. This way margins and padding will
+always be consistent in your stylesheets. You can specify these using the various
+margin and padding mixins.
 
 ```sass
 div {
@@ -199,8 +316,8 @@ li {
 }
 ```
 
-All of typey's mixins accept a px value instead of a multiple/ratio or key from
-the $font-size map.
+All of typey's font-size, line-height, type-layout, margin and padding mixins
+accept a px value instead of a multiple/ratio or key from the $font-size map.
 
 ## Really quite tricky stuff (em as the $base-unit)
 
@@ -224,17 +341,8 @@ h2 {
 }
 ```
 
-If we are using the type-layout() mixin we can do the same thing like below:
-
-```sass
-h2 {
-  @include type-layout(l, 2);
-
-  span {
-    @include type-layout(m, 2, l);
-  }
-}
-```
+As you any nested element can have it's font-size changed, all of typeys sizing
+mixins accept a context argument, including `typeset` and `type-layout`.
 
 ## Extras
 
@@ -286,7 +394,7 @@ h1 {
 
 ## More examples
 
-Grab a copy of the source code (make sure you get the same version you have installed) and look in the examples folder to see typey in action.
+Grab a copy of the source code and look in the examples folder to see typey in action.
 
 ## Reference
 
