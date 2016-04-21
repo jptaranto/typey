@@ -59,19 +59,19 @@ $font-weight: (
 ) !default;
 
 // Declare typefaces
-// These can use any key you like, and allow you to set global tracking
-// (letter-spacing), weight and case for font-families. You can then use the
+// These can use any key you like, and allow you to set global letter-spacing,
+// weight and case for font-families. You can then use the
 // font-family mixin to embed your font families anywhere you like.
 //
 // Each key in the $typefaces map can either be a keyed map of settings
 // using any combination of the keys below, or it can be a shorthand list
 // of each property value. When using shorthand it doesn't matter what order
 // each value is arranged in, but best practice is to do it in the order:
-// [font-stack] [letter-spacing] [weight] [case]
+// [font-family] [letter-spacing] [weight] [case]
 //
-// @setting list font-stack
-//   Any standard CSS font-stack. Use typey pre-written stacks or roll your own.
-// @setting number tracking
+// @setting list font-family
+//   Any standard CSS font-family. Use typey pre-written stacks or roll your own.
+// @setting number letter-spacing
 //   CSS letter-spacing. Specified as a px value when font-size is the
 //   $base-font-size.
 // @setting string weight
@@ -147,7 +147,7 @@ $typey-text-transform-properties: none capitalize uppercase lowercase initial in
 // Warnings for $typefaces.
 @each $key, $typeface in $typefaces {
   @if type-of($typeface) != "map" and type-of($typeface) != "list" {
-    @error "Typeface '#{$key}' in $typefaces map must be a keyed map or a shorthand list in the format: [font-stack] [tracking] [weight] [case]";
+    @error "Typeface '#{$key}' in $typefaces map must be a keyed map or a shorthand list in the format: [font-family] [letter-spacing] [weight] [case]";
   }
 }
 
@@ -162,7 +162,7 @@ $typey-text-transform-properties: none capitalize uppercase lowercase initial in
         $allowed-types: "font-size", "px";
         $type: typey-check-value($value);
         @if index($allowed-types, $type) == null {
-          @error 'Incorrect shorthand format used in '#{$key}' in $typestyles map: [font-size] must appear first';
+          @error "Incorrect shorthand format used in '#{$key}' in $typestyles map: [font-size] must appear first";
         }
       }
     }

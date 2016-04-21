@@ -46,7 +46,7 @@
         $weight: $value;
       }
       // This is a case value.
-      @if type-of($value) == "string" and not(map-has-key($font-weight, $value)) {
+      @if type-of($value) == "string" and not(index($typestyle, $value) == 1) {
         $case: $value;
       }
     }
@@ -62,12 +62,7 @@
   }
   @else {
     // Using default line-height so set debug grid accordingly.
-    @if $line-height-method == "rhythm" {
-      @include typey-debug-grid($base-line-height, $font-size);
-    }
-    @if $line-height-method == "ratio" {
-      @include typey-debug-grid($base-line-height-ratio, $font-size);
-    }
+    @include typey-debug-grid($base-line-height, $font-size);
   }
   @if $weight {
     font-weight: weight($weight);
