@@ -34,7 +34,7 @@
 //   line-height: line-height(1.5);
 //
 // @param number $x
-//   Multiple of line height to be used, px value to be converted, or ratio of
+//   Multiple of $base-line-height to be used, px value to be converted, or ratio of
 //   font-size.
 // @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the
@@ -58,57 +58,25 @@
   }
 }
 
-// Generate a value to be used as margin from either:
+// Generate a value to be used as some form of height or spacing from either:
 //   a) a multiple of $base-line-height
 //   b) a static px value
 //
 // Example usage with multiple:
-//   line-height: line-height(2);
+//   height: spacing(2);
 // Example usage with static value:
-//   line-height: line-height(18px);
+//   margin-bottom: spacing(18px);
 //
 // @param number $x
-//   Multiple of line height to be used or px value to be converted.
+//   Multiple of $base-line-height to be used or px value to be converted.
 // @param number|string $context
 //   (optional) Only used if em is the $base-unit. The value of the elements/parents
 //   font-size if it differs from $base-font-size. Specified as a t-shirt size or
 //   value in px.
 //
 // @return number
-//   The calculated height in $base-unit.
-@function margin($x, $context: $base-font-size) {
-  $allowed-types: "multiplier", "px", "auto";
-  $type: typey-validator($x, $allowed-types);
-  @if $type == "multiplier" {
-    @return output-from-multiplier($x, $context);
-  }
-  @if $type == "px" {
-    @return output-from-px($x, $context);
-  }
-  @if $type == "auto" {
-    @return auto;
-  }
-}
-
-// Generate a value to be used as padding from either:
-//   a) a multiple of $base-line-height
-//   b) a static px value
-//
-// Example usage with multiple:
-//   line-height: line-height(2);
-// Example usage with static value:
-//   line-height: line-height(18px);
-//
-// @param number $x
-//   Multiple of line height to be used or px value to be converted.
-// @param number|string $context
-//   (optional) Only used if em is the $base-unit. The value of the elements/parents
-//   font-size if it differs from $base-font-size. Specified as a t-shirt size or
-//   value in px.
-//
-// @return number
-//   The calculated height in $base-unit.
-@function padding($x, $context: $base-font-size) {
+//   The calculated spacing in $base-unit.
+@function spacing($x, $context: $base-font-size) {
   $allowed-types: "multiplier", "px", "auto";
   $type: typey-validator($x, $allowed-types);
   @if $type == "multiplier" {

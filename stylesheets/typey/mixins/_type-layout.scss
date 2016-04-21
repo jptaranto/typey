@@ -1,4 +1,4 @@
-// (Depreciated) Define a type layout (font-size and line-height).
+// Define a type layout (font-size and line-height).
 //
 // @param number|string $size
 //   A size from the $font-size map or a px value.
@@ -8,8 +8,8 @@
 //   (optional) Only used if em is the $base-unit. The value of the
 //   elements/parents font-size if it differs from $base-font-size.
 //   Specified as a t-shirt size or value in px.
-@mixin type-layout($size, $line-height, $context: $size) {
-  @warn "type-layout() is depreciated. Please use typeset() instead.";
+@mixin type-layout($size, $line-height, $context: $base-font-size) {
   @include font-size($size, $context);
   @include line-height($line-height, $size);
+  @include typey-debug-grid($line-height, $size);
 }
