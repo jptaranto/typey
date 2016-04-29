@@ -1,0 +1,28 @@
+body {
+  @include padding(1);
+  background: #d5bfa3;
+  color: #261420;
+}
+
+.container {
+  @include padding(1);
+  @include margin(0 auto 1);
+  max-width: 1100px;
+  background: #F2E2CE;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+h1 {
+  color: #A6263E;
+}
+
+h2, h3 {
+  color: #0d7f70;
+}

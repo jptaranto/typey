@@ -1,4 +1,11 @@
-
+// Set some sensible breakpoints
+$breakpoints: (
+  xsmall:     320px,
+  small:      480px,
+  medium:     768px,
+  large:      1024px,
+  xlarge:     1280px
+);
 
 // Set defaults so they are easy to compute (in your head).
 $base-font-size:           16px;
@@ -17,7 +24,7 @@ $font-size: (
 $typey-debug: true;
 $typey-debug-color: #D9B29C;
 
-@import "../../stylesheets/typey/font-stacks";
+@import "typey/font-stacks";
 
 $typefaces: (
   serif: $serif-stack .1px,
@@ -41,43 +48,18 @@ $typestyles: (
   )
 );
 
-@import "../../stylesheets/typey";
+@import "typey";
+@import "breakpoint";
+
+@import "base";
 
 html {
   @include define-type-sizing;
   @include typeface(serif);
 }
 
-body {
-  @include padding(1);
-  background: #d5bfa3;
-  color: #261420;
-}
-
-.container {
-  @include padding(1);
-  @include margin(0 auto 1);
-  max-width: 1100px;
-  background: #F2E2CE;
-}
-
 h1, h2, h3 {
   @include typeface(sans-serif);
-  // Reset margins
-  margin: 0;
-}
-
-p {
-  // Reset margins
-  margin: 0;
-}
-
-h1 {
-  color: #A6263E;
-}
-
-h2, h3 {
-  color: #0d7f70;
 }
 
 // Tests for rem
