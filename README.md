@@ -8,10 +8,9 @@ libsass 3.3.0 / ruby-sass 3.3.0
 
 ## Installation
 
-With npm
+With npm, node-sass & eyeglass
 
 * Terminal: `npm install typey --save-dev`
-* Gulp/node-sass: Add typey directory to includePaths
 * SCSS: `@import 'typey'`
 
 RubyGems & Compass
