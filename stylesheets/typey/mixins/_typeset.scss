@@ -52,6 +52,11 @@
     }
   }
 
+  // $typestyle may also be a solitary font-size.
+  @if type-of($typestyle) != "map" and type-of($typestyle) != "list" {
+    $font-size: $typestyle;
+  }
+
   // Output properties.
   @if $font-size {
     @include font-size($font-size, $context);
