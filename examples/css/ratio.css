@@ -70,6 +70,8 @@ h2, h3 {
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.25em);
   line-height: 1.25;
+  font-weight: 700;
+  text-transform: uppercase;
   margin: 48px 0px 24px;
   margin: 3rem 0 1.5rem;
 }
@@ -153,6 +155,8 @@ h2, h3 {
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.25em);
   line-height: 1.25;
+  font-weight: 700;
+  text-transform: uppercase;
   margin: 2em 0 1em;
 }
 .em h2:after {
@@ -232,6 +236,8 @@ h2, h3 {
   position: relative;
   background-image: repeating-linear-gradient(180deg, #D9B29C, #D9B29C 1px, transparent 1px, transparent 1.25em);
   line-height: 1.25;
+  font-weight: 700;
+  text-transform: uppercase;
   margin: 48px 0 24px;
 }
 .px h2:after {
