@@ -13,6 +13,7 @@
   $line-height: false;
   $weight: false;
   $case: false;
+  $letter-spacing: false;
 
   // Assign values to variables when $typestyle is a keyed map.
   @if type-of($typestyle) == "map" {
@@ -27,6 +28,9 @@
     }
     @if map-has-key($typestyle, case) {
       $case: map-get($typestyle, case);
+    }
+    @if map-has-key($typestyle, letter-spacing) {
+      $letter-spacing: map-get($typestyle, letter-spacing);
     }
   }
 
@@ -74,5 +78,8 @@
   }
   @if $case {
     text-transform: $case;
+  }
+  @if $letter-spacing {
+    letter-spacing: $letter-spacing;
   }
 }
