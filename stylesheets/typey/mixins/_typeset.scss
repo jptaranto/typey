@@ -13,6 +13,7 @@
   $line-height: false;
   $weight: false;
   $case: false;
+  $letter-spacing: false;
 
   // Assign values to variables when $typestyle is a keyed map.
   @if type-of($typestyle) == "map" {
@@ -28,6 +29,9 @@
     @if map-has-key($typestyle, case) {
       $case: map-get($typestyle, case);
     }
+    @if map-has-key($typestyle, letter-spacing) {
+      $letter-spacing: map-get($typestyle, letter-spacing);
+    }
   }
 
   // Assign values to variables when $typestyle is shorthand.
@@ -38,23 +42,18 @@
         $font-size: $value;
       }
       // This is a line-height value.
-      @else if type-of($value) == "number" and not(index($typestyle, $value) == 1) {
+      @if type-of($value) == "number" and not(index($typestyle, $value) == 1) {
         $line-height: $value;
       }
       // This is a font-weight value.
-      @else if map-has-key($font-weight, $value) {
+      @if map-has-key($font-weight, $value) {
         $weight: $value;
       }
       // This is a case value.
-      @else if type-of($value) == "string" and not(index($typestyle, $value) == 1) {
+      @if type-of($value) == "string" and not(index($typestyle, $value) == 1) {
         $case: $value;
       }
     }
-  }
-
-  // $typestyle may also be a solitary font-size.
-  @if type-of($typestyle) != "map" and type-of($typestyle) != "list" {
-    $font-size: $typestyle;
   }
 
   // Output properties.
@@ -74,5 +73,8 @@
   }
   @if $case {
     text-transform: $case;
+  }
+  @if $letter-spacing {
+    letter-spacing: $letter-spacing;
   }
 }
