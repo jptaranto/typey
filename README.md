@@ -153,7 +153,7 @@ typeface has been.
 
 ```sass
 h1, h2, h3 {
-  @include typeface(helvetica);
+  @include typeface(sans-serif);
 }
 ```
 
