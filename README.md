@@ -8,10 +8,9 @@ libsass 3.3.0 / ruby-sass 3.3.0
 
 ## Installation
 
-With npm
+With npm, node-sass & eyeglass
 
 * Terminal: `npm install typey --save-dev`
-* Gulp/node-sass: Add typey directory to includePaths
 * SCSS: `@import 'typey'`
 
 RubyGems & Compass
@@ -154,7 +153,7 @@ typeface has been.
 
 ```sass
 h1, h2, h3 {
-  @include typeface(helvetica);
+  @include typeface(sans-serif);
 }
 ```
 

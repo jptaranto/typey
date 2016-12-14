@@ -1,10 +1,11 @@
 {
   "name": "typey",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A complete framework for working with typography in sass.",
   "main": "stylesheets/_typey.scss",
   "eyeglass": {
-    "exports": "eyeglass-exports.js",
+    "sassDir": "stylesheets",
+    "exports": false,
     "needs": "*"
   },
   "directories": {

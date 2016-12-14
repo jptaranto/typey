@@ -153,9 +153,6 @@ $typey-text-transform-properties: none capitalize uppercase lowercase initial in
 
 // Warnings for $typestyles.
 @each $key, $typestyle in $typestyles {
-  @if type-of($typestyle) != "map" and type-of($typestyle) != "list" {
-    @error "Typestyle '#{$key}' in $typestyles map must be a keyed map or a shorthand list in the format: [font-size] [line-height] [weight] [case]";
-  }
   @if type-of($typestyle) == "list" {
     @each $value in $typestyle {
       @if index($typestyle, $value) == 1 {

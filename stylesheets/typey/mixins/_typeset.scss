@@ -38,18 +38,23 @@
         $font-size: $value;
       }
       // This is a line-height value.
-      @if type-of($value) == "number" and not(index($typestyle, $value) == 1) {
+      @else if type-of($value) == "number" and not(index($typestyle, $value) == 1) {
         $line-height: $value;
       }
       // This is a font-weight value.
-      @if map-has-key($font-weight, $value) {
+      @else if map-has-key($font-weight, $value) {
         $weight: $value;
       }
       // This is a case value.
-      @if type-of($value) == "string" and not(index($typestyle, $value) == 1) {
+      @else if type-of($value) == "string" and not(index($typestyle, $value) == 1) {
         $case: $value;
       }
     }
+  }
+
+  // $typestyle may also be a solitary font-size.
+  @if type-of($typestyle) != "map" and type-of($typestyle) != "list" {
+    $font-size: $typestyle;
   }
 
   // Output properties.
