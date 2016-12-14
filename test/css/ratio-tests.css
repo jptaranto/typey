@@ -1,0 +1,125 @@
+/* # Module: Ratio - Typey mixins */
+/* ------------------------------ */
+/* Test: Define type sizing */
+/*   ASSERT: Outputs percentage font-size and unitless line-height suitable for html element.   */
+/*   OUTPUT   */
+.test-output {
+  font-size: 62.5%;
+  line-height: 1.5;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  font-size: 62.5%;
+  line-height: 1.5;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/* Test: Font size */
+/*   ASSERT: Output font-size with pixel input.   */
+/*   OUTPUT   */
+.test-output {
+  font-size: 1rem;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  font-size: 1rem;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*   ASSERT: Output font-size with map input.   */
+/*   OUTPUT   */
+.test-output {
+  font-size: 0.5rem;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  font-size: 0.5rem;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/* Test: Line height */
+/*   ASSERT: Output line-height with pixel input.   */
+/*   OUTPUT   */
+.test-output {
+  line-height: 2rem;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  line-height: 2rem;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*   ASSERT: Output line-height with ratio input.   */
+/*   OUTPUT   */
+.test-output {
+  line-height: 2;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  line-height: 2;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/* Test: Spacing */
+/*   ASSERT: Output margin with pixel input.   */
+/*   OUTPUT   */
+.test-output {
+  margin: 2rem;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  margin: 2rem;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*   ASSERT: Output padding with map input.   */
+/*   OUTPUT   */
+.test-output {
+  padding: 2rem 1rem 0 0.5rem;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  padding: 2rem 1rem 0.5rem;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*   ASSERT: Output height with multiplier input.   */
+/*   OUTPUT   */
+.test-output {
+  height: 6rem;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  height: 6rem;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/*  */
