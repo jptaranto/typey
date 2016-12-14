@@ -34,3 +34,7 @@ _vti_*
 *.TMP
 *~
 *.bbprojectd
+
+# Package management
+yarn.lock
+npm-shrinkwrap.json
