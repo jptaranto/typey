@@ -1,3 +1,5 @@
+// sass-lint:disable quotes
+
 @import 'true';
 @import 'typey';
 
@@ -25,7 +27,7 @@ $typestyles: (
   )
 );
 
-$sans-serif-stack: "Helvetica Neue", Helvetica, sans-serif;
+$sans-serif-stack: 'Helvetica Neue', Helvetica, sans-serif;
 $typefaces: (
   sh: $sans-serif-stack -2px bold lowercase,
   lh: (

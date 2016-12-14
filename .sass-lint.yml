@@ -14,4 +14,4 @@ rules:
   mixins-before-declarations: 0
   quotes:
     - 1
-    - style: single
+    - style: double
