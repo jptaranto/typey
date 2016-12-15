@@ -6,7 +6,7 @@
   "eyeglass": {
     "sassDir": "stylesheets",
     "exports": false,
-    "needs": "*"
+    "needs": "^1.0.0"
   },
   "directories": {
     "lib": "stylesheets",
