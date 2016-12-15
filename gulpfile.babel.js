@@ -63,6 +63,19 @@ lint.description = 'Lint everything.';
 gulp.task('lint', lint);
 
 /**
+ * Lint everything (and fail).
+ */
+const lintWithFail = function() {
+  return gulp.src([config.sass.src + '/**/*.scss', 'stylesheets/**/*.scss'])
+    .pipe(sassLint())
+    .pipe(sassLint.format())
+    .pipe(sassLint.failOnError());
+};
+
+lint.description = 'Lint everything (and fail).';
+gulp.task('lint:with-fail', lintWithFail);
+
+/**
  * Run tests.
  */
 const test = function() {
@@ -72,6 +85,17 @@ const test = function() {
 
 test.description = 'Run tests.';
 gulp.task('test', test);
+
+/**
+ * Run tests.
+ */
+const testWithFail = function() {
+  return gulp.src('test/typey-test.js', { read: false })
+    .pipe(mocha());
+};
+
+test.description = 'Run tests (and fail).';
+gulp.task('test:with-fail', testWithFail);
 
 /**
  * Build.
@@ -93,3 +117,12 @@ gulp.task('watch', watch);
 
 // Set the default task to build & watch.
 gulp.task('default', gulp.series('build', 'lint', 'test', 'watch'));
+
+
+/**
+ * Travis CI.
+ */
+const travis = gulp.series('lint:with-fail', 'test:with-fail');
+
+travis.description = 'Test tasks for Travis CI.';
+gulp.task('travis', travis);

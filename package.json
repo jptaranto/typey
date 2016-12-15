@@ -13,7 +13,7 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "gulp lint && gulp test"
+    "test": "./node_modules/.bin/gulp travis"
   },
   "repository": {
     "type": "git",
