@@ -9,6 +9,7 @@
   $font-family: false;
   $letter-spacing: false;
   $weight: false;
+  $style: false;
   $case: false;
 
   // Assign values to variables when $typeface is a keyed map.
@@ -21,6 +22,9 @@
     }
     @if map-has-key($typeface, weight) {
       $weight: map-get($typeface, weight);
+    }
+    @if map-has-key($typeface, style) {
+      $style: map-get($typeface, style);
     }
     @if map-has-key($typeface, case) {
       $case: map-get($typeface, case);
@@ -48,8 +52,12 @@
           $weight: $value;
         }
         // This is a case value.
-        @if type-of($value) == "string" and not(map-has-key($font-weight, $value)) {
+        @else if type-of($value) == "string" and index($text-transform-values, $value) != null {
           $case: $value;
+        }
+        // This is a style value.
+        @else if type-of($value) == "string" and index($font-style-values, $value) != null {
+          $style: $value;
         }
       }
     }
@@ -72,6 +80,9 @@
   }
   @if $weight {
     font-weight: weight($weight);
+  }
+  @if $style {
+    font-style: $style;
   }
   @if $case {
     text-transform: $case;
