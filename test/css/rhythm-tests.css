@@ -163,7 +163,9 @@
   font-size: 1rem;
   line-height: 4rem;
   font-weight: 700;
+  font-style: italic;
   text-transform: lowercase;
+  letter-spacing: -0.2em;
 }
 
 /*   END_OUTPUT   */
@@ -172,7 +174,9 @@
   font-size: 1rem;
   line-height: 4rem;
   font-weight: 700;
+  font-style: italic;
   text-transform: lowercase;
+  letter-spacing: -0.2em;
 }
 
 /*   END_EXPECTED   */
@@ -183,7 +187,9 @@
   font-size: 2rem;
   line-height: 4rem;
   font-weight: 700;
+  font-style: italic;
   text-transform: uppercase;
+  letter-spacing: -0.1em;
 }
 
 /*   END_OUTPUT   */
@@ -192,7 +198,9 @@
   font-size: 2rem;
   line-height: 4rem;
   font-weight: 700;
+  font-style: italic;
   text-transform: uppercase;
+  letter-spacing: -0.1em;
 }
 
 /*   END_EXPECTED   */
@@ -205,6 +213,7 @@
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   letter-spacing: -0.2em;
   font-weight: 700;
+  font-style: italic;
   text-transform: lowercase;
 }
 
@@ -214,6 +223,7 @@
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   letter-spacing: -0.2em;
   font-weight: 700;
+  font-style: italic;
   text-transform: lowercase;
 }
 
@@ -225,6 +235,7 @@
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   letter-spacing: -0.2em;
   font-weight: 700;
+  font-style: italic;
   text-transform: uppercase;
 }
 
@@ -234,6 +245,7 @@
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   letter-spacing: -0.2em;
   font-weight: 700;
+  font-style: italic;
   text-transform: uppercase;
 }
 

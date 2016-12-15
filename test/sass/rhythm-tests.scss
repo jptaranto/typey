@@ -16,25 +16,29 @@ $font-size: (
 );
 
 $typestyles: (
-  sh: m 2 bold lowercase,
+  sh: m 2 bold lowercase italic -2px,
   lh: (
     font-size: l,
     line-height: 2,
     weight: bold,
-    case: uppercase
+    case: uppercase,
+    style: italic,
+    letter-spacing: -2px
   )
 );
 
 $sans-serif-stack: 'Helvetica Neue', Helvetica, sans-serif;
 $typefaces: (
-  sh: $sans-serif-stack -2px bold lowercase,
+  sh: $sans-serif-stack -2px bold italic lowercase,
   lh: (
     font-family: $sans-serif-stack,
     letter-spacing: -2px,
     weight: bold,
+    style: italic,
     case: uppercase
   )
 );
+
 @include test-module('Rhythm - Typey mixins') {
 
   @include test('Define type sizing') {
@@ -149,7 +153,9 @@ $typefaces: (
         font-size: 1rem;
         line-height: 4rem;
         font-weight: 700;
+        font-style: italic;
         text-transform: lowercase;
+        letter-spacing: -0.2em;
       }
     }
 
@@ -161,7 +167,9 @@ $typefaces: (
         font-size: 2rem;
         line-height: 4rem;
         font-weight: 700;
+        font-style: italic;
         text-transform: uppercase;
+        letter-spacing: -0.1em;
       }
     }
   }
@@ -175,6 +183,7 @@ $typefaces: (
         font-family: "Helvetica Neue", Helvetica, sans-serif;
         letter-spacing: -0.2em;
         font-weight: 700;
+        font-style: italic;
         text-transform: lowercase;
       }
     }
@@ -187,6 +196,7 @@ $typefaces: (
         font-family: "Helvetica Neue", Helvetica, sans-serif;
         letter-spacing: -0.2em;
         font-weight: 700;
+        font-style: italic;
         text-transform: uppercase;
       }
     }
