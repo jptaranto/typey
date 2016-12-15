@@ -67,22 +67,11 @@ gulp.task('lint', lint);
  */
 const test = function() {
   return gulp.src('test/typey-test.js', { read: false })
-    .pipe(mocha());
+    .pipe(mocha().on('error', function() { this.emit('end') }));
 };
 
 test.description = 'Run tests.';
 gulp.task('test', test);
-
-/**
- * Watch, compile, lint and test.
- */
-const watch = function(e) {
-  gulp.watch([config.sass.src + '/**/*.scss', 'test/**/*.scss'], gulp.series('clean', 'styles', 'lint', 'test'));
-}
-
-watch.description = 'Watch, compile, lint and test.';
-gulp.task('watch', watch);
-
 
 /**
  * Build.
@@ -92,5 +81,15 @@ const build = gulp.series('clean', 'styles');
 build.description = 'Build the test files.';
 gulp.task('build', build);
 
-// Set the default task to build.
-gulp.task('default', build);
+/**
+ * Watch, compile, lint and test.
+ */
+const watch = function(e) {
+  gulp.watch([config.sass.src + '/**/*.scss', 'stylesheets/**/*.scss'], gulp.series('build', 'lint', 'test'));
+}
+
+watch.description = 'Watch, build, lint and test.';
+gulp.task('watch', watch);
+
+// Set the default task to build & watch.
+gulp.task('default', gulp.series('build', 'lint', 'test', 'watch'));

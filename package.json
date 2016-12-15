@@ -37,10 +37,10 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-sass": "^3.0.0",
     "gulp-sass-lint": "^1.3.2",
+    "gulp-spawn-mocha": "^3.1.0",
     "mocha": "~3.1.2",
     "node-sass": "^4.0.0",
     "sass-lint": "^1.10.2",
-    "sass-true": "2.1.3",
-    "gulp-spawn-mocha": "^3.1.0"
+    "sass-true": "2.1.3"
   }
 }
