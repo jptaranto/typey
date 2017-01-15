@@ -1,0 +1,204 @@
+// sass-lint:disable quotes
+
+@import 'true';
+@import 'typey';
+
+$base-font-size: 10px;
+$base-line-height: 20px;
+
+$auto-print-sizing: false;
+$rem-fallback: false;
+
+$font-size: (
+  s: 5px,
+  m: 10px,
+  l: 20px
+);
+
+$typestyles: (
+  sh: m 2 bold lowercase italic -2px,
+  lh: (
+    font-size: l,
+    line-height: 2,
+    weight: bold,
+    case: uppercase,
+    style: italic,
+    letter-spacing: -2px
+  )
+);
+
+$sans-serif-stack: 'Helvetica Neue', Helvetica, sans-serif;
+$typefaces: (
+  sh: $sans-serif-stack -2px bold italic lowercase,
+  lh: (
+    font-family: $sans-serif-stack,
+    letter-spacing: -2px,
+    weight: bold,
+    style: italic,
+    case: uppercase
+  )
+);
+
+@include test-module('Rhythm - Typey mixins') {
+
+  @include test('Define type sizing') {
+    @include assert('Outputs percentage font-size and em line-height suitable for html element.') {
+      @include output {
+        @include define-type-sizing;
+      }
+      @include expect {
+        font-size: 62.5%;
+        line-height: 2em;
+      }
+    }
+  }
+
+  @include test('Font size') {
+    @include assert('Output font-size with pixel input.') {
+      @include output {
+        @include font-size(10px);
+      }
+      @include expect {
+        font-size: 1rem;
+      }
+    }
+
+    @include assert('Output font-size with map input.') {
+      @include output {
+        @include font-size(s);
+      }
+      @include expect {
+        font-size: 0.5rem;
+      }
+    }
+  }
+
+  @include test('Line height') {
+    @include assert('Output line-height with pixel input.') {
+      @include output {
+        @include line-height(20px);
+      }
+      @include expect {
+        line-height: 2rem;
+      }
+    }
+
+    @include assert('Output line-height with multiplier input.') {
+      @include output {
+        @include line-height(2);
+      }
+      @include expect {
+        line-height: 4rem;
+      }
+    }
+  }
+
+  @include test('Spacing') {
+    @include assert('Output margin with pixel input.') {
+      @include output {
+        @include spacing(margin, 20px);
+      }
+      @include expect {
+        margin: 2rem;
+      }
+    }
+
+    @include assert('Output padding with map input.') {
+      @include output {
+        @include spacing(padding, 20px 10px 0 5px);
+      }
+      @include expect {
+        padding: 2rem 1rem 0 0.5rem;
+      }
+    }
+
+    @include assert('Output height with multiplier input.') {
+      @include output {
+        @include spacing(height, 3);
+      }
+      @include expect {
+        height: 6rem;
+      }
+    }
+  }
+
+  @include test('Type layout') {
+    @include assert('Output font-size/line-height with map / multipler input.') {
+      @include output {
+        @include type-layout(l, 2);
+      }
+      @include expect {
+        font-size: 2rem;
+        line-height: 4rem;
+      }
+    }
+
+    @include assert('Output font-size/line-height with pixel input.') {
+      @include output {
+        @include type-layout(15px, 20px);
+      }
+      @include expect {
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
+    }
+  }
+
+  @include test('Typeset') {
+    @include assert('Output shorthand typestyle.') {
+      @include output {
+        @include typeset(sh);
+      }
+      @include expect {
+        font-size: 1rem;
+        line-height: 4rem;
+        font-weight: 700;
+        font-style: italic;
+        text-transform: lowercase;
+        letter-spacing: -0.2em;
+      }
+    }
+
+    @include assert('Output longhand typestyle.') {
+      @include output {
+        @include typeset(lh);
+      }
+      @include expect {
+        font-size: 2rem;
+        line-height: 4rem;
+        font-weight: 700;
+        font-style: italic;
+        text-transform: uppercase;
+        letter-spacing: -0.1em;
+      }
+    }
+  }
+
+  @include test('Typeface') {
+    @include assert('Output shorthand typeface.') {
+      @include output {
+        @include typeface(sh);
+      }
+      @include expect {
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+        letter-spacing: -0.2em;
+        font-weight: 700;
+        font-style: italic;
+        text-transform: lowercase;
+      }
+    }
+
+    @include assert('Output longhand typeface.') {
+      @include output {
+        @include typeface(lh);
+      }
+      @include expect {
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+        letter-spacing: -0.2em;
+        font-weight: 700;
+        font-style: italic;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

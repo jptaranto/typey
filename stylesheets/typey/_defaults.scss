@@ -111,6 +111,20 @@ $typey-debug:              false !default;
 // Debug grid coloring
 $typey-debug-color:        #4affff !default;
 
+// Lets store the allowed values for text-transform and font-style so we can
+// make shorthand work a little better.
+$text-transform-values: (
+  lowercase,
+  uppercase,
+  capitalize
+) !default;
+
+$font-style-values: (
+  normal,
+  italic,
+  oblique
+) !default;
+
 // Warnings for $base-unit.
 @if $base-unit != px and $base-unit != rem and $base-unit != em {
   @error "$base-unit must be one of the following unit types: rem, em or px";

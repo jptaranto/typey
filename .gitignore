@@ -1,6 +1,5 @@
 # Exclude stuff specific to this project.
 node_modules
-test
 *.gem
 README.html
 *.codekit
@@ -23,8 +22,9 @@ nbproject
 ._*
 Thumbs.db
 
-# Exclude Sass temp files.
+# Exclude Sass temp files & maps.
 .sass-cache
+.map
 
 # Exclude files used by FTP, Dreamweaver, Frontpage, vi, etc.
 WS_FTP.LOG

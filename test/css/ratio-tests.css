@@ -1,0 +1,255 @@
+/* # Module: Ratio - Typey mixins */
+/* ------------------------------ */
+/* Test: Define type sizing */
+/*   ASSERT: Outputs percentage font-size and unitless line-height suitable for html element.   */
+/*   OUTPUT   */
+.test-output {
+  font-size: 62.5%;
+  line-height: 1.5;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  font-size: 62.5%;
+  line-height: 1.5;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/* Test: Font size */
+/*   ASSERT: Output font-size with pixel input.   */
+/*   OUTPUT   */
+.test-output {
+  font-size: 1rem;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  font-size: 1rem;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*   ASSERT: Output font-size with map input.   */
+/*   OUTPUT   */
+.test-output {
+  font-size: 0.5rem;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  font-size: 0.5rem;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/* Test: Line height */
+/*   ASSERT: Output line-height with pixel input.   */
+/*   OUTPUT   */
+.test-output {
+  line-height: 2rem;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  line-height: 2rem;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*   ASSERT: Output line-height with ratio input.   */
+/*   OUTPUT   */
+.test-output {
+  line-height: 2;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  line-height: 2;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/* Test: Spacing */
+/*   ASSERT: Output margin with pixel input.   */
+/*   OUTPUT   */
+.test-output {
+  margin: 2rem;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  margin: 2rem;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*   ASSERT: Output padding with map input.   */
+/*   OUTPUT   */
+.test-output {
+  padding: 2rem 1rem 0 0.5rem;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  padding: 2rem 1rem 0 0.5rem;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*   ASSERT: Output height with multiplier input.   */
+/*   OUTPUT   */
+.test-output {
+  height: 6rem;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  height: 6rem;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/* Test: Type layout */
+/*   ASSERT: Output font-size/line-height with map / ratio input.   */
+/*   OUTPUT   */
+.test-output {
+  font-size: 2rem;
+  line-height: 1.25;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  font-size: 2rem;
+  line-height: 1.25;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*   ASSERT: Output font-size/line-height with pixel input.   */
+/*   OUTPUT   */
+.test-output {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/* Test: Typeset */
+/*   ASSERT: Output shorthand typestyle.   */
+/*   OUTPUT   */
+.test-output {
+  font-size: 1rem;
+  line-height: 2;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: lowercase;
+  letter-spacing: -0.2em;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  font-size: 1rem;
+  line-height: 2;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: lowercase;
+  letter-spacing: -0.2em;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*   ASSERT: Output longhand typestyle.   */
+/*   OUTPUT   */
+.test-output {
+  font-size: 2rem;
+  line-height: 1.5;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -0.1em;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  font-size: 2rem;
+  line-height: 1.5;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -0.1em;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/* Test: Typeface */
+/*   ASSERT: Output shorthand typeface.   */
+/*   OUTPUT   */
+.test-output {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  letter-spacing: -0.2em;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  letter-spacing: -0.2em;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*   ASSERT: Output longhand typeface.   */
+/*   OUTPUT   */
+.test-output {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  letter-spacing: -0.2em;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+/*   END_OUTPUT   */
+/*   EXPECTED   */
+.test-output {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  letter-spacing: -0.2em;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+/*   END_EXPECTED   */
+/*   END_ASSERT   */
+/*  */
+/*  */

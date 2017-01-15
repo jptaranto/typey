@@ -8,21 +8,11 @@ libsass 3.3.0 / ruby-sass 3.3.0
 
 ## Installation
 
-With npm, node-sass & eyeglass
+To try out features in the 1.1.x branch of typey using npm, add the following line to your devDependencies in `package.json`
 
-* Terminal: `npm install typey --save-dev`
-* SCSS: `@import 'typey'`
-
-RubyGems & Compass
-
-* Terminal: `gem install typey --pre`
-* config.rb: `require 'typey'`
-* SCSS: `@import 'typey'`
-
-Bower
-
-* Terminal: `bower install typey --save`
-* SCSS: `@import 'bower_components/typey/typey'`
+```
+"typey": "github:jptaranto/typey#1.1.x"
+```
 
 ## Getting started
 
