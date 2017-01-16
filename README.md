@@ -128,6 +128,7 @@ $typefaces: (
     font-family: $monaco,
     letter-spacing: .5px,
     weight: bold,
+    style: normal,
     case: uppercase,
   )
 );
@@ -158,7 +159,9 @@ $typestyles: (
     font-size: xl,
     line-height: 1.25,
     weight: bold,
-    case: uppercase  
+    style: italic,
+    case: uppercase,
+    letter-spacing: -2px  
   ),
   heading-2: (
     font-size: l,
