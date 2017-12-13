@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.version      = '1.1.1'
   spec.date         = '2017-01-16'
-  spec.licenses     = ['GPL-2']
+  spec.licenses     = ['MIT']
 
   spec.authors      = ['Jack Taranto']
   spec.email        = 'jacktaranto@gmail.com'
