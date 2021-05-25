@@ -37,13 +37,13 @@ choices: `rem`, `em`, or `px`. Each has it's own pros and cons. We don't quite
 have enough space here to go over them so do your research before you jump in.
 Generally speaking, it is actually quite easy to change this value in typey later on.
 
-```sass
+```scss
 $base-unit: rem;
 ```
 
 Now we define our base font size and line height.
 
-```sass
+```scss
 $base-font-size:    16px;
 $base-line-height:  24px;
 ```
@@ -55,7 +55,7 @@ allows us to specify line-heights as a multiple of our elements font-size. Rhyth
 the default, but for many people working with web typography the simplest approach
 is to use ratio.
 
-```sass
+```scss
 $line-height-method: rhythm;
 // or
 $line-height-method: ratio;
@@ -64,7 +64,7 @@ $line-height-method: ratio;
 If you are using ratio, you should set your base ratio as so. Ignore this one
 if you are using rhythm.
 
-```sass
+```scss
 $base-line-height-ratio: 1.5
 ```
 
@@ -73,7 +73,7 @@ query to the `html` element with a font-size defined in `pt`. This is really onl
 effective when you are using a relative unit as your `$base-unit` (rem or em). You
 can override the base print size with this variable.
 
-```sass
+```scss
 $print-font-size: 12pt;
 ```
 
@@ -84,7 +84,7 @@ and they can be any size you like. Use values taken from a design or roll your
 own using a modular scale. T-shirt sizes are best practice here  but you can use
 any naming scheme you like.
 
-```sass
+```scss
 $font-size: (
   xl:   32px,
   l:    24px,
@@ -96,7 +96,7 @@ $font-size: (
 Now we are all set, we need to define our defaults for the `html` element. We can
 do this easily:
 
-```sass
+```scss
 html {
   @include define-type-sizing;
 }
@@ -110,7 +110,7 @@ in our stylesheets.
 
 First you need to define the font families you are going to use as variables.
 
-```sass
+```scss
 $helvetica: Helvetica, sans-serif;
 $garamond: Garamond, serif;
 $monaco: Monaco, monospace, monospace;
@@ -122,7 +122,7 @@ does not matter what order you list properties in when using shorthand but best
 practice is [font-family] [letter-spacing] [weight] [case]. You may not want to
 set these all globally, so font-family is the only required value.
 
-```sass
+```scss
 $typefaces: (
   sans-serif: (
     font-family: $helvetica,
@@ -147,7 +147,7 @@ Embedding a typeface is now really straightforward. You can sleep safe knowing
 that all important defaults for your font have been included where ever the
 typeface has been.
 
-```sass
+```scss
 h1, h2, h3 {
   @include typeface(sans-serif);
 }
@@ -158,7 +158,7 @@ h1, h2, h3 {
 You can now define all your font-sizes and line-heights (amongst other things) together
 in a lovely, easy to read (and re-call) map.
 
-```sass
+```scss
 $typestyles: (
   heading-1: (
     font-size: xl,
@@ -178,7 +178,7 @@ $typestyles: (
 
 Or you can use the even easier to express shorthand.
 
-```sass
+```scss
 $typestyles: (
   heading-1: xl 1.25 bold uppercase,
   heading-2: l 1.25 normal
@@ -195,7 +195,7 @@ The value for weight, is also a key from the `$font-weight` map.
 To take a defined typestyle and then apply that to an element, all you need do
 is:
 
-```sass
+```scss
 h1 {
   @include typeset(heading-1);
 }
@@ -206,7 +206,7 @@ virtually the same thing. While you can still use this method fine the new
 `typeset` mixin provides a much cleaner solution and will be expanded to support
 things like responsive type in the future.
 
-```sass
+```scss
 h1 {
   @include type-layout(xl, 1.5);
 }
@@ -217,7 +217,7 @@ h1 {
 Using rhythm as the $line-height-method, you must make sure to set all line-height
 values as multiples of $base-line-height. As so:
 
-```sass
+```scss
 $typestyles: (
   heading-1: (
     font-size: xl,
@@ -231,7 +231,7 @@ $typestyles: (
 Using ratio as the $line-height-method, you must make sure to set all line-height
 values as a ratio of the font-size. As so:
 
-```sass
+```scss
 $typestyles: (
   heading-1: (
     font-size: xl,
@@ -243,7 +243,7 @@ $typestyles: (
 The advantage of ratio line-height is you can always skip out on adding a line-height
 and just inherit the base ratio.
 
-```sass
+```scss
 $typestyles: (
   heading-1: (
     font-size: xl
@@ -260,7 +260,7 @@ of whether you are using the ratio method. This way margins and padding will
 always be consistent in your stylesheets. You can specify these using the various
 margin and padding mixins.
 
-```sass
+```scss
 div {
   @include margin-top(2);
   @include margin-right(1);
@@ -275,7 +275,7 @@ div {
 
 You can use regular CSS short hand too.
 
-```sass
+```scss
 div {
   @include margin(2 1);
   @include padding(2 1);
@@ -290,7 +290,7 @@ to override things with actual `px` values and have them output properly in your
 base unit of choice. This is particularly useful for things like buttons or nav
 bars when you want to have an exact px height.
 
-```sass
+```scss
 button {
   @include line-height(50px);
 }
@@ -298,7 +298,7 @@ button {
 
 Or for fidely, one-off font sizes.
 
-```sass
+```scss
 .nav__dropdown-link {
   @include font-size(22px);
 }
@@ -306,7 +306,7 @@ Or for fidely, one-off font sizes.
 
 Or for some spacing you want to set manually.
 
-```sass
+```scss
 li {
   @include margin(5px 0);
   @include padding(2px 0);
@@ -328,7 +328,7 @@ In the below example we want to set the font size of a heading, and then give
 the nested span element a smaller font size. We do this by passing the font-size
 of the parent as the second argument to the mixin.
 
-```sass
+```scss
 h2 {
   @include font-size(l);
 
@@ -345,13 +345,13 @@ mixins accept a context argument, including `typeset` and `type-layout`.
 
 Grab one of the web-safe font stacks included and extend it with your own fonts.
 
-```sass
+```scss
 $your-font-stack: extend-font-stack("Open sans", $sans-serif-stack);
 ```
 
 If you are using a web font that has multiple different weights, you can express these as numerical values, inside a sass map. Then if things change later on, it's easy as pie to change them site-wide.
 
-```sass
+```scss
 $font-weight: (
   bold:    700,
   normal:  400,
@@ -361,7 +361,7 @@ $font-weight: (
 
 You can then use typey's built in `weight()` function to call these values in an easy and readable way.
 
-```sass
+```scss
 strong {
   font-weight: weight(bold)
 }
@@ -372,7 +372,7 @@ strong {
 You can turn the debug grid on or off with the global variable below (and also choose
 a custom color!).
 
-```sass
+```scss
 $typey-debug: true;
 $typey-debug-color: red;
 ```
@@ -383,7 +383,7 @@ manually you can use the typey-debug-grid() mixin, which takes a few arguments -
 the line-height (as a ratio, multiplier or px value), and the context (only used
 for ems), and also a custom color.
 
-```sass
+```scss
 h1 {
   @include typey-debug-grid(2, $context: xl, $color: blue);
 }
